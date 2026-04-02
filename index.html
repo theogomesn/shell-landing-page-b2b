@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oferta Integrada Shell — Traga seu posto para a Shell</title>
-  <meta name="description" content="Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, seu posto ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.">
+  <meta name="description" content="Com combustíveis premium, Fidelização, marca reconhecida e apoio à operação, seu posto ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.">
 
-  <!-- Design System Shell -->
+
   <link rel="stylesheet" href="shell-ds.css">
 
   <style>
@@ -43,9 +43,9 @@
     }
     .nav-link.active {
       color: var(--red-100);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-thickness: 2px;
+    }
+    .nav-link.active::after {
+      width: 100%;
     }
 
     /* ── NAV — mobile hamburger (oculto por padrão no desktop) ── */
@@ -93,22 +93,8 @@
     }
 
     /* ── Responsivo ── */
-    @media (max-width: 1024px) {
-      .nav-links  { display: none; }
-      .nav-hamburger { display: flex; }
-    }
 
     /* Mobile: ocultar tagline, manter CTA + hamburger */
-    @media (max-width: 768px) {
-      .nav { padding: 0 var(--sp-24); }
-      .nav-brand { display: none; }
-      #nav-cta-desktop {
-        font-size: 12px;
-        padding: 0 12px;
-        height: 40px;
-        white-space: nowrap;
-      }
-    }
 
 
     /* ═══════════════════════════════════════════
@@ -246,20 +232,6 @@
       flex-shrink: 0;
     }
     /* ── Responsivo ── */
-    @media (max-width: 1024px) {
-      .hero-content { max-width: 100%; }
-      .hero-h1 { font-size: var(--text-40); }
-    }
-    @media (max-width: 768px) {
-      .hero-body { height: 560px; }
-      .hero-content { padding: 0 var(--sp-24); gap: var(--sp-24); }
-      .hero-h1 { font-size: 32px; }
-    }
-    @media (max-width: 480px) {
-      .hero-h1 { font-size: 28px; }
-      .hero-ctas { flex-direction: column; width: 100%; }
-      .hero-ctas .btn { width: 100%; justify-content: center; }
-    }
 
 
     /* ═══════════════════════════════════════════
@@ -270,8 +242,6 @@
       padding: 72px 0;
     }
     .lp-section-yellow { background: var(--yellow-100); }
-    .lp-section-gray   { background: var(--bg-1); }
-    .lp-section-dark   { background: var(--black-100); }
 
     .lp-container {
       max-width: 1440px;
@@ -335,17 +305,6 @@
       justify-content: center;
     }
 
-    @media (max-width: 1200px) {
-      .lp-pillars-4 { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .lp-container { padding: 0 var(--sp-24); }
-      .lp-section   { padding: var(--sp-56) 0; }
-      .lp-h2        { font-size: var(--text-32); }
-      .lp-pillars-4 { grid-template-columns: 1fr; }
-      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
-    }
-
     /* ═══════════════════════════════════════════
        OPORTUNIDADE — node 68:163
     ═══════════════════════════════════════════ */
@@ -365,13 +324,6 @@
       grid-template-rows: auto auto;
       gap: var(--sp-32);
       justify-content: center;
-    }
-
-    @media (max-width: 1200px) {
-      .lp-pillars-8 { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .lp-pillars-8 { grid-template-columns: 1fr; }
     }
 
 
@@ -553,49 +505,83 @@
     /* ── DEPOIMENTOS — image cards ── */
     .dep-grid {
       display: grid;
-      grid-template-columns: repeat(3, 361px);
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--sp-32);
-      justify-content: center;
+      margin-top: var(--sp-56);
+      width: 100%;
     }
+
+    /* card externo: borda, radius, fundo */
     .dep-card {
+      background: #f0f0f0;
+      border: 1px solid var(--border);
       border-radius: var(--radius-18);
       overflow: hidden;
+      width: 100%;
+      cursor: pointer;
+      display: block;
+      padding: 24px;
+      box-sizing: border-box;
     }
-    .dep-img-wrap {
+
+    /* wrapper do vídeo: aspect-ratio 9:16, contexto para elementos absolutos */
+    .dep-video-wrap {
       position: relative;
+      width: 100%;
       aspect-ratio: 9 / 16;
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: var(--radius-18);
+      background: #222;
+      display: block;
+      min-height: 0;
     }
-    .dep-img {
+
+    /* vídeo: preenche 100% do wrapper */
+    .dep-video {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
       display: block;
-      transition: transform var(--t-slow) var(--ease-out);
     }
-    .dep-card:hover .dep-img { transform: scale(1.03); }
+
+    /* overlay gradiente: posicionado dentro do dep-video-wrap */
     .dep-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.20) 50%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.0)  40%,
+        rgba(0,0,0,0.55) 100%
+      );
+      transition: opacity var(--t-slow) var(--ease-out);
+      z-index: 1;
       pointer-events: none;
     }
+    .dep-card.playing .dep-overlay { opacity: 0; }
+
+    /* texto topo: título + quote */
     .dep-text {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      top: 0; left: 0; right: 0;
       padding: var(--sp-24);
       display: flex;
       flex-direction: column;
-      gap: var(--sp-12);
+      gap: var(--sp-8);
+      z-index: 2;
+      transition: opacity var(--t-slow) var(--ease-out);
     }
+    .dep-card.playing .dep-text { opacity: 0; pointer-events: none; }
+
     .dep-title {
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--yellow-100);
-      line-height: var(--lh-normal);
+      color: var(--white-100);
+      line-height: 1.2;
       margin: 0;
     }
     .dep-quote {
@@ -603,20 +589,59 @@
       font-style: italic;
       font-size: var(--text-14);
       color: var(--white-100);
-      line-height: var(--lh-body);
+      line-height: 1.6;
       margin: 0;
     }
-    @media (max-width: 1200px) {
-      .dep-grid { grid-template-columns: repeat(2, 1fr); }
-      .dep-grid .dep-card:last-child { display: none; }
-    }
-    @media (max-width: 768px) {
-      .dep-grid { grid-template-columns: 1fr; }
-      .dep-grid .dep-card:last-child { display: block; }
-      .dep-img-wrap { aspect-ratio: 4 / 3; }
+
+    /* controles: parte inferior do card */
+    .dep-controls {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: var(--sp-24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 3;
     }
 
+    /* botão play/stop: círculo branco translúcido */
+    .dep-btn-play {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--t-fast);
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .dep-btn-play:hover { transform: scale(1.08); }
+    .dep-icon-play  { width: 20px; height: 20px; display: block; }
+    .dep-icon-stop  { display: none; width: 20px; height: 20px; }
+    .dep-card.playing .dep-icon-play { display: none; }
+    .dep-card.playing .dep-icon-stop { display: block; }
+
+    /* botão som: ícone direita */
+    .dep-btn-sound {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      transition: opacity var(--t-fast);
+    }
+    .dep-btn-sound:hover { opacity: 1; }
+    .dep-btn-sound img { width: 24px; height: 24px; display: block; }
+
     /* ── APOIO — imagem treinamento ── */
+
     .apoio-img-wrap {
       width: 100%;
       border-radius: var(--radius-18);
@@ -627,14 +652,6 @@
       width: 100%;
       height: auto;
       object-fit: cover;
-    }
-    @media (max-width: 1024px) {
-      .beneficios-grid {
-        grid-template-columns: 1fr;
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-      }
     }
     .mstrip-title {
       font-family: var(--font-heading);
@@ -654,9 +671,6 @@
       grid-template-columns: repeat(2, 471px);
       gap: var(--sp-32);
       justify-content: center;
-    }
-    @media (max-width: 1100px) {
-      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
     }
 
 
@@ -748,6 +762,8 @@
       gap: 72px;
       align-items: start;
       width: 100%;
+      max-width: 1152px;  /* 480 + 72 + 600 */
+      margin: 0 auto;
     }
 
     /* coluna esquerda */
@@ -819,16 +835,6 @@
     }
 
     /* responsivo */
-    @media (max-width: 1200px) {
-      .contato-grid {
-        grid-template-columns: 1fr;
-        gap: var(--sp-48);
-      }
-      .contato-left .lp-h2 { font-size: var(--text-32); }
-    }
-    @media (max-width: 768px) {
-      .contato-fbox { padding: var(--sp-24); }
-    }
 
 
     /* ═══════════════════════════════════════════
@@ -882,41 +888,200 @@
       text-align: right;
     }
 
+
+
+
+
+    /* ════════════════════════════════════════════════════
+       RESPONSIVO — ajustes mobile conservadores
+       Princípio: só reduzir o que estava visivelmente grande.
+       Preservar espaçamentos base sempre que possível.
+    ════════════════════════════════════════════════════ */
+
+    /* ── 1024px: tablet landscape ── */
     @media (max-width: 1024px) {
+
+      /* Nav */
+      .nav-links     { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Hero */
+      .hero-body    { height: 520px; }
+      .hero-content { max-width: 100%; padding: 0 var(--sp-40); }
+      .hero-h1      { font-size: 36px; }
+      .hero-footer  { height: auto; }
+
+      /* Layout */
+      .lp-container { padding: 0 var(--sp-40); }
+      .lp-section   { padding: 56px 0; }
+
+      /* Grids → 2 colunas */
+      .lp-pillars-4  { grid-template-columns: repeat(2, 1fr); }
+      .lp-pillars-8  { grid-template-columns: repeat(2, 1fr); }
+      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
+
+      /* Depoimentos */
+      .dep-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Benefícios */
+      .beneficios-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Contato */
+      .contato-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-32);
+        max-width: 600px;
+      }
+      .contato-left .lp-h2 { font-size: var(--text-32); }
+
+      /* Footer */
       .lp-footer-inner {
         height: auto;
-        padding: var(--sp-24) var(--sp-32);
+        padding: var(--sp-24) var(--sp-40);
         flex-direction: column;
         align-items: flex-start;
         gap: var(--sp-18);
       }
       .lp-footer-disclaimer { text-align: left; max-width: 100%; }
     }
+
+    /* ── 768px: mobile grande ── */
     @media (max-width: 768px) {
-      .lp-footer-inner { padding: var(--sp-24); }
+
+      /* Nav */
+      .nav       { padding: 0 var(--sp-18); }
+      .nav-brand { display: none; }
+      #nav-cta-desktop {
+        font-size: 12px;
+        padding: 0 12px;
+        height: 38px;
+        animation: none;
+        box-shadow: none;
+      }
+
+      /* Hero */
+      .hero-body    { height: 480px; }
+      .hero-content { padding: 0 var(--sp-24); gap: var(--sp-24); }
+      .hero-h1      { font-size: 28px; }
+      .hero-sub     { font-size: 13px; }
+
+      /* Layout — valores conservadores */
+      .lp-container  { padding: 0 var(--sp-24); gap: var(--sp-40); }
+      .lp-section    { padding: 48px 0; }
+      .lp-h2         { font-size: 26px; }
+      .lp-title-block { gap: var(--sp-18); }
+      .lp-desc        { font-size: 13px; }
+      .lp-desc-lg     { font-size: 13px; }
+
+      /* Grids → 1 coluna */
+      .lp-pillars-4  { grid-template-columns: 1fr; }
+      .lp-pillars-8  { grid-template-columns: 1fr; }
+
+      /* Pillars: reduzir ícone e padding com moderação */
+      .pillar        { padding: var(--sp-24); gap: var(--sp-14); }
+      .pillar-icon   { width: 40px; height: 40px; }
+      .pillar-title  { font-size: 16px; }
+      .pillar-desc   { font-size: 13px; }
+      .pillar-number { font-size: 32px; }
+
+      /* mstrip */
+      .lp-mstrip-2x2  { grid-template-columns: 1fr; }
+      .mstrip-number  { height: auto; padding: var(--sp-24); }
+      .mstrip-num     { font-size: 28px; }
+      .mstrip-title   { font-size: 16px; }
+
+      /* Marquee footer do hero */
+      .hero-footer .marquee-item        { font-size: 11px; gap: var(--sp-12); }
+      .hero-footer .marquee-item strong { font-size: 14px; }
+
+      /* Contato */
+      .contato-bullets      { gap: var(--sp-14); }
+      .contato-bullet       { padding: var(--sp-12) var(--sp-18); gap: var(--sp-12); }
+      .contato-bullet-icon  { width: 40px; height: 40px; }
+      .contato-bullet-title { font-size: 15px; }
+      .contato-bullet-desc  { font-size: 13px; }
+      .contato-fbox         { padding: var(--sp-24); gap: var(--sp-14); }
+      .frow                 { grid-template-columns: 1fr; }
+      .fg-label             { font-size: 11px; }
+      .input, .select       { height: 44px; font-size: 14px; }
+      .textarea             { font-size: 14px; }
+
+      /* Footer */
+      .lp-footer-inner      { padding: var(--sp-24); }
+      .lp-footer-copyright  { font-size: 12px; }
+      .lp-footer-disclaimer { font-size: 10px; }
     }
 
-  </style>
+    /* ── 480px: mobile padrão ── */
+    @media (max-width: 480px) {
+
+      /* Nav */
+      .nav               { height: 64px; }
+      .nav-mobile-drawer { inset: 64px 0 0 0; }
+
+      /* Hero */
+      .hero-body    { height: 440px; }
+      .hero-content { padding: 0 var(--sp-18); gap: var(--sp-18); }
+      .hero-h1      { font-size: 24px; }
+      .hero-sub     { font-size: 13px; }
+      .hero-kicker  { display: none; }
+      .hero-ctas    { flex-direction: column; width: 100%; gap: var(--sp-8); }
+      .hero-ctas .btn { width: 100%; justify-content: center; height: 44px; }
+
+      /* Layout */
+      .lp-section    { padding: 40px 0; }
+      .lp-container  { padding: 0 var(--sp-18); gap: var(--sp-32); }
+      .lp-h2         { font-size: 22px; }
+      .lp-title-block { gap: var(--sp-14); }
+
+      /* Pillars */
+      .pillar        { padding: var(--sp-18); gap: var(--sp-12); }
+      .pillar-icon   { width: 36px; height: 36px; }
+      .pillar-title  { font-size: 15px; }
+      .pillar-number { font-size: 28px; }
+
+      /* Depoimentos */
+      .dep-grid { max-width: 100%; }
+
+      /* Contato */
+      .contato-fbox    { padding: var(--sp-18); }
+      .contato-bullet  { padding: var(--sp-10) var(--sp-14); }
+      .contato-bullet-icon { width: 36px; height: 36px; }
+
+      /* Footer */
+      .lp-footer-logo       { width: 24px; height: 22px; }
+      .lp-footer-copyright  { font-size: 11px; }
+      .lp-footer-disclaimer { font-size: 9px; }
+    }
+
+    /* ── 360px: mobile compacto ── */
+    @media (max-width: 360px) {
+      .hero-h1      { font-size: 21px; }
+      .lp-h2        { font-size: 20px; }
+      .lp-container { padding: 0 var(--sp-14); }
+    }
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       NAV
-       Figma node: 11:799
-       Altura: 84px
-       Fonte brand: ShellHeavy 14px, #DD1D21
-       Fonte links: ShellMedium 14px, #1A1A1A
-       Padding horizontal: 56px
-       Borda inferior: 2px solid #E6E6E6
-       Sombra: 0 2px 4px rgba(0,0,0,0.05)
-  ═══════════════════════════════════════════ -->
+  <!-- nav -->
   <header class="lp-nav" id="nav">
     <nav class="nav" aria-label="Navegação principal">
 
-      <!-- Esquerda: logo + brand -->
+
       <div class="nav-left">
         <a href="#" aria-label="Início Shell" style="display:flex;align-items:center;gap:var(--sp-18);text-decoration:none;">
-          <!-- Logo Shell SVG inline (fiel ao arquivo original) -->
+
           <div style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6232 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6232 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" stroke="white" stroke-width="0.511019" stroke-miterlimit="40"/>
@@ -924,13 +1089,13 @@
               <path d="M19.0949 0.255493C8.69653 0.255493 0.255493 8.69468 0.255493 19.0949C0.255493 20.3609 0.383388 21.6231 0.63547 22.8632L6.43335 27.08L7.31935 34.1661H16.8799L17.4323 34.5664C17.9161 34.9186 18.4981 35.1077 19.0949 35.1077C19.6917 35.1077 20.2738 34.9186 20.7575 34.5664L21.3099 34.1661H30.8705L31.7565 27.08L37.5543 22.8632C37.8064 21.6231 37.9343 20.3609 37.9343 19.0949C37.9343 8.69653 29.4933 0.255493 19.0949 0.255493ZM33.9418 15.8308C34.4015 16.8577 34.6369 17.9698 34.6369 19.0949C34.6369 19.7677 34.5535 20.4387 34.3829 21.0912L28.6592 25.2542L27.9567 30.8686H21.0078L19.979 31.6156C19.7214 31.8028 19.41 31.9048 19.0931 31.9048C18.7761 31.9048 18.4647 31.8047 18.2071 31.6156L17.1783 30.8686H10.2294L9.52692 25.2542L3.80317 21.0912C3.63636 20.4387 3.5511 19.7677 3.5511 19.0949C3.5511 17.9698 3.78835 16.8577 4.24617 15.8308L14.3795 26.0772L4.52791 13.9161C4.9153 12.3387 5.77349 10.9152 6.98756 9.83832L15.8197 25.08L7.99404 8.39255C9.00607 7.04503 10.4185 6.05338 12.0273 5.55478L17.4267 24.4739L13.4824 4.77443C14.6816 4.09789 16.0366 3.74201 17.4156 3.74201C17.7066 3.74201 17.9976 3.75869 18.2886 3.7902L19.0931 24.2756L19.8975 3.7902C20.1866 3.75869 20.4777 3.74201 20.7705 3.74201C22.1477 3.74201 23.5045 4.09789 24.7037 4.77443L20.7594 24.4739L26.1588 5.55478C27.7676 6.05338 29.18 7.04503 30.1939 8.39255L22.3683 25.08L31.1985 9.83832C32.4145 10.9171 33.2727 12.3387 33.6601 13.9161L23.8085 26.0772L33.9418 15.8308Z" fill="#DD1D21"/>
             </svg>
           </div>
-          <!-- Brand text: ShellHeavy 14px vermelho -->
+
           <span class="nav-brand">Traga seu posto para a Shell</span>
         </a>
       </div>
 
-      <!-- Centro: links de navegação -->
-      <!-- ShellMedium 14px, #1A1A1A, padding horizontal 96px, justify-between -->
+
+
       <div class="nav-links" role="list">
         <a href="#s-valor"       class="nav-link" role="listitem">Oportunidade</a>
         <a href="#s-marca"       class="nav-link" role="listitem">Marca</a>
@@ -941,15 +1106,15 @@
         <a href="#s-apoio"       class="nav-link" role="listitem">Apoio</a>
       </div>
 
-      <!-- Direita: CTA + hamburger -->
+
       <div style="display:flex;align-items:center;gap:var(--sp-12);flex-shrink:0;">
 
-        <!-- CTA: sempre visível (mobile + desktop) -->
-        <a href="#s-contato" class="btn btn-red" id="nav-cta-desktop">
+
+        <a href="#s-contato" class="btn btn-red btn-pulse" id="nav-cta-desktop">
           Quero avaliar meu posto
         </a>
 
-        <!-- Hamburger: apenas mobile -->
+
         <button class="nav-hamburger" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-drawer">
           <span></span>
           <span></span>
@@ -960,7 +1125,7 @@
 
     </nav>
 
-    <!-- Mobile drawer -->
+
     <div class="nav-mobile-drawer" id="nav-drawer" role="navigation" aria-label="Menu mobile">
       <a href="#s-valor"       class="nav-link">Oportunidade</a>
       <a href="#s-marca"       class="nav-link">Marca</a>
@@ -972,37 +1137,13 @@
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════════
-       PRÓXIMAS SEÇÕES VÊM AQUI
-       Hero        → #s-hero       (node 11:734)
-       Oportunidade → #s-valor     (node 68:163)
-       Marca       → #s-marca      (node 11:614)
-       Soluções    → #s-solucoes   (node 89:2737)
-       Benefícios  → #s-beneficios (node 91:2894)
-       Vantagens   → #s-vantagens  (node 84:1854)
-       Depoimentos → #s-depoimentos(node 93:3740)
-       Apoio       → #s-apoio      (node 112:1479)
-       FAQ         → #s-faq        (node 123:2320)
-       Contato     → #s-contato    (node 99:1423)
-       Footer      → footer        (node 128:2749)
-  ═══════════════════════════════════════════ -->
-
-
-  <!-- ═══════════════════════════════════════════
-       HERO
-       Figma node: 11:734
-       Altura body: 640px | Footer: 72px
-       Foto: shell-station.jpg com overlay rgba(26,26,26,0.5)
-       H1: ShellBold 48px, branco + amarelo
-       Sub: ShellBook 14px, branco
-       Footer: bg #FBCE07, números ShellBold 18px vermelho uppercase
-  ═══════════════════════════════════════════ -->
+  <!-- hero -->
   <section id="s-hero" aria-labelledby="hero-heading">
 
-    <!-- corpo do hero: foto + conteúdo centralizado -->
+
     <div class="hero-body">
 
-      <!-- foto de fundo com overlay escuro -->
+
       <div class="hero-bg" aria-hidden="true">
         <img
           src="images/shell-station.jpg"
@@ -1013,35 +1154,34 @@
         <div class="hero-bg-overlay"></div>
       </div>
 
-      <!-- conteúdo centralizado -->
+
       <div class="hero-content">
 
-        <!-- kicker pill -->
+
         <div class="hero-kicker" aria-label="Oferta Shell para revendedores">
           Oferta Shell para revendedores
         </div>
 
-        <!-- H1: branco + amarelo -->
+
         <h1 id="hero-heading" class="hero-h1">
           <span class="hero-h1-white">Traga seu posto para a Shell </span><span class="hero-h1-yellow">e ganhe mais força para vender melhor.</span>
         </h1>
 
-        <!-- subtítulo -->
+
         <p class="hero-sub">
-          Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, seu posto
-          ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.
+          Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, você ganha mais valor por abastecimento, mais fluxo e mais consistência no dia a dia.
         </p>
 
-        <!-- CTAs -->
+
         <div class="hero-ctas">
           <a href="#s-contato" class="btn btn-red">Quero avaliar meu posto</a>
-          <a href="#s-valor"   class="btn btn-outline-white">Ver como funciona</a>
+          <a href="#s-valor"   class="btn btn-outline-white">Entender como funciona</a>
         </div>
 
       </div>
     </div>
 
-    <!-- footer amarelo: marquee com os 4 números -->
+
     <div class="hero-footer" aria-label="Números da Shell no Brasil">
       <div class="marquee-track">
         <div class="marquee-inner marquee-slow">
@@ -1049,7 +1189,7 @@
           <div class="marquee-item"><strong>+ 50 milhões</strong>de consumidores<span class="marquee-sep"></span></div>
           <div class="marquee-item"><strong>+ 7 mil</strong>postos no Brasil<span class="marquee-sep"></span></div>
           <div class="marquee-item"><strong>11 anos</strong>marca mais valiosa do setor<span class="marquee-sep"></span></div>
-          <!-- duplicado para loop contínuo -->
+
           <div class="marquee-item"><strong>+ 20 milhões</strong>de clientes no Shell Box<span class="marquee-sep"></span></div>
           <div class="marquee-item"><strong>+ 50 milhões</strong>de consumidores<span class="marquee-sep"></span></div>
           <div class="marquee-item"><strong>+ 7 mil</strong>postos no Brasil<span class="marquee-sep"></span></div>
@@ -1061,41 +1201,37 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       OPORTUNIDADE — node 68:163
-       bg: branco | py: 72px | px: 56px
-       4 pillars Default (ícone 56px + título + desc)
-  ═══════════════════════════════════════════ -->
+  <!-- s-valor -->
   <section id="s-valor">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Oportunidade</span>
-          <h2 class="lp-h2">O que acontece quando o posto <span style="color:var(--red-100);">muda para a Shell</span></h2>
-          <p class="lp-desc">A proposta não é só trocar de bandeira. É ganhar mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">O que muda no seu posto</span> quando você vem para a Shell</h2>
+          <p class="lp-desc">Você não está só trocando de bandeira. Está ganhando mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
         </div>
 
         <div class="lp-pillars-4">
           <div class="pillar hover-lift">
             <img src="images/icon-value.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais valor no abastecimento</div>
-            <div class="pillar-desc">Um portfólio premium ajuda o posto a sustentar preço e melhorar mix de produtos.</div>
+            <div class="pillar-desc">Um portfólio premium ajuda você a sustentar preço e melhorar seu mix de produtos.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-frequency.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais fluxo no dia a dia</div>
-            <div class="pillar-desc">Shell Box amplia a frequência de abastecimento e o retorno dos clientes.</div>
+            <div class="pillar-desc">Com Shell Box, você aumenta a frequência de abastecimento e o retorno dos seus clientes.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-shield.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais confiança na escolha</div>
-            <div class="pillar-desc">A marca Shell reforça percepção de qualidade antes da disputa por preço.</div>
+            <div class="pillar-desc">Com a Shell, você reforça a percepção de qualidade antes da disputa por preço.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-control.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais consistência na operação</div>
-            <div class="pillar-desc">Treinamento, ferramentas e acompanhamento ajudam a manter padrão e resultado.</div>
+            <div class="pillar-desc">Treinamento, ferramentas e acompanhamento mantêm padrão e melhoram resultados.</div>
           </div>
         </div>
 
@@ -1104,29 +1240,21 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       MARCA — node 11:614
-       bg: amarelo | py: 72px | px: 56px
-       Linha 1: 4 pillars com número grande (Variant2)
-       Linha 2: 4 pillars com ícone SVG
-  ═══════════════════════════════════════════ -->
+  <!-- s-marca -->
   <section id="s-marca">
     <div class="lp-section lp-section-yellow">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Força da marca Shell</span>
-          <h2 class="lp-h2" style="color:var(--black-100);">Uma marca que já <span style="color:var(--red-100);">chega forte à decisão</span></h2>
-          <p class="lp-desc" style="color:var(--black-100);">
-            <strong>A Shell combina escala, lembrança e preferência para ajudar o posto a vender com mais confiança.</strong>
-            Mais presença, mais reconhecimento e mais visibilidade comercial para sustentar valor antes da comparação por preço.
-          </p>
+          <h2 class="lp-h2" style="color:var(--black-100);">Uma marca que <span style="color:var(--red-100);">ajuda seu posto a vender</span> antes mesmo da comparação por preço</h2>
+          <p class="lp-desc" style="color:var(--black-100);">A força da Shell reduz atrito na decisão do consumidor, reforça qualidade percebida e aumenta sua segurança comercial.</p>
         </div>
 
-        <!-- grid 4x2 -->
+
         <div class="lp-pillars-8">
 
-          <!-- linha 1: números grandes (pillar-stat) -->
+
           <div class="pillar pillar-stat hover-lift">
             <div class="pillar-number">118</div>
             <div class="pillar-title">Anos de Shell no mundo, estamos presentes em 70 países.</div>
@@ -1144,7 +1272,7 @@
             <div class="pillar-title">Patrocínios confirmados em 2025, <strong>esportes, música e cultura</strong>.</div>
           </div>
 
-          <!-- linha 2: ícones SVG -->
+
           <div class="pillar hover-lift">
             <img src="images/icon-medal.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Top of Mind</div>
@@ -1169,7 +1297,7 @@
 
         </div>
 
-        <!-- rodapé da seção -->
+
         <p class="lp-desc-lg" style="color:var(--black-100);">
           A força da marca também é sustentada por reconhecimento em inovação, experiência, mobilidade e atendimento, além de presença constante em grandes plataformas de esporte e cultura.
         </p>
@@ -1179,95 +1307,88 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       SOLUÇÕES — node 89:2737
-       bg: branco | py: 96px | px: 56px
-       Grid 2x2 de mstrip-number
-       Card 02 tem fundo roxo Shell Box
-  ═══════════════════════════════════════════ -->
+  <!-- s-solucoes -->
   <section id="s-solucoes">
     <div class="lp-section" style="padding: 96px 0;">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Soluções</span>
-          <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para vender melhor</span></h2>
-          <p class="lp-desc">Em vez de depender só de preço para competir, <strong>o posto passa a contar com uma combinação de ativos que ajuda a aumentar valor percebido, frequência e qualidade de execução.</strong></p>
+          <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para você vender melhor</span></h2>
+          <p class="lp-desc">Você conta com uma estrutura que combina produto, relacionamento, equipe e gestão para gerar mais valor percebido, recorrência e execução.</p>
         </div>
 
-        <!-- grid 2x2 mstrip-number -->
+
         <div class="lp-mstrip-2x2">
 
-          <!-- 01 — Cinza padrão -->
+
           <div class="mstrip-number">
             <div class="mstrip-inner">
               <div class="mstrip-num">01</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Combustíveis premium</div>
-                <div class="mstrip-desc">Com apelo comercial que ajuda a defender preço e ampliar mix no posto.</div>
+                <div class="mstrip-desc">Um portfólio com força comercial para você defender preço e aumentar valor percebido.</div>
               </div>
             </div>
           </div>
 
-          <!-- 02 — Shell Box roxo -->
+
           <div class="mstrip-number mstrip-purple">
             <div class="mstrip-inner">
               <div class="mstrip-num">02</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Shell Box para fidelização</div>
-                <div class="mstrip-desc">Relacionamento e recorrência de uso que transforma abastecimento em retorno.</div>
+                <div class="mstrip-desc">Uma base ativa, recorrência de uso e campanhas que transformam abastecimento em retorno.</div>
               </div>
             </div>
           </div>
 
-          <!-- 03 — Cinza padrão -->
+
           <div class="mstrip-number">
             <div class="mstrip-inner">
               <div class="mstrip-num">03</div>
               <div class="mstrip-text">
-                <div class="mstrip-title">Programas para equipe</div>
-                <div class="mstrip-desc">Ações voltadas para frentistas, líderes e especialistas que puxam execução.</div>
+                <div class="mstrip-title">Capacitação da equipe</div>
+                <div class="mstrip-desc">Conteúdo para toda sua equipe com foco em execução e performance.</div>
               </div>
             </div>
           </div>
 
-          <!-- 04 — Cinza padrão -->
+
           <div class="mstrip-number">
             <div class="mstrip-inner">
               <div class="mstrip-num">04</div>
               <div class="mstrip-text">
-                <div class="mstrip-title">Ferramentas de gestão</div>
-                <div class="mstrip-desc">Plataformas e relatórios para acompanhar desempenho e rotina operacional.</div>
+                <div class="mstrip-title">Gestão e acompanhamento</div>
+                <div class="mstrip-desc">Ferramentas e relatórios para você acompanhar rotina, metas e desempenho operacional.</div>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- rodapé descritivo -->
+
         <p class="lp-desc-lg">A oferta também inclui campanhas promocionais, materiais de ponto de venda e plataformas de apoio que reforçam a presença da marca e ativam o cliente ao longo do ano.</p>
 
       </div>
     </div>
   </section>
 
-  <!-- ──────────────────────────────────────────────────────
-       SEÇÃO: BENEFÍCIOS  (node 91:2894)
-  ────────────────────────────────────────────────────── -->
+  <!-- s-beneficios -->
   <section id="s-beneficios">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Benefícios</span>
-          <h2 class="lp-h2">Mais valor, mais fluxo <span style="color:var(--red-100);">e mais retenção</span></h2>
-          <p class="lp-desc"><strong>A combinação entre Shell V-Power e Shell Box ajuda o posto a vender melhor e trazer o cliente de volta.</strong> Quando produto e relacionamento trabalham juntos, o posto ganha mais força para defender preço, estimular frequência e ampliar o consumo de linhas premium.</p>
+          <h2 class="lp-h2">Mais valor por abastecimento. <span style="color:var(--red-100);">Mais frequência de retorno.</span> Mais retenção.</h2>
+          <p class="lp-desc">Quando produto, marca e relacionamento trabalham juntos, você ganha mais força para ampliar mix, estimular recorrência e defender margem.</p>
         </div>
 
-        <!-- 3 comp-Box cards -->
+
         <div class="beneficios-grid">
 
-          <!-- Card 01 — Combustíveis (cinza) -->
+
           <div class="comp-box">
             <p class="comp-box-label">Combustíveis</p>
             <div class="comp-box-img">
@@ -1275,11 +1396,11 @@
             </div>
             <div class="comp-box-body">
               <p class="comp-box-title">Shell V-Power</p>
-              <p class="comp-box-desc">Um portfólio premium mais reconhecido pelo consumidor, com força para sustentar preço e melhorar mix.</p>
+              <p class="comp-box-desc">Um portfólio premium que te dá argumento comercial forte na bomba.</p>
             </div>
           </div>
 
-          <!-- Card 02 — Fidelização (roxo Shell Box) -->
+
           <div class="comp-box comp-box-purple">
             <p class="comp-box-label">Fidelização</p>
             <div class="comp-box-img">
@@ -1287,155 +1408,176 @@
             </div>
             <div class="comp-box-body">
               <p class="comp-box-title" style="color:var(--yellow-100);">Shell Box</p>
-              <p class="comp-box-desc" style="color:rgba(255,255,255,0.9);">O maior programa de fidelidade do setor de combustíveis no Brasil. Base ativa, recorrência de uso e campanhas que ajudam a transformar abastecimento em retorno.</p>
+              <p class="comp-box-desc" style="color:rgba(255,255,255,0.9);">Fidelização que aumenta sua frequência de vendas, ativa campanhas e traz o cliente de volta.</p>
             </div>
           </div>
 
-          <!-- Card 03 — Incentivo (cinza) -->
+
           <div class="comp-box">
             <p class="comp-box-label">Incentivo</p>
             <div class="comp-box-img">
               <img src="images/incentivo.png" alt="Programas de incentivo">
             </div>
             <div class="comp-box-body">
-              <p class="comp-box-title">Programas de incentivo</p>
-              <p class="comp-box-desc">Ações voltadas para frentistas, líderes e especialistas ajudam a puxar execução e engajamento da equipe.</p>
+              <p class="comp-box-title">Programas para equipe</p>
+              <p class="comp-box-desc">Iniciativas que ajudam você a melhorar execução, engajamento e oferta no ponto de venda.</p>
             </div>
           </div>
 
-        </div><!-- /beneficios-grid -->
+        </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ──────────────────────────────────────────────────────
-       SEÇÃO: VANTAGENS  (node 84:1854)
-  ────────────────────────────────────────────────────── -->
+  <!-- s-vantagens -->
   <section id="s-vantagens">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Vantagens</span>
-          <h2 class="lp-h2">O que a Shell entrega <span style="color:var(--red-100);">no dia a dia do posto</span></h2>
-          <p class="lp-desc"><strong>Além da marca, o posto passa a contar com soluções que ajudam a operar melhor e vender com mais consistência.</strong> A proposta combina combustíveis premium, lubrificantes, conveniência, campanhas, gestão e apoio operacional para ampliar a competitividade do negócio.</p>
+          <h2 class="lp-h2">O que a Shell entrega <span style="color:var(--red-100);">no dia a dia do seu posto</span></h2>
+          <p class="lp-desc">Além da marca, você conta com uma estrutura para manter padrão, acompanhar desempenho e apoiar sua rotina operacional.</p>
         </div>
 
-        <!-- 4 pillar cards -->
+
         <div class="lp-pillars-4" style="margin-top:var(--sp-56);">
 
-          <!-- 01 — Shell V-Power -->
+
           <div class="pillar-vantagem">
             <div class="pillar-vantagem-icon">
               <img src="images/icon-shell-v-power.svg" alt="" aria-hidden="true">
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Shell V-Power</p>
-              <p class="pillar-vantagem-desc">Mais valor percebido e argumento comercial na bomba.</p>
+              <p class="pillar-vantagem-desc">Mais valor percebido e mais argumento comercial para você na bomba.</p>
             </div>
           </div>
 
-          <!-- 02 — Lubrificantes Shell -->
+
           <div class="pillar-vantagem">
             <div class="pillar-vantagem-icon">
               <img src="images/icon-gas-tank-drop.svg" alt="" aria-hidden="true">
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Lubrificantes Shell</p>
-              <p class="pillar-vantagem-desc">Linhas para leves, pesados e motos com tecnologia reconhecida.</p>
+              <p class="pillar-vantagem-desc">Linhas completas para você atender leves, pesados e motos com tecnologia reconhecida.</p>
             </div>
           </div>
 
-          <!-- 03 — Campanhas -->
+
           <div class="pillar-vantagem">
             <div class="pillar-vantagem-icon">
               <img src="images/icon-ticket-star.svg" alt="" aria-hidden="true">
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Campanhas promocionais</p>
-              <p class="pillar-vantagem-desc">Ações sazonais que ajudam a gerar fluxo e visibilidade.</p>
+              <p class="pillar-vantagem-desc">Ações sazonais que ajudam você a gerar mais fluxo e visibilidade.</p>
             </div>
           </div>
 
-          <!-- 04 — Ferramentas de gestão -->
+
           <div class="pillar-vantagem">
             <div class="pillar-vantagem-icon">
               <img src="images/icon-control.svg" alt="" aria-hidden="true">
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Ferramentas de gestão</p>
-              <p class="pillar-vantagem-desc">Plataformas e relatórios para acompanhar desempenho e rotina.</p>
+              <p class="pillar-vantagem-desc">Plataformas e relatórios para você acompanhar desempenho e rotina.</p>
             </div>
           </div>
 
         </div>
 
-        <!-- rodapé descritivo -->
-        <p class="lp-desc-lg" style="margin-top:var(--sp-56);">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, a Shell entra no posto com uma estrutura mais robusta de apoio comercial e operacional.</p>
+
+        <p class="lp-desc-lg" style="margin-top:var(--sp-56);">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, você passa a contar com uma estrutura mais robusta de apoio comercial e operacional.</p>
 
       </div>
     </div>
   </section>
 
-  <!-- ──────────────────────────────────────────────────────
-       SEÇÃO: DEPOIMENTOS  (node 93:3740)
-  ────────────────────────────────────────────────────── -->
+  <!-- s-depoimentos -->
   <section id="s-depoimentos">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Depoimentos</span>
-          <h2 class="lp-h2"><span style="color:var(--red-100);">Veja o que mudou</span> em outros postos</h2>
-          <p class="lp-desc"><strong>Confira o depoimento de quem já trouxe o posto para a Shell e veja o que mudou na operação, no fluxo e na percepção de valor.</strong> Histórias e experiências vividas por revendedores e gerentes que passaram a contar com a estrutura, a marca e o apoio da Shell no dia a dia.</p>
+          <h2 class="lp-h2">O que revendedores percebem <span style="color:var(--red-100);">depois de mudar para Shell</span></h2>
+          <p class="lp-desc">Quem já opera com a Shell destaca ganhos reais em fluxo, valor percebido e preparo da equipe.</p>
         </div>
 
-        <!-- 3 image cards -->
+
         <div class="dep-grid">
 
           <div class="dep-card">
-            <div class="dep-img-wrap">
-              <img src="images/depoimento-1.jpg" alt="Depoimento: Mais fluxo no posto" class="dep-img">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_2.mp4" muted playsinline preload="metadata"></video>
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
-                <p class="dep-title">Mais fluxo no posto</p>
-                <p class="dep-quote">"Com Shell Box, a gente passou a ver mais retorno e mais frequência de clientes." Eduardo Bandeira — Gerente Posto Alvorada (SP)</p>
+                <p class="dep-title">Mais retorno de clientes</p>
+                <p class="dep-quote">"Com Shell Box, a gente passou a ver mais retorno e mais frequência de clientes." Eduardo Bandeira - Gerente Posto Alvorada (SP)</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
               </div>
             </div>
           </div>
 
           <div class="dep-card">
-            <div class="dep-img-wrap">
-              <img src="images/depoimento-2.jpg" alt="Depoimento: Mais valor na bomba" class="dep-img">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_1.mp4" muted playsinline preload="metadata"></video>
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
                 <p class="dep-title">Mais valor na bomba</p>
-                <p class="dep-quote">"Hoje o cliente percebe mais valor no abastecimento e compara menos só por preço." Fabio Comi — Revendedor Shell</p>
+                <p class="dep-quote">"Hoje o cliente percebe mais valor no abastecimento e compara menos só por preço." Fabio Comi - Revendedor Shell</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
               </div>
             </div>
           </div>
 
           <div class="dep-card">
-            <div class="dep-img-wrap">
-              <img src="images/depoimento-3.jpg" alt="Depoimento: Equipe mais preparada" class="dep-img">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_3.mp4" muted playsinline preload="metadata"></video>
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
                 <p class="dep-title">Equipe mais preparada</p>
-                <p class="dep-quote">"Os treinamentos ajudaram a equipe a atender melhor e vender com mais segurança." Fabrízio Gouveia — Revendedor Shell</p>
+                <p class="dep-quote">"Os treinamentos ajudaram a equipe a atender melhor e vender com mais segurança." Fabrízio Gouveia - Revendedor Shell</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
               </div>
             </div>
           </div>
 
-        </div><!-- /dep-grid -->
+        </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ──────────────────────────────────────────────────────
-       SEÇÃO: APOIO  (node 112:1479)
-  ────────────────────────────────────────────────────── -->
+  <!-- s-apoio -->
   <section id="s-apoio">
     <div class="lp-section">
       <div class="lp-container">
@@ -1443,15 +1585,15 @@
         <div class="lp-title-block">
           <span class="stag stag-red">Apoio ao posto</span>
           <h2 class="lp-h2">Resultado melhor pede <span style="color:var(--red-100);">operação acompanhada</span></h2>
-          <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, o posto precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
+          <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, você precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
         </div>
 
-        <!-- imagem treinamento -->
+
         <div class="apoio-img-wrap">
           <img src="images/treinamento.jpg" alt="Equipe Shell em treinamento" class="apoio-img">
         </div>
 
-        <!-- grid 2x2 mstrip-number -->
+
         <div class="lp-mstrip-2x2">
 
           <div class="mstrip-number">
@@ -1459,7 +1601,7 @@
               <div class="mstrip-num">150+</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Treinamentos</div>
-                <div class="mstrip-desc">Mais de 150 treinamentos online e presenciais disponíveis.</div>
+                <div class="mstrip-desc">Você tem acesso a mais de 150 treinamentos online e presenciais.</div>
               </div>
             </div>
           </div>
@@ -1469,7 +1611,7 @@
               <div class="mstrip-num">24/7</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Suporte à operação</div>
-                <div class="mstrip-desc">Apoio especializado para equipe, liderança e revenda.</div>
+                <div class="mstrip-desc">Você conta com apoio especializado para equipe, liderança e revenda.</div>
               </div>
             </div>
           </div>
@@ -1479,7 +1621,7 @@
               <div class="mstrip-num">100%</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Programas de excelência</div>
-                <div class="mstrip-desc">100% dos postos com programas de excelência, orientação em segurança, gestão e operação do posto.</div>
+                <div class="mstrip-desc">Você opera com programas de excelência, orientação em segurança, gestão e operação.</div>
               </div>
             </div>
           </div>
@@ -1489,23 +1631,21 @@
               <div class="mstrip-num">100%</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Ferramentas de gestão</div>
-                <div class="mstrip-desc">100% dos postos com acesso a ferramentas de gestão para rotina, desempenho e acompanhamento contínuo.</div>
+                <div class="mstrip-desc">Você tem acesso a ferramentas de gestão para rotina, desempenho e acompanhamento contínuo.</div>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- rodapé descritivo -->
-        <p class="lp-desc-lg">Com programas de excelência, materiais consultivos e plataformas de gestão, a Shell ajuda o posto a manter padrão operacional e buscar evolução contínua do negócio.</p>
+
+        <p class="lp-desc-lg">Com programas de excelência, materiais consultivos e plataformas de gestão, a Shell ajuda você a manter padrão operacional e evoluir continuamente o seu negócio.</p>
 
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       FAQ — node 123:2320
-  ══════════════════════════════════════════ -->
+  <!-- s-faq -->
   <section id="s-faq">
     <div class="lp-section">
       <div class="lp-container">
@@ -1584,18 +1724,13 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       CONTATO — node 99:1423
-       bg: amarelo | py: 72px | px: 56px
-       Esquerda: stag + h2 + desc + 3 bullets (mstrip-image)
-       Direita: fbox completo com 9 campos + CTA + privacy
-  ═══════════════════════════════════════════ -->
+  <!-- s-contato -->
   <section id="s-contato">
     <div class="lp-section lp-section-yellow">
       <div class="lp-container">
         <div class="contato-grid">
 
-          <!-- ── Coluna esquerda ── -->
+
           <div class="contato-left">
             <span class="stag stag-red">Próximo passo</span>
             <h2 class="lp-h2" style="color:var(--black-100);">
@@ -1605,7 +1740,7 @@
               Preencha seus dados para receber o contato de um especialista e entender o modelo mais adequado para sua operação.
             </p>
 
-            <!-- 3 bullets -->
+
             <div class="contato-bullets">
               <div class="contato-bullet">
                 <img src="images/icon-flash.svg" alt="" width="56" height="56" class="contato-bullet-icon">
@@ -1631,10 +1766,10 @@
             </div>
           </div>
 
-          <!-- ── Coluna direita: fbox ── -->
+
           <div class="contato-fbox">
 
-            <!-- Nome + Sobrenome -->
+
             <div class="frow">
               <div class="fg">
                 <label class="fg-label" for="c-nome">Nome <span class="required">*</span></label>
@@ -1646,13 +1781,13 @@
               </div>
             </div>
 
-            <!-- E-mail -->
+
             <div class="fg">
               <label class="fg-label" for="c-email">E-mail Profissional <span class="required">*</span></label>
               <input class="input" id="c-email" type="email" placeholder="seu@email.com.br" autocomplete="email">
             </div>
 
-            <!-- Telefone + Estado -->
+
             <div class="frow">
               <div class="fg">
                 <label class="fg-label" for="c-telefone">Telefone <span class="required">*</span></label>
@@ -1675,7 +1810,7 @@
               </div>
             </div>
 
-            <!-- Cidade + Nome do posto -->
+
             <div class="frow">
               <div class="fg">
                 <label class="fg-label" for="c-cidade">Cidade</label>
@@ -1687,7 +1822,7 @@
               </div>
             </div>
 
-            <!-- Posto em operação + CNPJ -->
+
             <div class="frow">
               <div class="fg">
                 <label class="fg-label" for="c-operacao">Posto em Operação?</label>
@@ -1705,13 +1840,13 @@
               </div>
             </div>
 
-            <!-- Mensagem -->
+
             <div class="fg">
               <label class="fg-label" for="c-mensagem">Mensagem (opcional)</label>
               <textarea class="textarea" id="c-mensagem" placeholder="Conte mais sobre o seu posto e sua operação..."></textarea>
             </div>
 
-            <!-- CTA -->
+
             <button type="submit" class="btn btn-red btn-full">
               Quero avaliar meu posto
               <span class="btn-icon btn-icon-right">
@@ -1721,15 +1856,15 @@
               </span>
             </button>
 
-            <!-- Privacy -->
+
             <div class="fprivacy">
               Um especialista da Shell entra em contato para avaliar sua operação.<br>
               Ao enviar, você concorda com a <a href="#">Política de Privacidade Shell.</a>
             </div>
 
-          </div><!-- /fbox -->
+          </div>
 
-        </div><!-- /contato-grid -->
+        </div>
       </div>
     </div>
   </section>
@@ -1742,40 +1877,133 @@
       nav.classList.toggle('scrolled', window.scrollY > 0);
     }, { passive: true });
 
+    // ── Depoimentos — controle de vídeo ─────────────────
+    (function () {
+      const cards = document.querySelectorAll('.dep-card');
 
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 0);
-    }, { passive: true });
+      function resetCard(card) {
+        var video    = card.querySelector('.dep-video');
+        var soundImg = card.querySelector('.dep-icon-sound');
+        var btnSound = card.querySelector('.dep-btn-sound');
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true;
+        card.classList.remove('playing');
+        soundImg.src = 'images/icon-sound-off.svg';
+        btnSound.setAttribute('aria-label', 'Áudio desligado');
+      }
+
+      cards.forEach(function(card) {
+        var video    = card.querySelector('.dep-video');
+        var btnPlay  = card.querySelector('.dep-btn-play');
+        var btnSound = card.querySelector('.dep-btn-sound');
+        var soundImg = card.querySelector('.dep-icon-sound');
+
+        btnPlay.addEventListener('click', function() {
+          if (card.classList.contains('playing')) {
+            resetCard(card);
+          } else {
+            cards.forEach(function(other) { if (other !== card) resetCard(other); });
+            video.muted = false;
+            var p = video.play();
+            if (p !== undefined) {
+              p.then(function() {
+                card.classList.add('playing');
+                soundImg.src = 'images/icon-sound-on.svg';
+                btnSound.setAttribute('aria-label', 'Áudio ligado');
+              }).catch(function() {
+                // Autoplay bloqueado: toca mutado
+                video.muted = true;
+                video.play();
+                card.classList.add('playing');
+                soundImg.src = 'images/icon-sound-off.svg';
+              });
+            } else {
+              card.classList.add('playing');
+              soundImg.src = 'images/icon-sound-on.svg';
+              btnSound.setAttribute('aria-label', 'Áudio ligado');
+            }
+          }
+        });
+
+        btnSound.addEventListener('click', function(e) {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          if (video.muted) {
+            soundImg.src = 'images/icon-sound-off.svg';
+            btnSound.setAttribute('aria-label', 'Áudio desligado');
+          } else {
+            soundImg.src = 'images/icon-sound-on.svg';
+            btnSound.setAttribute('aria-label', 'Áudio ligado');
+          }
+        });
+      });
+    })();
 
     // ── Nav: hamburger / drawer ─────────────────────────
-    const toggle = document.getElementById('nav-toggle');
-    const drawer = document.getElementById('nav-drawer');
-    toggle.addEventListener('click', () => {
-      const isOpen = drawer.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-      toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-      // Animar barras do hamburger
-      const bars = toggle.querySelectorAll('span');
-      if (isOpen) {
-        bars[0].style.transform = 'translateY(7px) rotate(45deg)';
-        bars[1].style.opacity  = '0';
-        bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-      } else {
-        bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
-      }
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('nav-toggle');
+      const drawer = document.getElementById('nav-drawer');
+      if (!toggle || !drawer) return;
 
-    // Fechar drawer ao clicar em link
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        drawer.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Abrir menu');
+      toggle.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
         const bars = toggle.querySelectorAll('span');
-        bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+        if (isOpen) {
+          bars[0].style.transform = 'translateY(7px) rotate(45deg)';
+          bars[1].style.opacity  = '0';
+          bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+          bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+        }
+      });
+
+      // Fechar drawer ao clicar em link
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Abrir menu');
+          const bars = toggle.querySelectorAll('span');
+          bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+        });
       });
     });
+
+    // ── FAQ — accordion toggle ──────────────────────────
+    (function () {
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        var header = item.querySelector('.faq-header');
+        var toggle = item.querySelector('.faq-toggle');
+        var body   = item.querySelector('.faq-body');
+
+        function setOpen(open) {
+          item.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+          toggle.setAttribute('aria-label', open ? 'Fechar' : 'Expandir');
+          body.style.maxHeight = open ? body.scrollHeight + 'px' : '';
+        }
+
+        header.addEventListener('click', function() {
+          var isOpen = !item.classList.contains('open');
+          setOpen(isOpen);
+
+          faqItems.forEach(function(other) {
+            if (other !== item) {
+              var otherToggle = other.querySelector('.faq-toggle');
+              var otherBody = other.querySelector('.faq-body');
+              other.classList.remove('open');
+              otherToggle.setAttribute('aria-expanded', 'false');
+              otherToggle.setAttribute('aria-label', 'Expandir');
+              otherBody.style.maxHeight = '';
+            }
+          });
+        });
+      });
+    })();
 
     // ── Nav: active link por scroll (scrollspy) ──────────
     (function () {
@@ -1797,13 +2025,29 @@
 
       function getActive() {
         var trigger = NAV_H + 8;
+        var sections = Array.from(document.querySelectorAll('section[id]'));
+        var linkedSections = sectionIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+        if (!linkedSections.length) return null;
+
+        var firstSectionTop = linkedSections[0].getBoundingClientRect().top;
+        if (firstSectionTop > trigger) return null;
+
+        var lastLinkedId = sectionIds[sectionIds.length - 1];
+        var lastLinkedIndex = sections.map(function(el) { return el.id; }).lastIndexOf(lastLinkedId);
+        if (lastLinkedIndex >= 0 && lastLinkedIndex < sections.length - 1) {
+          var nextSection = sections[lastLinkedIndex + 1];
+          if (nextSection && nextSection.getBoundingClientRect().top <= trigger) {
+            return null;
+          }
+        }
+
         var best = null;
         sectionIds.forEach(function(id) {
           var el = document.getElementById(id);
           if (!el) return;
           if (el.getBoundingClientRect().top <= trigger) best = id;
         });
-        return best || sectionIds[0];
+        return best;
       }
 
       var ticking = false;
@@ -1819,47 +2063,13 @@
 
       setActive(getActive());
     })();
-    // ── FAQ accordion ────────────────────────────────────
-    (function () {
-      var items = document.querySelectorAll('.faq-item');
-      items.forEach(function(item) {
-        var header = item.querySelector('.faq-header');
-        function toggle() {
-          var isOpen = item.classList.contains('open');
-          // Fechar todos
-          items.forEach(function(i) {
-            i.classList.remove('open');
-            i.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
-          });
-          // Abrir o clicado se estava fechado
-          if (!isOpen) {
-            item.classList.add('open');
-            header.setAttribute('aria-expanded', 'true');
-          }
-        }
-        // Clique no header inteiro
-        header.addEventListener('click', toggle);
-        // Acessibilidade: Enter e Space no div com role=button
-        header.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggle();
-          }
-        });
-      });
-    })();
   </script>
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER — node 128:2731
-       bg: branco | border-top: 1.5px #EAEAEA | h: 147px
-       Esquerda: logo shell + copyright
-       Direita: disclaimer legal Raízen
-  ═══════════════════════════════════════════ -->
+  <!-- footer -->
   <footer class="lp-footer">
     <div class="lp-footer-inner">
 
-      <!-- esquerda: logo + copyright -->
+
       <div class="lp-footer-left">
         <svg class="lp-footer-logo" width="31" height="29" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6231 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6231 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" fill="#F8CD05"/>
@@ -1868,7 +2078,7 @@
         <span class="lp-footer-copyright">Copyright 2025 - Todos os direitos reservados a Shell</span>
       </div>
 
-      <!-- direita: disclaimer legal -->
+
       <p class="lp-footer-disclaimer">
         A marca Shell é licenciada à Raízen. As condições comerciais são definidas pelo distribuidor responsável pela sua região. Os valores e percentuais são referenciais e podem variar conforme decisão exclusiva dos revendedores. A Raízen não possui ingerência sobre o preço de venda ao consumidor final.
       </p>
