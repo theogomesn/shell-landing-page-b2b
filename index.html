@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oferta Integrada Shell — Traga seu posto para a Shell</title>
-  <meta name="description" content="Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, você ganha mais valor por abastecimento, mais fluxo e mais consistência no dia a dia.">
+  <meta name="description" content="Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, seu posto ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.">
 
   <!-- Design System Shell -->
   <link rel="stylesheet" href="shell-ds.css">
@@ -43,6 +43,9 @@
     }
     .nav-link.active {
       color: var(--red-100);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
     }
 
     /* ── NAV — mobile hamburger (oculto por padrão no desktop) ── */
@@ -343,93 +346,6 @@
       .lp-mstrip-2x2 { grid-template-columns: 1fr; }
     }
 
-    .lp-contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(420px, 660px);
-      gap: var(--sp-56);
-      width: 100%;
-      align-items: start;
-    }
-    .lp-contact-header {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-32);
-      max-width: 660px;
-      width: 100%;
-      text-align: left;
-      align-items: flex-start;
-    }
-    .lp-contact-title {
-      font-family: var(--font-heading);
-      font-weight: 900;
-      font-size: var(--text-48);
-      line-height: 1.05;
-      margin: 0;
-      letter-spacing: -0.02em;
-      max-width: 760px;
-      color: var(--black-100);
-    }
-    .lp-contact-title .highlight {
-      color: var(--red-100);
-    }
-    .lp-contact-desc {
-      font-family: var(--font-body);
-      font-size: var(--text-16);
-      color: var(--black-100);
-      line-height: 1.8;
-      margin: 0;
-      max-width: 560px;
-    }
-    .contact-feature-list {
-      display: grid;
-      gap: var(--sp-18);
-      width: 100%;
-    }
-    .contact-feature-card {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--sp-20);
-      align-items: center;
-      padding: var(--sp-20);
-      background: var(--white-100);
-      border-radius: var(--radius-24);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-    .contact-feature-icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.85);
-      color: var(--red-100);
-      flex-shrink: 0;
-    }
-    .contact-feature-title {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: var(--text-16);
-      margin: 0;
-      color: var(--black-100);
-    }
-    .contact-feature-desc {
-      margin: 0;
-      font-size: var(--text-14);
-      color: var(--dark-gray);
-      line-height: 1.6;
-    }
-    .lp-section-yellow { background: var(--yellow-100); }
-
-    @media (max-width: 1024px) {
-      .lp-contact-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .lp-contact-title { font-size: var(--text-36); }
-      .lp-contact-desc { font-size: var(--text-15); }
-    }
-
     /* ═══════════════════════════════════════════
        OPORTUNIDADE — node 68:163
     ═══════════════════════════════════════════ */
@@ -634,86 +550,52 @@
       margin: 0;
     }
 
-    /* ── DEPOIMENTOS — video cards ── */
+    /* ── DEPOIMENTOS — image cards ── */
     .dep-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 361px);
       gap: var(--sp-32);
-      margin-top: var(--sp-56);
-      width: 100%;
+      justify-content: center;
     }
-
-    /* card externo: borda, radius, fundo */
     .dep-card {
-      background: #f0f0f0;
-      border: 1px solid var(--border);
       border-radius: var(--radius-18);
       overflow: hidden;
-      width: 100%;
-      cursor: pointer;
-      display: block;
-      padding: 24px;
-      box-sizing: border-box;
     }
-
-    /* wrapper do vídeo: aspect-ratio 9:16, contexto para elementos absolutos */
-    .dep-video-wrap {
+    .dep-img-wrap {
       position: relative;
-      width: 100%;
       aspect-ratio: 9 / 16;
-      border-radius: 12px;
       overflow: hidden;
-      background: #222;
-      display: block;
-      min-height: 0;
+      border-radius: var(--radius-18);
     }
-
-    /* vídeo: preenche 100% do wrapper */
-    .dep-video {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .dep-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
+      transition: transform var(--t-slow) var(--ease-out);
     }
-
-    /* overlay gradiente: posicionado dentro do dep-video-wrap */
+    .dep-card:hover .dep-img { transform: scale(1.03); }
     .dep-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.0)  40%,
-        rgba(0,0,0,0.55) 100%
-      );
-      transition: opacity var(--t-slow) var(--ease-out);
-      z-index: 1;
+      background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.20) 50%, rgba(0,0,0,0) 100%);
       pointer-events: none;
     }
-    .dep-card.playing .dep-overlay { opacity: 0; }
-
-    /* texto topo: título + quote */
     .dep-text {
       position: absolute;
-      top: 0; left: 0; right: 0;
+      bottom: 0; left: 0; right: 0;
       padding: var(--sp-24);
       display: flex;
       flex-direction: column;
-      gap: var(--sp-8);
-      z-index: 2;
-      transition: opacity var(--t-slow) var(--ease-out);
+      gap: var(--sp-12);
     }
-    .dep-card.playing .dep-text { opacity: 0; pointer-events: none; }
-
     .dep-title {
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--white-100);
-      line-height: 1.2;
+      color: var(--yellow-100);
+      line-height: var(--lh-normal);
       margin: 0;
     }
     .dep-quote {
@@ -721,64 +603,17 @@
       font-style: italic;
       font-size: var(--text-14);
       color: var(--white-100);
-      line-height: 1.6;
+      line-height: var(--lh-body);
       margin: 0;
     }
-
-    /* controles: parte inferior do card */
-    .dep-controls {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: var(--sp-24);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 3;
+    @media (max-width: 1200px) {
+      .dep-grid { grid-template-columns: repeat(2, 1fr); }
+      .dep-grid .dep-card:last-child { display: none; }
     }
-
-    /* botão play/stop: círculo branco translúcido */
-    .dep-btn-play {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform var(--t-fast);
-      flex-shrink: 0;
-      padding: 0;
-    }
-    .dep-btn-play:hover { transform: scale(1.08); }
-    .dep-icon-play  { width: 20px; height: 20px; display: block; }
-    .dep-icon-stop  { display: none; width: 20px; height: 20px; }
-    .dep-card.playing .dep-icon-play { display: none; }
-    .dep-card.playing .dep-icon-stop { display: block; }
-
-    /* botão som: ícone direita */
-    .dep-btn-sound {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.9;
-      transition: opacity var(--t-fast);
-    }
-    .dep-btn-sound:hover { opacity: 1; }
-    .dep-btn-sound img { width: 24px; height: 24px; display: block; }
-
-    @media (max-width: 1024px) {
-      .dep-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    @media (max-width: 768px) {
+      .dep-grid { grid-template-columns: 1fr; }
+      .dep-grid .dep-card:last-child { display: block; }
+      .dep-img-wrap { aspect-ratio: 4 / 3; }
     }
 
     /* ── APOIO — imagem treinamento ── */
@@ -820,57 +655,245 @@
       gap: var(--sp-32);
       justify-content: center;
     }
-
-    .faq-list {
-      display: grid;
-      gap: var(--sp-12);
-      max-width: 920px;
-      width: min(100%, 920px);
-      margin: 0 auto;
+    @media (max-width: 1100px) {
+      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
     }
 
-    .faq-header {
+
+    /* ══ FAQ — details/summary (autossuficiente, sem JS) ══ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 942px;
+    }
+    .faq-dt {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      overflow: hidden;
+      transition: box-shadow var(--t-base) var(--ease-out);
+    }
+    .faq-dt:hover { box-shadow: var(--shadow-sm); }
+    .faq-dt[open] { box-shadow: var(--shadow-sm); }
+
+    /* remover triângulo padrão do browser */
+    .faq-dt-header {
+      list-style: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: var(--sp-24);
       padding: var(--sp-24) var(--sp-32);
       cursor: pointer;
+      user-select: none;
+    }
+    .faq-dt-header::-webkit-details-marker { display: none; }
+
+    .faq-dt-question {
+      font-family: var(--font-heading);
+      font-size: var(--text-18);
+      font-weight: 700;
+      color: var(--black-100);
+      line-height: var(--lh-normal);
+      flex: 1;
     }
 
-    .faq-toggle {
-      width: 52px;
-      height: 52px;
-      display: inline-flex;
+    .faq-dt-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--red-100);
+      color: var(--red-100);
+      display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
+      flex-shrink: 0;
+      transition: background var(--t-base) var(--ease-out),
+                  color var(--t-base) var(--ease-out),
+                  transform var(--t-base) var(--ease-spring);
+    }
+    .faq-dt-header:hover .faq-dt-icon {
+      background: var(--red-10);
+    }
+    /* quando aberto: ícone fica vermelho preenchido e rotaciona para × */
+    .faq-dt[open] .faq-dt-icon {
+      background: var(--red-100);
+      color: var(--white-100);
+      transform: rotate(45deg);
     }
 
-    .faq-body {
-      padding: 0 var(--sp-32);
-      overflow: hidden;
-      transition: max-height var(--t-slow) var(--ease-out), padding var(--t-slow) var(--ease-out);
-      max-height: 0;
+    .faq-dt-body {
+      padding: 0 var(--sp-32) var(--sp-24);
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: var(--lh-loose);
+      border-top: 1px solid var(--border);
+      margin: 0 var(--sp-32);
+      padding-top: var(--sp-18);
+      margin-bottom: var(--sp-24);
     }
 
-    .faq-item.open .faq-body {
-      padding: 0 var(--sp-32) var(--sp-64);
-      max-height: 400px;
+
+    /* ═══════════════════════════════════════════
+       CONTATO — node 99:1423
+       bg: #FBCE07 | py: 72px
+       Layout: 2 colunas — esquerda título+bullets, direita fbox
+    ═══════════════════════════════════════════ */
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 480px 600px;
+      gap: 72px;
+      align-items: start;
+      width: 100%;
     }
 
+    /* coluna esquerda */
+    .contato-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-32);
+    }
+    .contato-left .lp-h2 {
+      text-align: left;
+      font-size: var(--text-40);
+    }
+    .contato-left .lp-desc {
+      text-align: left;
+      color: var(--black-100);
+    }
+
+    /* bullets mstrip-image */
+    .contato-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-24);
+    }
+    .contato-bullet {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: var(--sp-14) var(--sp-24);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-14);
+      transition: transform var(--t-base) var(--ease-out),
+                  box-shadow var(--t-base) var(--ease-out);
+    }
+    .contato-bullet:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .contato-bullet-icon {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .contato-bullet-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--black-100);
+      line-height: var(--lh-normal);
+    }
+    .contato-bullet-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: var(--lh-body);
+      margin-top: 4px;
+    }
+
+    /* fbox — formulário */
+    .contato-fbox {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: var(--sp-40);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* responsivo */
+    @media (max-width: 1200px) {
+      .contato-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-48);
+      }
+      .contato-left .lp-h2 { font-size: var(--text-32); }
+    }
     @media (max-width: 768px) {
-      .faq-header {
-        padding: var(--sp-20) var(--sp-24);
-      }
-      .faq-toggle {
-        width: 48px;
-        height: 48px;
-      }
+      .contato-fbox { padding: var(--sp-24); }
     }
 
-    @media (max-width: 1100px) {
-      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER — node 128:2731
+       bg: branco | border-top: 1.5px #EAEAEA
+       altura: 147px | px: 56px
+       Esquerda: logo + copyright
+       Direita: disclaimer legal 608px
+    ═══════════════════════════════════════════ */
+    .lp-footer {
+      background: var(--white-100);
+      border-top: 1.5px solid #EAEAEA;
+      width: 100%;
+    }
+    .lp-footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--sp-56);
+      height: 147px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-32);
+    }
+    .lp-footer-left {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-18);
+      flex-shrink: 0;
+    }
+    .lp-footer-logo {
+      width: 31px;
+      height: 29px;
+      flex-shrink: 0;
+    }
+    .lp-footer-copyright {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-14);
+      color: #58595B;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .lp-footer-disclaimer {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-10);
+      color: #4A4A4A;
+      line-height: 1.3;
+      max-width: 608px;
+      text-align: right;
+    }
+
+    @media (max-width: 1024px) {
+      .lp-footer-inner {
+        height: auto;
+        padding: var(--sp-24) var(--sp-32);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--sp-18);
+      }
+      .lp-footer-disclaimer { text-align: left; max-width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .lp-footer-inner { padding: var(--sp-24); }
     }
 
   </style>
@@ -922,7 +945,7 @@
       <div style="display:flex;align-items:center;gap:var(--sp-12);flex-shrink:0;">
 
         <!-- CTA: sempre visível (mobile + desktop) -->
-        <a href="#s-contato" class="btn btn-red btn-pulse" id="nav-cta-desktop">
+        <a href="#s-contato" class="btn btn-red" id="nav-cta-desktop">
           Quero avaliar meu posto
         </a>
 
@@ -1005,7 +1028,8 @@
 
         <!-- subtítulo -->
         <p class="hero-sub">
-          Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, você ganha mais valor por abastecimento, mais fluxo e mais consistência no dia a dia.
+          Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, seu posto
+          ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.
         </p>
 
         <!-- CTAs -->
@@ -1048,30 +1072,30 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Oportunidade</span>
-          <h2 class="lp-h2"><span style="color:var(--red-100);">O que muda no seu posto</span> quando você vem para a Shell</h2>
-          <p class="lp-desc">Você não está só trocando de bandeira. Está ganhando mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
+          <h2 class="lp-h2">O que acontece quando o posto <span style="color:var(--red-100);">muda para a Shell</span></h2>
+          <p class="lp-desc">A proposta não é só trocar de bandeira. É ganhar mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
         </div>
 
         <div class="lp-pillars-4">
           <div class="pillar hover-lift">
             <img src="images/icon-value.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais valor no abastecimento</div>
-            <div class="pillar-desc">Um portfólio premium ajuda você a sustentar preço e melhorar seu mix de produtos.</div>
+            <div class="pillar-desc">Um portfólio premium ajuda o posto a sustentar preço e melhorar mix de produtos.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-frequency.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais fluxo no dia a dia</div>
-            <div class="pillar-desc">Com Shell Box, você aumenta a frequência de abastecimento e o retorno dos seus clientes.</div>
+            <div class="pillar-desc">Shell Box amplia a frequência de abastecimento e o retorno dos clientes.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-shield.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais confiança na escolha</div>
-            <div class="pillar-desc">Com a Shell, você reforça a percepção de qualidade antes da disputa por preço.</div>
+            <div class="pillar-desc">A marca Shell reforça percepção de qualidade antes da disputa por preço.</div>
           </div>
           <div class="pillar hover-lift">
             <img src="images/icon-control.svg" alt="" width="56" height="56" class="pillar-icon">
             <div class="pillar-title">Mais consistência na operação</div>
-            <div class="pillar-desc">Treinamento, ferramentas e acompanhamento mantêm padrão e melhoram resultados.</div>
+            <div class="pillar-desc">Treinamento, ferramentas e acompanhamento ajudam a manter padrão e resultado.</div>
           </div>
         </div>
 
@@ -1092,9 +1116,10 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Força da marca Shell</span>
-          <h2 class="lp-h2" style="color:var(--black-100);">Uma marca que <span style="color:var(--red-100);">ajuda seu posto a vender</span> antes mesmo da comparação por preço</h2>
+          <h2 class="lp-h2" style="color:var(--black-100);">Uma marca que já <span style="color:var(--red-100);">chega forte à decisão</span></h2>
           <p class="lp-desc" style="color:var(--black-100);">
-            A força da Shell reduz atrito na decisão do consumidor, reforça qualidade percebida e aumenta sua segurança comercial.
+            <strong>A Shell combina escala, lembrança e preferência para ajudar o posto a vender com mais confiança.</strong>
+            Mais presença, mais reconhecimento e mais visibilidade comercial para sustentar valor antes da comparação por preço.
           </p>
         </div>
 
@@ -1166,8 +1191,8 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Soluções</span>
-          <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para você vender melhor</span></h2>
-          <p class="lp-desc">Você conta com uma estrutura que combina produto, relacionamento, equipe e gestão para gerar mais valor percebido, recorrência e execução.</p>
+          <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para vender melhor</span></h2>
+          <p class="lp-desc">Em vez de depender só de preço para competir, <strong>o posto passa a contar com uma combinação de ativos que ajuda a aumentar valor percebido, frequência e qualidade de execução.</strong></p>
         </div>
 
         <!-- grid 2x2 mstrip-number -->
@@ -1179,7 +1204,7 @@
               <div class="mstrip-num">01</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Combustíveis premium</div>
-                <div class="mstrip-desc">Um portfólio com força comercial para você defender preço e aumentar valor percebido.</div>
+                <div class="mstrip-desc">Com apelo comercial que ajuda a defender preço e ampliar mix no posto.</div>
               </div>
             </div>
           </div>
@@ -1190,7 +1215,7 @@
               <div class="mstrip-num">02</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Shell Box para fidelização</div>
-                <div class="mstrip-desc">Uma base ativa, recorrência de uso e campanhas que transformam abastecimento em retorno.</div>
+                <div class="mstrip-desc">Relacionamento e recorrência de uso que transforma abastecimento em retorno.</div>
               </div>
             </div>
           </div>
@@ -1201,7 +1226,7 @@
               <div class="mstrip-num">03</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Programas para equipe</div>
-                <div class="mstrip-desc">Conteúdo para toda sua equipe com foco em execução e performance.</div>
+                <div class="mstrip-desc">Ações voltadas para frentistas, líderes e especialistas que puxam execução.</div>
               </div>
             </div>
           </div>
@@ -1212,7 +1237,7 @@
               <div class="mstrip-num">04</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Ferramentas de gestão</div>
-                <div class="mstrip-desc">Ferramentas e relatórios para você acompanhar rotina, metas e desempenho operacional.</div>
+                <div class="mstrip-desc">Plataformas e relatórios para acompanhar desempenho e rotina operacional.</div>
               </div>
             </div>
           </div>
@@ -1235,8 +1260,8 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Benefícios</span>
-          <h2 class="lp-h2">Mais valor por abastecimento.</br><span style="color:var(--red-100);">Mais frequência de retorno.</span></br>Mais retenção.</h2>
-          <p class="lp-desc">Quando produto, marca e relacionamento trabalham juntos, você ganha mais força para ampliar mix, estimular recorrência e defender margem.</p>
+          <h2 class="lp-h2">Mais valor, mais fluxo <span style="color:var(--red-100);">e mais retenção</span></h2>
+          <p class="lp-desc"><strong>A combinação entre Shell V-Power e Shell Box ajuda o posto a vender melhor e trazer o cliente de volta.</strong> Quando produto e relacionamento trabalham juntos, o posto ganha mais força para defender preço, estimular frequência e ampliar o consumo de linhas premium.</p>
         </div>
 
         <!-- 3 comp-Box cards -->
@@ -1250,7 +1275,7 @@
             </div>
             <div class="comp-box-body">
               <p class="comp-box-title">Shell V-Power</p>
-              <p class="comp-box-desc">Um portfólio premium que te dá argumento comercial forte na bomba.</p>
+              <p class="comp-box-desc">Um portfólio premium mais reconhecido pelo consumidor, com força para sustentar preço e melhorar mix.</p>
             </div>
           </div>
 
@@ -1262,7 +1287,7 @@
             </div>
             <div class="comp-box-body">
               <p class="comp-box-title" style="color:var(--yellow-100);">Shell Box</p>
-              <p class="comp-box-desc" style="color:rgba(255,255,255,0.9);">Fidelização que aumenta sua frequência de vendas, ativa campanhas e traz o cliente de volta.</p>
+              <p class="comp-box-desc" style="color:rgba(255,255,255,0.9);">O maior programa de fidelidade do setor de combustíveis no Brasil. Base ativa, recorrência de uso e campanhas que ajudam a transformar abastecimento em retorno.</p>
             </div>
           </div>
 
@@ -1273,8 +1298,8 @@
               <img src="images/incentivo.png" alt="Programas de incentivo">
             </div>
             <div class="comp-box-body">
-              <p class="comp-box-title">Programas para equipe</p>
-              <p class="comp-box-desc">Iniciativas que ajudam você a melhorar execução, engajamento e oferta no ponto de venda.</p>
+              <p class="comp-box-title">Programas de incentivo</p>
+              <p class="comp-box-desc">Ações voltadas para frentistas, líderes e especialistas ajudam a puxar execução e engajamento da equipe.</p>
             </div>
           </div>
 
@@ -1293,8 +1318,8 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Vantagens</span>
-          <h2 class="lp-h2">O que a Shell entrega <span style="color:var(--red-100);">no dia a dia do seu posto</span></h2>
-          <p class="lp-desc"><strong>Além da marca, você conta com uma estrutura para manter padrão, acompanhar desempenho e apoiar sua rotina operacional.</p>
+          <h2 class="lp-h2">O que a Shell entrega <span style="color:var(--red-100);">no dia a dia do posto</span></h2>
+          <p class="lp-desc"><strong>Além da marca, o posto passa a contar com soluções que ajudam a operar melhor e vender com mais consistência.</strong> A proposta combina combustíveis premium, lubrificantes, conveniência, campanhas, gestão e apoio operacional para ampliar a competitividade do negócio.</p>
         </div>
 
         <!-- 4 pillar cards -->
@@ -1307,7 +1332,7 @@
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Shell V-Power</p>
-              <p class="pillar-vantagem-desc">Mais valor percebido e mais argumento comercial para você na bomba.</p>
+              <p class="pillar-vantagem-desc">Mais valor percebido e argumento comercial na bomba.</p>
             </div>
           </div>
 
@@ -1318,7 +1343,7 @@
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Lubrificantes Shell</p>
-              <p class="pillar-vantagem-desc">Mais valor percebido e mais argumento comercial para você na bomba.</p>
+              <p class="pillar-vantagem-desc">Linhas para leves, pesados e motos com tecnologia reconhecida.</p>
             </div>
           </div>
 
@@ -1329,7 +1354,7 @@
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Campanhas promocionais</p>
-              <p class="pillar-vantagem-desc">Ações sazonais que ajudam você a gerar mais fluxo e visibilidade.</p>
+              <p class="pillar-vantagem-desc">Ações sazonais que ajudam a gerar fluxo e visibilidade.</p>
             </div>
           </div>
 
@@ -1340,14 +1365,14 @@
             </div>
             <div class="pillar-vantagem-body">
               <p class="pillar-vantagem-title">Ferramentas de gestão</p>
-              <p class="pillar-vantagem-desc">Plataformas e relatórios para você acompanhar desempenho e rotina.</p>
+              <p class="pillar-vantagem-desc">Plataformas e relatórios para acompanhar desempenho e rotina.</p>
             </div>
           </div>
 
         </div>
 
         <!-- rodapé descritivo -->
-        <p class="lp-desc-lg" style="margin-top:var(--sp-56);">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, você passa a contar com uma estrutura mais robusta de apoio comercial e operacional.</p>
+        <p class="lp-desc-lg" style="margin-top:var(--sp-56);">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, a Shell entra no posto com uma estrutura mais robusta de apoio comercial e operacional.</p>
 
       </div>
     </div>
@@ -1362,69 +1387,42 @@
 
         <div class="lp-title-block">
           <span class="stag stag-red">Depoimentos</span>
-          <h2 class="lp-h2">O que revendedores percebem <span style="color:var(--red-100);">depois de mudar para Shell</span></h2>
-          <p class="lp-desc">Quem já opera com a Shell destaca ganhos reais em fluxo, valor percebido e preparo da equipe.</p>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">Veja o que mudou</span> em outros postos</h2>
+          <p class="lp-desc"><strong>Confira o depoimento de quem já trouxe o posto para a Shell e veja o que mudou na operação, no fluxo e na percepção de valor.</strong> Histórias e experiências vividas por revendedores e gerentes que passaram a contar com a estrutura, a marca e o apoio da Shell no dia a dia.</p>
         </div>
 
-        <!-- 3 video cards -->
+        <!-- 3 image cards -->
         <div class="dep-grid">
 
           <div class="dep-card">
-            <div class="dep-video-wrap">
-              <video class="dep-video" src="videos/depoimento-shell-1_2.mp4" muted playsinline preload="metadata"></video>
+            <div class="dep-img-wrap">
+              <img src="images/depoimento-1.jpg" alt="Depoimento: Mais fluxo no posto" class="dep-img">
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
                 <p class="dep-title">Mais fluxo no posto</p>
                 <p class="dep-quote">"Com Shell Box, a gente passou a ver mais retorno e mais frequência de clientes." Eduardo Bandeira — Gerente Posto Alvorada (SP)</p>
               </div>
-              <div class="dep-controls">
-                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
-                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
-                  <svg class="dep-icon-stop" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 3L15 15M15 3L3 15" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"></path></svg>
-                </button>
-                <button class="dep-btn-sound" aria-label="Áudio desligado">
-                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
-                </button>
-              </div>
             </div>
           </div>
 
           <div class="dep-card">
-            <div class="dep-video-wrap">
-              <video class="dep-video" src="videos/depoimento-shell-1_1.mp4" muted playsinline preload="metadata"></video>
+            <div class="dep-img-wrap">
+              <img src="images/depoimento-2.jpg" alt="Depoimento: Mais valor na bomba" class="dep-img">
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
                 <p class="dep-title">Mais valor na bomba</p>
                 <p class="dep-quote">"Hoje o cliente percebe mais valor no abastecimento e compara menos só por preço." Fabio Comi — Revendedor Shell</p>
               </div>
-              <div class="dep-controls">
-                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
-                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
-                  <svg class="dep-icon-stop" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 3L15 15M15 3L3 15" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"></path></svg>
-                </button>
-                <button class="dep-btn-sound" aria-label="Áudio desligado">
-                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
-                </button>
-              </div>
             </div>
           </div>
 
           <div class="dep-card">
-            <div class="dep-video-wrap">
-              <video class="dep-video" src="videos/depoimento-shell-1_3.mp4" muted playsinline preload="metadata"></video>
+            <div class="dep-img-wrap">
+              <img src="images/depoimento-3.jpg" alt="Depoimento: Equipe mais preparada" class="dep-img">
               <div class="dep-overlay" aria-hidden="true"></div>
               <div class="dep-text">
                 <p class="dep-title">Equipe mais preparada</p>
                 <p class="dep-quote">"Os treinamentos ajudaram a equipe a atender melhor e vender com mais segurança." Fabrízio Gouveia — Revendedor Shell</p>
-              </div>
-              <div class="dep-controls">
-                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
-                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
-                  <svg class="dep-icon-stop" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 3L15 15M15 3L3 15" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"></path></svg>
-                </button>
-                <button class="dep-btn-sound" aria-label="Áudio desligado">
-                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
-                </button>
               </div>
             </div>
           </div>
@@ -1445,7 +1443,7 @@
         <div class="lp-title-block">
           <span class="stag stag-red">Apoio ao posto</span>
           <h2 class="lp-h2">Resultado melhor pede <span style="color:var(--red-100);">operação acompanhada</span></h2>
-          <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, você precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
+          <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, o posto precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
         </div>
 
         <!-- imagem treinamento -->
@@ -1461,7 +1459,7 @@
               <div class="mstrip-num">150+</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Treinamentos</div>
-                <div class="mstrip-desc">Você tem acesso a mais de 150 treinamentos online e presenciais.</div>
+                <div class="mstrip-desc">Mais de 150 treinamentos online e presenciais disponíveis.</div>
               </div>
             </div>
           </div>
@@ -1471,7 +1469,7 @@
               <div class="mstrip-num">24/7</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Suporte à operação</div>
-                <div class="mstrip-desc">Você conta com apoio especializado para equipe, liderança e revenda.</div>
+                <div class="mstrip-desc">Apoio especializado para equipe, liderança e revenda.</div>
               </div>
             </div>
           </div>
@@ -1481,7 +1479,7 @@
               <div class="mstrip-num">100%</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Programas de excelência</div>
-                <div class="mstrip-desc">Você opera com programas de excelência, orientação em segurança, gestão e operação.</div>
+                <div class="mstrip-desc">100% dos postos com programas de excelência, orientação em segurança, gestão e operação do posto.</div>
               </div>
             </div>
           </div>
@@ -1491,7 +1489,7 @@
               <div class="mstrip-num">100%</div>
               <div class="mstrip-text">
                 <div class="mstrip-title">Ferramentas de gestão</div>
-                <div class="mstrip-desc">Você tem acesso a ferramentas de gestão para rotina, desempenho e acompanhamento contínuo.</div>
+                <div class="mstrip-desc">100% dos postos com acesso a ferramentas de gestão para rotina, desempenho e acompanhamento contínuo.</div>
               </div>
             </div>
           </div>
@@ -1499,219 +1497,243 @@
         </div>
 
         <!-- rodapé descritivo -->
-        <p class="lp-desc-lg">Com programas de excelência, materiais consultivos e plataformas de gestão, a Shell ajuda você a manter padrão operacional e evoluir continuamente o seu negócio.</p>
+        <p class="lp-desc-lg">Com programas de excelência, materiais consultivos e plataformas de gestão, a Shell ajuda o posto a manter padrão operacional e buscar evolução contínua do negócio.</p>
 
       </div>
     </div>
   </section>
 
+  <!-- ══════════════════════════════════════════
+       FAQ — node 123:2320
+  ══════════════════════════════════════════ -->
   <section id="s-faq">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
           <span class="stag stag-red">Dúvidas frequentes</span>
-          <h2 class="lp-h2"><span style="color:var(--red-100);display:block;">O que você precisa saber antes</span>de avaliar a mudança</h2>
-          <p class="lp-desc">Estas respostas ajudam a entender como funciona a proposta e o que considerar na adesão.</p>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">O que você precisa saber antes</span> de avaliar a mudança</h2>
+          <p class="lp-desc">Estas respostas ajudam você a entender como funciona a proposta e o que considerar na adesão.</p>
         </div>
 
         <div class="faq-list">
 
-          <div class="faq-item open">
-            <div class="faq-header">
-              <div class="faq-question">Posso avaliar meu posto sem compromisso?</div>
-              <button class="faq-toggle" aria-label="Fechar" aria-expanded="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Sim. A página deve reforçar que a avaliação inicial serve para entender perfil, potencial e aderência da proposta.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Posso avaliar meu posto sem compromisso?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Sim. A avaliação inicial ajuda você a entender seu perfil, potencial e aderência à proposta.</div>
+          </details>
 
-          <div class="faq-item">
-            <div class="faq-header">
-              <div class="faq-question">O posto recebe suporte depois da entrada?</div>
-              <button class="faq-toggle" aria-label="Expandir" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Sim. A proposta inclui apoio em treinamento, operação, SSMA, campanhas, materiais e ferramentas de gestão.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">O posto recebe suporte depois da entrada?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Sim. Você recebe apoio em treinamento, operação, SSMA, campanhas, materiais e ferramentas de gestão.</div>
+          </details>
 
-          <div class="faq-item">
-            <div class="faq-header">
-              <div class="faq-question">Existe investimento para migrar meu posto para a Shell?</div>
-              <button class="faq-toggle" aria-label="Expandir" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Existe investimento, e as condições variam conforme perfil, estrutura e modelo de adesão do posto. A avaliação comercial define o formato mais adequado.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Existe investimento para migrar meu posto para a Shell?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Existe investimento, e as condições variam conforme seu perfil, estrutura e modelo de adesão. A avaliação comercial define o formato mais adequado para você.</div>
+          </details>
 
-          <div class="faq-item">
-            <div class="faq-header">
-              <div class="faq-question">Preciso aderir ao pacote completo para acessar todos os benefícios?</div>
-              <button class="faq-toggle" aria-label="Expandir" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Os benefícios mais amplos da Oferta Integrada ficam disponíveis para postos que entram no pacote completo. O modelo ideal depende do perfil da operação.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Preciso aderir ao pacote completo para acessar todos os benefícios?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Os benefícios mais amplos da Oferta Integrada ficam disponíveis no pacote completo. O modelo ideal depende do perfil da sua operação.</div>
+          </details>
 
-          <div class="faq-item">
-            <div class="faq-header">
-              <div class="faq-question">Quando os benefícios começam a ser ativados?</div>
-              <button class="faq-toggle" aria-label="Expandir" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Após a adesão e a implantação do modelo aprovado para o posto. O prazo depende do perfil da operação e do escopo contratado.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Quando os benefícios começam a ser ativados?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Após a adesão e implantação do modelo aprovado. O prazo depende do perfil da sua operação e do escopo contratado.</div>
+          </details>
 
-          <div class="faq-item">
-            <div class="faq-header">
-              <div class="faq-question">Shell Box é obrigatório?</div>
-              <button class="faq-toggle" aria-label="Expandir" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="faq-body">
-              <div class="faq-answer">Shell Box é uma das principais alavancas da proposta, especialmente para recorrência, fidelização e campanhas, mas a composição da oferta depende do desenho comercial do posto.</div>
-            </div>
-          </div>
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Shell Box é obrigatório?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Shell Box é uma das principais alavancas da proposta, especialmente para recorrência, fidelização e campanhas, mas a composição da oferta depende do seu modelo comercial.</div>
+          </details>
 
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════
+       CONTATO — node 99:1423
+       bg: amarelo | py: 72px | px: 56px
+       Esquerda: stag + h2 + desc + 3 bullets (mstrip-image)
+       Direita: fbox completo com 9 campos + CTA + privacy
+  ═══════════════════════════════════════════ -->
   <section id="s-contato">
     <div class="lp-section lp-section-yellow">
       <div class="lp-container">
+        <div class="contato-grid">
 
-        <div class="lp-contact-grid">
-          <div class="lp-contact-header">
+          <!-- ── Coluna esquerda ── -->
+          <div class="contato-left">
             <span class="stag stag-red">Próximo passo</span>
-            <h2 class="lp-contact-title">Avalie o potencial do seu posto <span class="highlight">com a Shell</span></h2>
-            <p class="lp-contact-desc">Preencha seus dados para receber o contato de um especialista e entender o modelo mais adequado para sua operação.</p>
+            <h2 class="lp-h2" style="color:var(--black-100);">
+              Avalie o potencial do seu posto <span style="color:var(--red-100);">com a Shell</span>
+            </h2>
+            <p class="lp-desc" style="color:var(--black-100);">
+              Preencha seus dados para receber o contato de um especialista e entender o modelo mais adequado para sua operação.
+            </p>
 
-            <div class="contact-feature-list">
-              <div class="mstrip-image">
-                <img class="mstrip-image-logo" src="images/icon-flash.svg" alt="Ícone flash">
+            <!-- 3 bullets -->
+            <div class="contato-bullets">
+              <div class="contato-bullet">
+                <img src="images/icon-flash.svg" alt="" width="56" height="56" class="contato-bullet-icon">
                 <div>
-                  <div class="mstrip-title">Avaliação sem compromisso</div>
-                  <div class="mstrip-desc">Entenda aderência e potencial do seu posto.</div>
+                  <div class="contato-bullet-title">Avaliação sem compromisso</div>
+                  <div class="contato-bullet-desc">Entenda potencial e aderência do seu posto.</div>
                 </div>
               </div>
-              <div class="mstrip-image">
-                <img class="mstrip-image-logo" src="images/icon-notes.svg" alt="Ícone notas">
+              <div class="contato-bullet">
+                <img src="images/icon-notes.svg" alt="" width="56" height="56" class="contato-bullet-icon">
                 <div>
-                  <div class="mstrip-title">Proposta conforme sua operação</div>
-                  <div class="mstrip-desc">Modelo comercial ajustado ao seu perfil.</div>
+                  <div class="contato-bullet-title">Proposta conforme sua operação</div>
+                  <div class="contato-bullet-desc">Modelo comercial ajustado ao seu perfil.</div>
                 </div>
               </div>
-              <div class="mstrip-image">
-                <img class="mstrip-image-logo" src="images/icon-verified-user.svg" alt="Ícone usuário verificado">
+              <div class="contato-bullet">
+                <img src="images/icon-verified-user.svg" alt="" width="56" height="56" class="contato-bullet-icon">
                 <div>
-                  <div class="mstrip-title">Acompanhamento em cada etapa</div>
-                  <div class="mstrip-desc">Do diagnóstico à ativação.</div>
+                  <div class="contato-bullet-title">Acompanhamento em cada etapa</div>
+                  <div class="contato-bullet-desc">Do diagnóstico à ativação com acompanhamento.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="fbox" style="max-width: 680px; width: 100%;">
-            <div style="display:flex;flex-direction:column;gap:var(--sp-18);">
-              <div class="frow">
-                <div class="fg">
-                  <label class="fg-label">Nome <span class="required">*</span></label>
-                  <input class="input" type="text" placeholder="Seu nome">
-                </div>
-                <div class="fg">
-                  <label class="fg-label">Sobrenome <span class="required">*</span></label>
-                  <input class="input" type="text" placeholder="Sobrenome">
-                </div>
+          <!-- ── Coluna direita: fbox ── -->
+          <div class="contato-fbox">
+
+            <!-- Nome + Sobrenome -->
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-nome">Nome <span class="required">*</span></label>
+                <input class="input" id="c-nome" type="text" placeholder="Seu nome" autocomplete="given-name">
               </div>
               <div class="fg">
-                <label class="fg-label">E-mail profissional <span class="required">*</span></label>
-                <input class="input" type="email" placeholder="seu@email.com.br">
-              </div>
-              <div class="frow">
-                <div class="fg">
-                  <label class="fg-label">Telefone <span class="required">*</span></label>
-                  <input class="input" type="tel" placeholder="(11) 99999-9999">
-                </div>
-                <div class="fg">
-                  <label class="fg-label">Estado <span class="required">*</span></label>
-                  <div class="select-wrapper">
-                    <select class="select"><option value="">Selecione</option><option>SP</option><option>RJ</option><option>MG</option></select>
-                  </div>
-                </div>
-              </div>
-              <div class="frow">
-                <div class="fg">
-                  <label class="fg-label">Cidade</label>
-                  <div class="select-wrapper">
-                    <select class="select"><option value="">Selecione</option><option>São Paulo</option><option>Campinas</option></select>
-                  </div>
-                </div>
-                <div class="fg">
-                  <label class="fg-label">Nome do posto</label>
-                  <input class="input" type="text" placeholder="Ex: Posto Central">
-                </div>
-              </div>
-              <div class="frow">
-                <div class="fg">
-                  <label class="fg-label">Posto em operação?</label>
-                  <div class="select-wrapper">
-                    <select class="select"><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
-                  </div>
-                </div>
-                <div class="fg">
-                  <label class="fg-label">Número de CNPJ</label>
-                  <input class="input" type="text" placeholder="00.000.000/0000-00">
-                </div>
-              </div>
-              <div class="fg">
-                <label class="fg-label">Mensagem (opcional)</label>
-                <textarea class="textarea" placeholder="Conte mais sobre o seu posto e sua operação..."></textarea>
-              </div>
-              <button class="btn btn-red btn-full">
-                Quero avaliar meu posto
-                <span class="btn-icon btn-icon-right"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              </button>
-              <div class="fprivacy">
-                Um especialista da Shell entra em contato para avaliar o perfil da sua operação.<br>
-                Ao enviar, você concorda com a <a href="#">Política de Privacidade Shell.</a>
+                <label class="fg-label" for="c-sobrenome">Sobrenome <span class="required">*</span></label>
+                <input class="input" id="c-sobrenome" type="text" placeholder="Sobrenome" autocomplete="family-name">
               </div>
             </div>
-          </div>
-        </div>
 
+            <!-- E-mail -->
+            <div class="fg">
+              <label class="fg-label" for="c-email">E-mail Profissional <span class="required">*</span></label>
+              <input class="input" id="c-email" type="email" placeholder="seu@email.com.br" autocomplete="email">
+            </div>
+
+            <!-- Telefone + Estado -->
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-telefone">Telefone <span class="required">*</span></label>
+                <input class="input" id="c-telefone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel">
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-estado">Estado <span class="required">*</span></label>
+                <div class="select-wrapper">
+                  <select class="select" id="c-estado">
+                    <option value="">Selecione</option>
+                    <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                    <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                    <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                    <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                    <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                    <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                    <option>SP</option><option>SE</option><option>TO</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cidade + Nome do posto -->
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-cidade">Cidade</label>
+                <input class="input" id="c-cidade" type="text" placeholder="Sua cidade">
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-posto">Nome do posto</label>
+                <input class="input" id="c-posto" type="text" placeholder="Nome do posto">
+              </div>
+            </div>
+
+            <!-- Posto em operação + CNPJ -->
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-operacao">Posto em Operação?</label>
+                <div class="select-wrapper">
+                  <select class="select" id="c-operacao">
+                    <option value="">Selecione</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-cnpj">Número de CNPJ</label>
+                <input class="input" id="c-cnpj" type="text" placeholder="00.000.000/0000-00">
+              </div>
+            </div>
+
+            <!-- Mensagem -->
+            <div class="fg">
+              <label class="fg-label" for="c-mensagem">Mensagem (opcional)</label>
+              <textarea class="textarea" id="c-mensagem" placeholder="Conte mais sobre o seu posto e sua operação..."></textarea>
+            </div>
+
+            <!-- CTA -->
+            <button type="submit" class="btn btn-red btn-full">
+              Quero avaliar meu posto
+              <span class="btn-icon btn-icon-right">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Privacy -->
+            <div class="fprivacy">
+              Um especialista da Shell entra em contato para avaliar sua operação.<br>
+              Ao enviar, você concorda com a <a href="#">Política de Privacidade Shell.</a>
+            </div>
+
+          </div><!-- /fbox -->
+
+        </div><!-- /contato-grid -->
       </div>
     </div>
   </section>
+
 
   <script>
     // ── Nav: sticky shadow ──────────────────────────────
@@ -1720,68 +1742,11 @@
       nav.classList.toggle('scrolled', window.scrollY > 0);
     }, { passive: true });
 
-    // ── Depoimentos — controle de vídeo ─────────────────
-    (function () {
-      const cards = document.querySelectorAll('.dep-card');
 
-      function resetCard(card) {
-        var video    = card.querySelector('.dep-video');
-        var soundImg = card.querySelector('.dep-icon-sound');
-        var btnSound = card.querySelector('.dep-btn-sound');
-        video.pause();
-        video.currentTime = 0;
-        video.muted = true;
-        card.classList.remove('playing');
-        soundImg.src = 'images/icon-sound-off.svg';
-        btnSound.setAttribute('aria-label', 'Áudio desligado');
-      }
-
-      cards.forEach(function(card) {
-        var video    = card.querySelector('.dep-video');
-        var btnPlay  = card.querySelector('.dep-btn-play');
-        var btnSound = card.querySelector('.dep-btn-sound');
-        var soundImg = card.querySelector('.dep-icon-sound');
-
-        btnPlay.addEventListener('click', function() {
-          if (card.classList.contains('playing')) {
-            resetCard(card);
-          } else {
-            cards.forEach(function(other) { if (other !== card) resetCard(other); });
-            video.muted = false;
-            var p = video.play();
-            if (p !== undefined) {
-              p.then(function() {
-                card.classList.add('playing');
-                soundImg.src = 'images/icon-sound-on.svg';
-                btnSound.setAttribute('aria-label', 'Áudio ligado');
-              }).catch(function() {
-                // Autoplay bloqueado: toca mutado
-                video.muted = true;
-                video.play();
-                card.classList.add('playing');
-                soundImg.src = 'images/icon-sound-off.svg';
-              });
-            } else {
-              card.classList.add('playing');
-              soundImg.src = 'images/icon-sound-on.svg';
-              btnSound.setAttribute('aria-label', 'Áudio ligado');
-            }
-          }
-        });
-
-        btnSound.addEventListener('click', function(e) {
-          e.stopPropagation();
-          video.muted = !video.muted;
-          if (video.muted) {
-            soundImg.src = 'images/icon-sound-off.svg';
-            btnSound.setAttribute('aria-label', 'Áudio desligado');
-          } else {
-            soundImg.src = 'images/icon-sound-on.svg';
-            btnSound.setAttribute('aria-label', 'Áudio ligado');
-          }
-        });
-      });
-    })();
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 0);
+    }, { passive: true });
 
     // ── Nav: hamburger / drawer ─────────────────────────
     const toggle = document.getElementById('nav-toggle');
@@ -1812,39 +1777,6 @@
       });
     });
 
-    // ── FAQ — accordion toggle ──────────────────────────
-    (function () {
-      var faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(function(item) {
-        var header = item.querySelector('.faq-header');
-        var toggle = item.querySelector('.faq-toggle');
-        var body   = item.querySelector('.faq-body');
-
-        function setOpen(open) {
-          item.classList.toggle('open', open);
-          toggle.setAttribute('aria-expanded', open);
-          toggle.setAttribute('aria-label', open ? 'Fechar' : 'Expandir');
-          body.style.maxHeight = open ? body.scrollHeight + 'px' : '';
-        }
-
-        header.addEventListener('click', function() {
-          var isOpen = !item.classList.contains('open');
-          setOpen(isOpen);
-
-          faqItems.forEach(function(other) {
-            if (other !== item) {
-              var otherToggle = other.querySelector('.faq-toggle');
-              var otherBody = other.querySelector('.faq-body');
-              other.classList.remove('open');
-              otherToggle.setAttribute('aria-expanded', 'false');
-              otherToggle.setAttribute('aria-label', 'Expandir');
-              otherBody.style.maxHeight = '';
-            }
-          });
-        });
-      });
-    })();
-
     // ── Nav: active link por scroll (scrollspy) ──────────
     (function () {
       var NAV_H = 84;
@@ -1865,29 +1797,13 @@
 
       function getActive() {
         var trigger = NAV_H + 8;
-        var sections = Array.from(document.querySelectorAll('section[id]'));
-        var linkedSections = sectionIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
-        if (!linkedSections.length) return null;
-
-        var firstSectionTop = linkedSections[0].getBoundingClientRect().top;
-        if (firstSectionTop > trigger) return null;
-
-        var lastLinkedId = sectionIds[sectionIds.length - 1];
-        var lastLinkedIndex = sections.map(function(el) { return el.id; }).lastIndexOf(lastLinkedId);
-        if (lastLinkedIndex >= 0 && lastLinkedIndex < sections.length - 1) {
-          var nextSection = sections[lastLinkedIndex + 1];
-          if (nextSection && nextSection.getBoundingClientRect().top <= trigger) {
-            return null;
-          }
-        }
-
         var best = null;
         sectionIds.forEach(function(id) {
           var el = document.getElementById(id);
           if (!el) return;
           if (el.getBoundingClientRect().top <= trigger) best = id;
         });
-        return best;
+        return best || sectionIds[0];
       }
 
       var ticking = false;
@@ -1903,7 +1819,63 @@
 
       setActive(getActive());
     })();
+    // ── FAQ accordion ────────────────────────────────────
+    (function () {
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function(item) {
+        var header = item.querySelector('.faq-header');
+        function toggle() {
+          var isOpen = item.classList.contains('open');
+          // Fechar todos
+          items.forEach(function(i) {
+            i.classList.remove('open');
+            i.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+          });
+          // Abrir o clicado se estava fechado
+          if (!isOpen) {
+            item.classList.add('open');
+            header.setAttribute('aria-expanded', 'true');
+          }
+        }
+        // Clique no header inteiro
+        header.addEventListener('click', toggle);
+        // Acessibilidade: Enter e Space no div com role=button
+        header.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    })();
   </script>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER — node 128:2731
+       bg: branco | border-top: 1.5px #EAEAEA | h: 147px
+       Esquerda: logo shell + copyright
+       Direita: disclaimer legal Raízen
+  ═══════════════════════════════════════════ -->
+  <footer class="lp-footer">
+    <div class="lp-footer-inner">
+
+      <!-- esquerda: logo + copyright -->
+      <div class="lp-footer-left">
+        <svg class="lp-footer-logo" width="31" height="29" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6231 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6231 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" fill="#F8CD05"/>
+          <path d="M19.0949 0.255493C8.69653 0.255493 0.255493 8.69468 0.255493 19.0949C0.255493 20.3609 0.383388 21.6231 0.63547 22.8632L6.43335 27.08L7.31935 34.1661H16.8799L17.4323 34.5664C17.9161 34.9186 18.4981 35.1077 19.0949 35.1077C19.6917 35.1077 20.2738 34.9186 20.7575 34.5664L21.3099 34.1661H30.8705L31.7565 27.08L37.5543 22.8632C37.8064 21.6231 37.9343 20.3609 37.9343 19.0949C37.9343 8.69653 29.4933 0.255493 19.0949 0.255493ZM33.9418 15.8308C34.4015 16.8577 34.6369 17.9698 34.6369 19.0949C34.6369 19.7677 34.5535 20.4387 34.3829 21.0912L28.6592 25.2542L27.9567 30.8686H21.0078L19.979 31.6156C19.7214 31.8028 19.41 31.9048 19.0931 31.9048C18.7761 31.9048 18.4647 31.8047 18.2071 31.6156L17.1783 30.8686H10.2294L9.52692 25.2542L3.80317 21.0912C3.63636 20.4387 3.5511 19.7677 3.5511 19.0949C3.5511 17.9698 3.78835 16.8577 4.24617 15.8308L14.3795 26.0772L4.52791 13.9161C4.9153 12.3387 5.77349 10.9152 6.98756 9.83832L15.8197 25.08L7.99404 8.39255C9.00607 7.04503 10.4185 6.05338 12.0273 5.55478L17.4267 24.4739L13.4824 4.77443C14.6816 4.09789 16.0366 3.74201 17.4156 3.74201C17.7066 3.74201 17.9976 3.75869 18.2886 3.7902L19.0931 24.2756L19.8975 3.7902C20.1866 3.75869 20.4777 3.74201 20.7705 3.74201C22.1477 3.74201 23.5045 4.09789 24.7037 4.77443L20.7594 24.4739L26.1588 5.55478C27.7676 6.05338 29.18 7.04503 30.1939 8.39255L22.3683 25.08L31.1985 9.83832C32.4145 10.9171 33.2727 12.3387 33.6601 13.9161L23.8085 26.0772L33.9418 15.8308Z" fill="#DD1D21"/>
+        </svg>
+        <span class="lp-footer-copyright">Copyright 2025 - Todos os direitos reservados a Shell</span>
+      </div>
+
+      <!-- direita: disclaimer legal -->
+      <p class="lp-footer-disclaimer">
+        A marca Shell é licenciada à Raízen. As condições comerciais são definidas pelo distribuidor responsável pela sua região. Os valores e percentuais são referenciais e podem variar conforme decisão exclusiva dos revendedores. A Raízen não possui ingerência sobre o preço de venda ao consumidor final.
+      </p>
+
+    </div>
+  </footer>
+
 
 </body>
 </html>
