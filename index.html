@@ -1296,18 +1296,29 @@
       .sol-cards   { flex-direction: column; gap: 16px; }
       .sol-card    { height: auto; flex-direction: row; }
       .sol-card-img { width: 45%; flex-shrink: 0; height: auto; aspect-ratio: 1/1; }
-      .sol-brands  { gap: 32px; flex-wrap: wrap; height: auto; padding: 24px 0; }
+      /* marquee @1024px */
+      .sol-brands             { height: 88px; margin-top: 32px; margin-bottom: 32px; }
+      .sol-brands-track       { gap: 120px; animation-duration: 18s; }
+      .sol-brand-logo         { max-height: 48px; max-width: 120px; }
     }
     @media (max-width: 768px) {
       .sol-pillars { grid-template-columns: 1fr; }
       .sol-card    { flex-direction: column; }
       .sol-card-img { width: 100%; aspect-ratio: 16/9; }
       .sol-card-body { padding: 24px; }
+      /* marquee @768px */
+      .sol-brands             { height: 72px; margin-top: 24px; margin-bottom: 24px; }
+      .sol-brands-track       { gap: 80px; animation-duration: 16s; }
+      .sol-brand-logo         { max-height: 40px; max-width: 100px; }
     }
     @media (max-width: 480px) {
       .sol-card-body { padding: 20px 16px; gap: 12px; }
       .sol-card-title { font-size: var(--text-16); }
       .sol-card-desc  { font-size: var(--text-14); }
+      /* marquee @480px */
+      .sol-brands             { height: 64px; margin-top: 16px; margin-bottom: 16px; }
+      .sol-brands-track       { gap: 56px; animation-duration: 14s; }
+      .sol-brand-logo         { max-height: 36px; max-width: 88px; }
     }
 
     /* ═══════════════════════════════════════════
