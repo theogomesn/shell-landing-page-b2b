@@ -19,7 +19,7 @@
     body {
       margin: 0;
       background: var(--white-100);
-      color: var(--black-100);
+      color: var(--gray-700);
       font-family: var(--font-body);
       font-size: var(--text-14);
       line-height: var(--lh-body);
@@ -62,7 +62,7 @@
       display: block;
       width: 22px;
       height: 2px;
-      background: var(--black-100);
+      background: var(--gray-700);
       border-radius: 2px;
       transition: transform var(--t-base) var(--ease-out), opacity var(--t-fast);
     }
@@ -152,12 +152,12 @@
       padding: 9px 16px 8px;
       border: 1px solid var(--yellow-100);
       border-radius: 50px;
-      background: rgba(251, 206, 7, 0.05);
+      background: var(--yellow-100);
       font-family: var(--font-heading);
       font-weight: 500;
-      font-size: var(--text-10);
-      color: var(--yellow-100);
-      text-transform: uppercase;
+      font-size: var(--text-12);
+      color: #292929;
+      
       letter-spacing: 0.06em;
       white-space: nowrap;
       line-height: 1;
@@ -176,9 +176,9 @@
 
     /* ── Subtítulo ── */
     .hero-sub {
-      font-family: var(--font-body);
+      font-family: var(--font-heading);
       font-weight: 400;
-      font-size: var(--text-14);
+      font-size: var(--text-16);
       color: var(--white-100);
       line-height: var(--lh-body);
       margin: 0;
@@ -208,7 +208,7 @@
       flex: 1;
     }
     .hero-footer .marquee-item {
-      color: var(--black-100);
+      color: var(--gray-700);
       font-size: var(--text-14);
       font-weight: 500;
       text-transform: none;
@@ -220,7 +220,7 @@
       font-weight: 700;
       font-size: var(--text-18);
       color: var(--red-100);
-      text-transform: uppercase;
+      text-transform: lowercase;
       display: block;
       line-height: 1;
     }
@@ -239,7 +239,7 @@
     ═══════════════════════════════════════════ */
     .lp-section {
       background: var(--white-100);
-      padding: 72px 0;
+      padding: 64px 0;
     }
     .lp-section-yellow { background: var(--yellow-100); }
 
@@ -249,7 +249,7 @@
       padding: 0 var(--sp-56);
       display: flex;
       flex-direction: column;
-      gap: var(--sp-56);
+      gap: 48px;
       align-items: center;
     }
 
@@ -257,7 +257,7 @@
     .lp-title-block {
       display: flex;
       flex-direction: column;
-      gap: var(--sp-32);
+      gap: 24px;
       align-items: center;
       text-align: center;
       max-width: 680px;
@@ -268,13 +268,13 @@
       font-weight: 700;
       font-size: var(--text-40);
       line-height: 1.24;
-      color: var(--black-100);
+      color: var(--gray-700);
       margin: 0;
     }
     .lp-desc {
       font-family: var(--font-body);
       font-size: var(--text-14);
-      color: var(--dark-gray);
+      color: var(--gray-700);
       line-height: var(--lh-body);
       margin: 0;
     }
@@ -282,7 +282,7 @@
       font-family: var(--font-heading);
       font-weight: 500;
       font-size: var(--text-16);
-      color: var(--dark-gray);
+      color: var(--gray-700);
       line-height: var(--lh-body);
       text-align: center;
       max-width: 860px;
@@ -293,7 +293,7 @@
     .lp-pillars-4 {
       display: grid;
       grid-template-columns: repeat(4, 270px);
-      gap: var(--sp-32);
+      gap: 24px;
       justify-content: center;
     }
 
@@ -301,7 +301,7 @@
     .lp-mstrip-2x2 {
       display: grid;
       grid-template-columns: repeat(2, 471px);
-      gap: var(--sp-32);
+      gap: 24px;
       justify-content: center;
     }
 
@@ -322,7 +322,7 @@
       display: grid;
       grid-template-columns: repeat(4, 270px);
       grid-template-rows: auto auto;
-      gap: var(--sp-32);
+      gap: 24px;
       justify-content: center;
     }
 
@@ -386,7 +386,7 @@
     .beneficios-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--sp-32);
+      gap: 24px;
       margin-top: var(--sp-56);
       width: 100%;
     }
@@ -407,7 +407,7 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--black-100);
+      color: var(--gray-700);
       line-height: 1.2;
       margin: 0;
     }
@@ -490,7 +490,7 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--black-100);
+      color: var(--gray-700);
       line-height: 1.32;
       margin: 0;
     }
@@ -657,7 +657,7 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--black-100);
+      color: var(--gray-700);
       line-height: var(--lh-normal);
     }
     .mstrip-desc {
@@ -669,7 +669,7 @@
     .lp-mstrip-2x2 {
       display: grid;
       grid-template-columns: repeat(2, 471px);
-      gap: var(--sp-32);
+      gap: 24px;
       justify-content: center;
     }
 
@@ -709,7 +709,7 @@
       font-family: var(--font-heading);
       font-size: var(--text-18);
       font-weight: 700;
-      color: var(--black-100);
+      color: var(--gray-700);
       line-height: var(--lh-normal);
       flex: 1;
     }
@@ -759,10 +759,10 @@
     .contato-grid {
       display: grid;
       grid-template-columns: 480px 600px;
-      gap: 72px;
+      gap: 48px;
       align-items: start;
       width: 100%;
-      max-width: 1152px;  /* 480 + 72 + 600 */
+      max-width: 1128px;  /* 480 + 72 + 600 */
       margin: 0 auto;
     }
 
@@ -771,6 +771,7 @@
       display: flex;
       flex-direction: column;
       gap: var(--sp-32);
+      align-items: flex-start;
     }
     .contato-left .lp-h2 {
       text-align: left;
@@ -778,7 +779,7 @@
     }
     .contato-left .lp-desc {
       text-align: left;
-      color: var(--black-100);
+      color: var(--gray-700);
     }
 
     /* bullets mstrip-image */
@@ -811,7 +812,7 @@
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: var(--text-18);
-      color: var(--black-100);
+      color: var(--gray-700);
       line-height: var(--lh-normal);
     }
     .contato-bullet-desc {
@@ -916,8 +917,8 @@
       .lp-section   { padding: 56px 0; }
 
       /* Grids → 2 colunas */
-      .lp-pillars-4  { grid-template-columns: repeat(2, 1fr); }
-      .lp-pillars-8  { grid-template-columns: repeat(2, 1fr); }
+      .lp-pillars-4  { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .lp-pillars-8  { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .lp-mstrip-2x2 { grid-template-columns: 1fr; }
 
       /* Depoimentos */
@@ -1039,7 +1040,7 @@
       .hero-ctas .btn { width: 100%; justify-content: center; height: 44px; }
 
       /* Layout */
-      .lp-section    { padding: 40px 0; }
+      .lp-section    { padding: 32px 0; }
       .lp-container  { padding: 0 var(--sp-18); gap: var(--sp-32); }
       .lp-h2         { font-size: 22px; }
       .lp-title-block { gap: var(--sp-14); }
@@ -1069,6 +1070,358 @@
       .hero-h1      { font-size: 21px; }
       .lp-h2        { font-size: 20px; }
       .lp-container { padding: 0 var(--sp-14); }
+    }
+
+    /* ── stag-pill: pill com borda, Oportunidade e FAQ ── */
+    .stag-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px 7px;
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-12);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stag-pill-dark {
+      background: rgba(221, 29, 33, 0.05);
+      border: 1px solid var(--red-100);
+      color: var(--red-100);
+    }
+
+    /* ── stag-pill-dark: variante para fundo amarelo (seção Marca) ── */
+    /* ── Seção Marca: textos sobre fundo amarelo → cinza #4A4A4A ── */
+    .lp-section-yellow .pillar-title { color: var(--gray-700); }
+    .lp-section-yellow .pillar-desc  { color: var(--gray-900); }
+    .lp-section-yellow .pillar-claim { color: var(--gray-900); }
+    .lp-section-yellow .lp-desc-lg   { color: var(--gray-700); }
+    .stag-pill-dark {
+      background: transparent;
+      border: 1px solid #4A4A4A;
+      color: #4A4A4A;
+    }
+
+    /* ── Toggle switch — campo Posto em Operação? ── */
+    .fg-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 24px;
+    }
+    .fg-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-track {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      background: rgba(118, 118, 118, 0.2);
+      border-radius: 12px;
+      flex-shrink: 0;
+      transition: background var(--t-base) var(--ease-out);
+    }
+    .toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: var(--white-100);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform var(--t-base) var(--ease-out);
+    }
+    .toggle-input:checked ~ .toggle-track { background: var(--red-100); }
+    .toggle-input:checked ~ .toggle-track .toggle-thumb { transform: translateX(20px); }
+    .toggle-text {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--gray-700);
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════════
+       SOLUÇÕES — C1
+       bg: #F5F5F5 | 4 pillars | barra logos | 2 cards horizontais
+    ═══════════════════════════════════════════ */
+    .lp-section-solucoes {
+      background: #F5F5F5;
+    }
+
+    /* 4 pillars em linha — fundo branco, borda, radius 24 */
+    .sol-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+    .sol-pillars .pillar {
+      background: var(--white-100);
+      height: 308px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+    .sol-pillars .pillar > div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* barra de logos V-Power — marquee full-width */
+    .sol-brands {
+      height: 104px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    .sol-brands-track {
+      display: flex;
+      align-items: center;
+      gap: 208px;
+      animation: sol-marquee 22s linear infinite;
+      width: max-content;
+    }
+    .sol-brands:hover .sol-brands-track { animation-play-state: paused; }
+    @keyframes sol-marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .sol-brand-logo {
+      max-height: 56px;
+      max-width: 140px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* 2 cards horizontais */
+    .sol-cards {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      padding: 0 36px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      height: 308px;
+      border-radius: var(--radius-24);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex: 1;
+      min-width: 0;   /* evita overflow de texto */
+    }
+    .sol-card-purple { background: var(--shell-box-purple); }
+    .sol-card-yellow  { background: var(--yellow-100); }
+
+    .sol-card-img {
+      width: 308px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .sol-card-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sol-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--sp-18);
+      padding: 40px 40px 40px 32px;
+      min-width: 0;
+    }
+    .sol-card-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      line-height: var(--lh-normal);
+    }
+    .sol-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      line-height: var(--lh-body);
+    }
+    .sol-card-desc strong {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+    .sol-card-purple .sol-card-desc  { color: var(--white-100); }
+    .sol-card-purple .sol-card-desc strong { color: var(--white-100); }
+    .sol-card-yellow  .sol-card-desc { color: #292929; }
+    .sol-card-yellow  .sol-card-title { color: #4A4A4A; }
+    .sol-card-claim {
+      font-family: var(--font-body);
+      font-size: var(--text-10);
+      line-height: var(--lh-body);
+      color: #292929;
+    }
+
+    /* responsivo Soluções */
+    @media (max-width: 1200px) {
+      .sol-pillars { padding: 0; }
+      .sol-cards   { padding: 0; }
+    }
+    @media (max-width: 1024px) {
+      .sol-pillars { grid-template-columns: repeat(2, 1fr); }
+      .sol-pillars .pillar { height: auto; }
+      .sol-cards   { flex-direction: column; gap: 16px; }
+      .sol-card    { height: auto; flex-direction: row; }
+      .sol-card-img { width: 45%; flex-shrink: 0; height: auto; aspect-ratio: 1/1; }
+      .sol-brands  { gap: 32px; flex-wrap: wrap; height: auto; padding: 24px 0; }
+    }
+    @media (max-width: 768px) {
+      .sol-pillars { grid-template-columns: 1fr; }
+      .sol-card    { flex-direction: column; }
+      .sol-card-img { width: 100%; aspect-ratio: 16/9; }
+      .sol-card-body { padding: 24px; }
+    }
+    @media (max-width: 480px) {
+      .sol-card-body { padding: 20px 16px; gap: 12px; }
+      .sol-card-title { font-size: var(--text-16); }
+      .sol-card-desc  { font-size: var(--text-14); }
+    }
+
+    /* ═══════════════════════════════════════════
+       INOVAÇÃO — C2
+       3 comp-box: fundo #F5F5F5, border, radius 19px
+    ═══════════════════════════════════════════ */
+    .inov-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+    .inov-card {
+      background: #F5F5F5;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .inov-card-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: 1.2;
+    }
+    .inov-card-img {
+      width: 100%;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      aspect-ratio: 313 / 177;
+    }
+    .inov-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .inov-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .inov-card-subtitle {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-16);
+      color: #4A4A4A;
+      line-height: 1.32;
+    }
+    .inov-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: #292929;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       EXPERIÊNCIAS — C3
+       3 comp-box: fundo branco, border, radius 19px
+    ═══════════════════════════════════════════ */
+    .lp-section-vantagens {
+      background: #F7F7F7;
+    }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      width: 100%;
+    }
+    .exp-card {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .exp-card-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: #4A4A4A;
+      line-height: 1.2;
+    }
+    .exp-card-img {
+      width: 100%;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      aspect-ratio: 313 / 177;
+    }
+    .exp-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .exp-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: #292929;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* responsivo C2 + C3 */
+    @media (max-width: 1024px) {
+      .inov-grid, .exp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .inov-grid, .exp-grid { gap: 16px; }
     }
 </style>
 </head>
@@ -1100,8 +1453,8 @@
         <a href="#s-valor"       class="nav-link" role="listitem">Oportunidade</a>
         <a href="#s-marca"       class="nav-link" role="listitem">Marca</a>
         <a href="#s-solucoes"    class="nav-link" role="listitem">Soluções</a>
-        <a href="#s-beneficios"  class="nav-link" role="listitem">Benefícios</a>
-        <a href="#s-vantagens"   class="nav-link" role="listitem">Vantagens</a>
+        <a href="#s-beneficios"  class="nav-link" role="listitem">Inovação</a>
+        <a href="#s-vantagens"   class="nav-link" role="listitem">Experiências</a>
         <a href="#s-depoimentos" class="nav-link" role="listitem">Depoimentos</a>
         <a href="#s-apoio"       class="nav-link" role="listitem">Apoio</a>
       </div>
@@ -1130,8 +1483,8 @@
       <a href="#s-valor"       class="nav-link">Oportunidade</a>
       <a href="#s-marca"       class="nav-link">Marca</a>
       <a href="#s-solucoes"    class="nav-link">Soluções</a>
-      <a href="#s-beneficios"  class="nav-link">Benefícios</a>
-      <a href="#s-vantagens"   class="nav-link">Vantagens</a>
+      <a href="#s-beneficios"  class="nav-link">Inovação</a>
+      <a href="#s-vantagens"   class="nav-link">Experiências</a>
       <a href="#s-depoimentos" class="nav-link">Depoimentos</a>
       <a href="#s-apoio"       class="nav-link">Apoio</a>
     </div>
@@ -1158,18 +1511,18 @@
       <div class="hero-content">
 
 
-        <div class="hero-kicker" aria-label="Oferta Shell para revendedores">
-          Oferta Shell para revendedores
+        <div class="hero-kicker" aria-label="Oferta Shell para Revendedores">
+          Oferta Shell para Revendedores
         </div>
 
 
         <h1 id="hero-heading" class="hero-h1">
-          <span class="hero-h1-white">Traga seu posto para a Shell </span><span class="hero-h1-yellow">e ganhe mais força para vender melhor.</span>
+          <span class="hero-h1-white">Transforme o potencial do seu posto em mais resultado </span><span class="hero-h1-yellow">com a força da Shell.</span>
         </h1>
 
 
         <p class="hero-sub">
-          Com combustíveis premium, Shell Box, marca reconhecida e apoio à operação, você ganha mais valor por abastecimento, mais fluxo e mais consistência no dia a dia.
+          Mais fluxo, mais fidelização e mais oportunidades de ganho com o ecossistema completo da Shell
         </p>
 
 
@@ -1207,7 +1560,7 @@
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Oportunidade</span>
+          <div class="stag-pill stag-pill-dark">Oportunidade</div>
           <h2 class="lp-h2"><span style="color:var(--red-100);">O que muda no seu posto</span> quando você vem para a Shell</h2>
           <p class="lp-desc">Você não está só trocando de bandeira. Está ganhando mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
         </div>
@@ -1246,9 +1599,9 @@
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Força da marca Shell</span>
-          <h2 class="lp-h2" style="color:var(--black-100);">Uma marca que <span style="color:var(--red-100);">ajuda seu posto a vender</span> antes mesmo da comparação por preço</h2>
-          <p class="lp-desc" style="color:var(--black-100);">A força da Shell reduz atrito na decisão do consumidor, reforça qualidade percebida e aumenta sua segurança comercial.</p>
+          <div class="stag-pill stag-pill-dark">Força da marca Shell</div>
+          <h2 class="lp-h2" style="color:#4A4A4A;">Uma marca que ajuda seu posto a vender antes mesmo da comparação por preço</h2>
+          <p class="lp-desc" style="color:#4A4A4A; font-weight:500;">A força da Shell reduz atrito na decisão do consumidor, reforça qualidade percebida e aumenta sua segurança comercial.</p>
         </div>
 
 
@@ -1256,8 +1609,8 @@
 
 
           <div class="pillar pillar-stat hover-lift">
-            <div class="pillar-number">118</div>
-            <div class="pillar-title">Anos de Shell no mundo, estamos presentes em 70 países.</div>
+            <div class="pillar-number">118 anos</div>
+            <div class="pillar-title">de Shell no mundo, estamos presentes em 70 países.</div>
           </div>
           <div class="pillar pillar-stat hover-lift">
             <div class="pillar-number">+6 bi</div>
@@ -1298,7 +1651,7 @@
         </div>
 
 
-        <p class="lp-desc-lg" style="color:var(--black-100);">
+        <p class="lp-desc-lg" style="color:#4A4A4A;">
           A força da marca também é sustentada por reconhecimento em inovação, experiência, mobilidade e atendimento, além de presença constante em grandes plataformas de esporte e cultura.
         </p>
 
@@ -1309,118 +1662,148 @@
 
   <!-- s-solucoes -->
   <section id="s-solucoes">
-    <div class="lp-section" style="padding: 96px 0;">
+    <div class="lp-section lp-section-solucoes">
+
+      <!-- título + pillars -->
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Soluções</span>
+          <div class="stag-pill stag-pill-dark">Soluções</div>
           <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para você vender melhor</span></h2>
           <p class="lp-desc">Você conta com uma estrutura que combina produto, relacionamento, equipe e gestão para gerar mais valor percebido, recorrência e execução.</p>
         </div>
 
+        <!-- 4 pillars -->
+        <div class="sol-pillars">
+          <div class="pillar hover-lift">
+            <img src="images/icon-value.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Família<br>Shell V-Power</div>
+              <div class="pillar-desc">Com gasolina, etanol e diesel seu posto defende preço, ampliar mix e fortalecer argumento comercial no abastecimento.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-ticket-star.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Campanhas promocionais</div>
+              <div class="pillar-desc">Campanhas e materiais de ponto de venda reforçam a presença da marca e ajuda seu posto a ativar o cliente ao longo do ano.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-frequency.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Capacitação<br>da equipe</div>
+              <div class="pillar-desc">Conteúdo para toda sua equipe com foco em execução e performance.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-control.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Gestão e acompanhamento</div>
+              <div class="pillar-desc">Ferramentas e relatórios para você acompanhar rotina, metas e desempenho operacional.</div>
+            </div>
+          </div>
+        </div>
 
-        <div class="lp-mstrip-2x2">
+      </div><!-- /lp-container título+pillars -->
 
+      <!-- barra de logos V-Power — full-width, fora do container -->
+      <div class="sol-brands">
+        <div class="sol-brands-track" aria-hidden="false">
+          <img src="images/logo-shell-vpower.svg"        alt="Shell V-Power"        class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-etanol.svg" alt="Shell V-Power Etanol"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-diesel.svg" alt="Shell V-Power Diesel"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-racing.svg" alt="Shell V-Power Racing"  class="sol-brand-logo">
+          <!-- duplicata para loop contínuo -->
+          <img src="images/logo-shell-vpower.svg"        alt="" aria-hidden="true"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-etanol.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-diesel.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-racing.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+        </div>
+      </div>
 
-          <div class="mstrip-number">
-            <div class="mstrip-inner">
-              <div class="mstrip-num">01</div>
-              <div class="mstrip-text">
-                <div class="mstrip-title">Combustíveis premium</div>
-                <div class="mstrip-desc">Um portfólio com força comercial para você defender preço e aumentar valor percebido.</div>
+      <!-- cards + rodapé -->
+      <div class="lp-container">
+
+        <!-- 2 cards horizontais -->
+        <div class="sol-cards">
+
+          <div class="sol-card sol-card-purple">
+            <div class="sol-card-img">
+              <img src="images/shell-box.png" alt="Shell Box" class="sol-card-photo">
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-card-title" style="color:var(--yellow-100);">Shell Box</div>
+              <div class="sol-card-desc">
+                <p style="margin:0 0 12px 0;">Uma plataforma que aumenta recorrência, ativa campanhas, amplia volume e aproxima o cliente do seu posto.</p>
+                <p style="margin:0; font-family:var(--font-heading); font-weight:500; color:var(--white-100);">Com Shell Box, você combina pagamento, fidelização, campanhas e benefícios em uma alavanca contínua de retorno.</p>
               </div>
             </div>
           </div>
 
-
-          <div class="mstrip-number mstrip-purple">
-            <div class="mstrip-inner">
-              <div class="mstrip-num">02</div>
-              <div class="mstrip-text">
-                <div class="mstrip-title">Shell Box para fidelização</div>
-                <div class="mstrip-desc">Uma base ativa, recorrência de uso e campanhas que transformam abastecimento em retorno.</div>
-              </div>
+          <div class="sol-card sol-card-yellow">
+            <div class="sol-card-img">
+              <img src="images/clube-irmao-caminhoneiro.png" alt="Clube Irmão Caminhoneiro Shell" class="sol-card-photo">
             </div>
-          </div>
-
-
-          <div class="mstrip-number">
-            <div class="mstrip-inner">
-              <div class="mstrip-num">03</div>
-              <div class="mstrip-text">
-                <div class="mstrip-title">Capacitação da equipe</div>
-                <div class="mstrip-desc">Conteúdo para toda sua equipe com foco em execução e performance.</div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="mstrip-number">
-            <div class="mstrip-inner">
-              <div class="mstrip-num">04</div>
-              <div class="mstrip-text">
-                <div class="mstrip-title">Gestão e acompanhamento</div>
-                <div class="mstrip-desc">Ferramentas e relatórios para você acompanhar rotina, metas e desempenho operacional.</div>
-              </div>
+            <div class="sol-card-body">
+              <div class="sol-card-title">Mais força no público de rodovia</div>
+              <div class="sol-card-desc">Com o Clube Irmão Caminhoneiro, a Shell fortalece a fidelização do público de estrada, amplia a relevância no diesel e gera mais potencial de volume para o posto de rodovia.</div>
+              <div class="sol-card-claim">A jornada trouxe crescimento de 21% no volume de diesel após o lançamento.</div>
             </div>
           </div>
 
         </div>
 
+        <p class="lp-desc-lg">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, você passa a contar com uma estrutura mais robusta de apoio comercial e operacional.</p>
 
-        <p class="lp-desc-lg">A oferta também inclui campanhas promocionais, materiais de ponto de venda e plataformas de apoio que reforçam a presença da marca e ativam o cliente ao longo do ano.</p>
+      </div><!-- /lp-container cards+rodapé -->
 
-      </div>
     </div>
   </section>
 
-  <!-- s-beneficios -->
+<!-- s-beneficios -->
   <section id="s-beneficios">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Benefícios</span>
-          <h2 class="lp-h2">Mais valor por abastecimento. <span style="color:var(--red-100);">Mais frequência de retorno.</span> Mais retenção.</h2>
-          <p class="lp-desc">Quando produto, marca e relacionamento trabalham juntos, você ganha mais força para ampliar mix, estimular recorrência e defender margem.</p>
+          <div class="stag-pill stag-pill-dark">Inovação</div>
+          <h2 class="lp-h2">Novas receitas para revendedores que querem <span style="color:var(--red-100);">crescer além do combustível</span></h2>
+          <p class="lp-desc" style="font-weight:500;">A Shell combina conveniência, mobilidade elétrica e serviços complementares para transformar seu posto em uma operação mais completa, mais relevante e com mais potencial de rentabilidade.</p>
         </div>
 
+        <div class="inov-grid">
 
-        <div class="beneficios-grid">
-
-
-          <div class="comp-box">
-            <p class="comp-box-label">Combustíveis</p>
-            <div class="comp-box-img">
-              <img src="images/combustiveis.png" alt="Shell V-Power combustíveis">
+          <div class="inov-card">
+            <div class="inov-card-label">Mobilidade elétrica no seu posto</div>
+            <div class="inov-card-img">
+              <img src="images/recharge.png" alt="Shell Recharge" loading="lazy">
             </div>
-            <div class="comp-box-body">
-              <p class="comp-box-title">Shell V-Power</p>
-              <p class="comp-box-desc">Um portfólio premium que te dá argumento comercial forte na bomba.</p>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Shell Recharge</div>
+              <p class="inov-card-desc">Com Shell Recharge, sua operação se prepara para novas jornadas de consumo e amplia sua relevância além do abastecimento tradicional.</p>
             </div>
           </div>
 
-
-          <div class="comp-box comp-box-purple">
-            <p class="comp-box-label">Fidelização</p>
-            <div class="comp-box-img">
-              <img src="images/shellbox.png" alt="Shell Box app">
+          <div class="inov-card">
+            <div class="inov-card-label">Mais conveniência e valor por visita</div>
+            <div class="inov-card-img">
+              <img src="images/shell-select-cafe.png" alt="Shell Select e Shell Café" loading="lazy">
             </div>
-            <div class="comp-box-body">
-              <p class="comp-box-title" style="color:var(--yellow-100);">Shell Box</p>
-              <p class="comp-box-desc" style="color:rgba(255,255,255,0.9);">Fidelização que aumenta sua frequência de vendas, ativa campanhas e traz o cliente de volta.</p>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Shell Select e Shell Café</div>
+              <p class="inov-card-desc">Com Shell Select e Shell Café, seu posto combina experiência e rentabilidade para aumentar fluxo, permanência e consumo.</p>
             </div>
           </div>
 
-
-          <div class="comp-box">
-            <p class="comp-box-label">Incentivo</p>
-            <div class="comp-box-img">
-              <img src="images/incentivo.png" alt="Programas de incentivo">
+          <div class="inov-card">
+            <div class="inov-card-label">Mais categorias e rentabilidade</div>
+            <div class="inov-card-img">
+              <img src="images/oils-and-lubricants.png" alt="Lubrificantes e serviços Shell" loading="lazy">
             </div>
-            <div class="comp-box-body">
-              <p class="comp-box-title">Programas para equipe</p>
-              <p class="comp-box-desc">Iniciativas que ajudam você a melhorar execução, engajamento e oferta no ponto de venda.</p>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Lubrificantes e serviços Shell</div>
+              <p class="inov-card-desc">Amplie o potencial de receita do seu posto com produtos e serviços que elevam o ticket e aproveitam melhor o fluxo da operação.</p>
             </div>
           </div>
 
@@ -1430,80 +1813,56 @@
     </div>
   </section>
 
-  <!-- s-vantagens -->
+<!-- s-vantagens -->
   <section id="s-vantagens">
-    <div class="lp-section">
+    <div class="lp-section lp-section-vantagens">
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Vantagens</span>
-          <h2 class="lp-h2">O que a Shell entrega <span style="color:var(--red-100);">no dia a dia do seu posto</span></h2>
-          <p class="lp-desc">Além da marca, você conta com uma estrutura para manter padrão, acompanhar desempenho e apoiar sua rotina operacional.</p>
+          <div class="stag-pill stag-pill-dark">Experiências</div>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">Ativações que geram movimento</span> no seu posto e nas pistas</h2>
+          <p class="lp-desc" style="font-weight:500;">Ao longo do ano, a Shell cria campanhas e experiências que ajudam o seu posto a atrair mais clientes e aumentar oportunidades de retorno.</p>
         </div>
 
+        <div class="exp-grid">
 
-        <div class="lp-pillars-4" style="margin-top:var(--sp-56);">
-
-
-          <div class="pillar-vantagem">
-            <div class="pillar-vantagem-icon">
-              <img src="images/icon-shell-v-power.svg" alt="" aria-hidden="true">
+          <div class="exp-card">
+            <div class="exp-card-label">Campanhas sazonais</div>
+            <div class="exp-card-img">
+              <img src="images/tanque-cheio-de-premios.png" alt="Campanhas sazonais Shell" loading="lazy">
             </div>
-            <div class="pillar-vantagem-body">
-              <p class="pillar-vantagem-title">Shell V-Power</p>
-              <p class="pillar-vantagem-desc">Mais valor percebido e mais argumento comercial para você na bomba.</p>
-            </div>
+            <p class="exp-card-desc">Ações promocionais pensadas para gerar mais movimento em momentos estratégicos do ano.</p>
           </div>
 
-
-          <div class="pillar-vantagem">
-            <div class="pillar-vantagem-icon">
-              <img src="images/icon-gas-tank-drop.svg" alt="" aria-hidden="true">
+          <div class="exp-card">
+            <div class="exp-card-label">Experiências de marca</div>
+            <div class="exp-card-img">
+              <img src="images/shell-ferrari.png" alt="Shell Ferrari" loading="lazy">
             </div>
-            <div class="pillar-vantagem-body">
-              <p class="pillar-vantagem-title">Lubrificantes Shell</p>
-              <p class="pillar-vantagem-desc">Linhas completas para você atender leves, pesados e motos com tecnologia reconhecida.</p>
-            </div>
+            <p class="exp-card-desc">Ativações que aproximam o consumidor da Shell e aumentam a força da marca no ponto de venda.</p>
           </div>
 
-
-          <div class="pillar-vantagem">
-            <div class="pillar-vantagem-icon">
-              <img src="images/icon-ticket-star.svg" alt="" aria-hidden="true">
+          <div class="exp-card">
+            <div class="exp-card-label">Lançamentos e ativações especiais</div>
+            <div class="exp-card-img">
+              <img src="images/shell-vpower-launch.png" alt="Lançamentos Shell V-Power" loading="lazy">
             </div>
-            <div class="pillar-vantagem-body">
-              <p class="pillar-vantagem-title">Campanhas promocionais</p>
-              <p class="pillar-vantagem-desc">Ações sazonais que ajudam você a gerar mais fluxo e visibilidade.</p>
-            </div>
-          </div>
-
-
-          <div class="pillar-vantagem">
-            <div class="pillar-vantagem-icon">
-              <img src="images/icon-control.svg" alt="" aria-hidden="true">
-            </div>
-            <div class="pillar-vantagem-body">
-              <p class="pillar-vantagem-title">Ferramentas de gestão</p>
-              <p class="pillar-vantagem-desc">Plataformas e relatórios para você acompanhar desempenho e rotina.</p>
-            </div>
+            <p class="exp-card-desc">Iniciativas que dão visibilidade a produtos e criam novas oportunidades comerciais no seu posto.</p>
           </div>
 
         </div>
-
-
-        <p class="lp-desc-lg" style="margin-top:var(--sp-56);">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, você passa a contar com uma estrutura mais robusta de apoio comercial e operacional.</p>
 
       </div>
     </div>
   </section>
 
-  <!-- s-depoimentos -->
+<!-- s-depoimentos -->
   <section id="s-depoimentos">
     <div class="lp-section">
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Depoimentos</span>
+          <div class="stag-pill stag-pill-dark">Depoimentos</div>
           <h2 class="lp-h2">O que revendedores percebem <span style="color:var(--red-100);">depois de mudar para Shell</span></h2>
           <p class="lp-desc">Quem já opera com a Shell destaca ganhos reais em fluxo, valor percebido e preparo da equipe.</p>
         </div>
@@ -1583,7 +1942,7 @@
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Apoio ao posto</span>
+          <div class="stag-pill stag-pill-dark">Apoio ao revendedor</div>
           <h2 class="lp-h2">Resultado melhor pede <span style="color:var(--red-100);">operação acompanhada</span></h2>
           <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, você precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
         </div>
@@ -1651,7 +2010,7 @@
       <div class="lp-container">
 
         <div class="lp-title-block">
-          <span class="stag stag-red">Dúvidas frequentes</span>
+          <div class="stag-pill stag-pill-dark">Dúvidas frequentes</div>
           <h2 class="lp-h2"><span style="color:var(--red-100);">O que você precisa saber antes</span> de avaliar a mudança</h2>
           <p class="lp-desc">Estas respostas ajudam você a entender como funciona a proposta e o que considerar na adesão.</p>
         </div>
@@ -1732,11 +2091,11 @@
 
 
           <div class="contato-left">
-            <span class="stag stag-red">Próximo passo</span>
-            <h2 class="lp-h2" style="color:var(--black-100);">
+            <div class="stag-pill stag-pill-dark">Próximo passo</div>
+            <h2 class="lp-h2">
               Avalie o potencial do seu posto <span style="color:var(--red-100);">com a Shell</span>
             </h2>
-            <p class="lp-desc" style="color:var(--black-100);">
+            <p class="lp-desc">
               Preencha seus dados para receber o contato de um especialista e entender o modelo mais adequado para sua operação.
             </p>
 
@@ -1781,17 +2140,25 @@
               </div>
             </div>
 
-
-            <div class="fg">
-              <label class="fg-label" for="c-email">E-mail Profissional <span class="required">*</span></label>
-              <input class="input" id="c-email" type="email" placeholder="seu@email.com.br" autocomplete="email">
-            </div>
-
-
             <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-email">E-mail Profissional <span class="required">*</span></label>
+                <input class="input" id="c-email" type="email" placeholder="seu@email.com.br" autocomplete="email">
+              </div>
               <div class="fg">
                 <label class="fg-label" for="c-telefone">Telefone <span class="required">*</span></label>
                 <input class="input" id="c-telefone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-cidade">Cidade</label>
+                <div class="select-wrapper">
+                  <select class="select" id="c-cidade">
+                    <option value="">Selecione</option>
+                  </select>
+                </div>
               </div>
               <div class="fg">
                 <label class="fg-label" for="c-estado">Estado <span class="required">*</span></label>
@@ -1810,33 +2177,22 @@
               </div>
             </div>
 
-
-            <div class="frow">
-              <div class="fg">
-                <label class="fg-label" for="c-cidade">Cidade</label>
-                <input class="input" id="c-cidade" type="text" placeholder="Sua cidade">
-              </div>
-              <div class="fg">
-                <label class="fg-label" for="c-posto">Nome do posto</label>
-                <input class="input" id="c-posto" type="text" placeholder="Nome do posto">
-              </div>
+            <div class="fg">
+              <label class="fg-label" for="c-posto">Nome do posto <span class="required">*</span></label>
+              <input class="input" id="c-posto" type="text" placeholder="Insira aqui">
             </div>
 
-
             <div class="frow">
-              <div class="fg">
-                <label class="fg-label" for="c-operacao">Posto em Operação?</label>
-                <div class="select-wrapper">
-                  <select class="select" id="c-operacao">
-                    <option value="">Selecione</option>
-                    <option>Sim</option>
-                    <option>Não</option>
-                  </select>
-                </div>
-              </div>
               <div class="fg">
                 <label class="fg-label" for="c-cnpj">Número de CNPJ</label>
                 <input class="input" id="c-cnpj" type="text" placeholder="00.000.000/0000-00">
+              </div>
+              <div class="fg fg-toggle">
+                <label class="fg-toggle-label" for="c-operacao">
+                  <input class="toggle-input" id="c-operacao" type="checkbox" role="switch" aria-label="Posto em Operação?">
+                  <label class="toggle-text">Posto em operação?</label>
+                  <span class="toggle-track"><span class="toggle-thumb"></span>
+                </label>
               </div>
             </div>
 
