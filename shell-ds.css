@@ -443,7 +443,7 @@ body {
   font-family: var(--font-heading);
   font-size: var(--text-12);
   font-weight: 800;
-  text-transform: capitalize;
+  text-transform: none;
   letter-spacing: 0.06em;
   color: var(--dark-gray);
   line-height: 1;
