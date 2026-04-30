@@ -2432,6 +2432,113 @@
 
       setActive(getActive());
     })();
+
+    // Formulário de contato: envio para Webhook n8n
+    (function () {
+      var WEBHOOK_URL = 'COLE_AQUI_A_PRODUCTION_URL_DO_WEBHOOK_N8N';
+      var formBox = document.querySelector('.contato-fbox');
+      if (!formBox) return;
+
+      var submitButton = formBox.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+
+      var originalButtonHTML = submitButton.innerHTML;
+
+      function getFieldValue(id) {
+        var field = document.getElementById(id);
+        return field && typeof field.value === 'string' ? field.value.trim() : '';
+      }
+
+      function setButtonState(isLoading) {
+        submitButton.disabled = isLoading;
+        submitButton.innerHTML = isLoading ? 'Enviando...' : originalButtonHTML;
+      }
+
+      function showMessage(message) {
+        alert(message);
+      }
+
+      function clearForm() {
+        formBox.querySelectorAll('input, select, textarea').forEach(function (field) {
+          if (field.type === 'checkbox') {
+            field.checked = true;
+          } else {
+            field.value = '';
+          }
+        });
+      }
+
+      function buildPayload() {
+        return {
+          origem: 'landing_page_shell_b2b',
+          campanha: 'oferta_integrada_shell',
+          data_envio: new Date().toISOString(),
+          nome: getFieldValue('c-nome'),
+          sobrenome: getFieldValue('c-sobrenome'),
+          email_profissional: getFieldValue('c-email'),
+          telefone: getFieldValue('c-telefone'),
+          cidade: getFieldValue('c-cidade'),
+          estado: getFieldValue('c-estado'),
+          nome_posto: getFieldValue('c-posto'),
+          cnpj: getFieldValue('c-cnpj'),
+          posto_em_operacao: document.getElementById('c-operacao') && document.getElementById('c-operacao').checked ? 'Sim' : 'Não',
+          mensagem: getFieldValue('c-mensagem')
+        };
+      }
+
+      function validatePayload(payload) {
+        if (!payload.nome) return 'Preencha o nome.';
+        if (!payload.sobrenome) return 'Preencha o sobrenome.';
+        if (!payload.email_profissional) return 'Preencha o e-mail profissional.';
+        if (!payload.telefone) return 'Preencha o telefone.';
+        if (!payload.estado) return 'Selecione o estado.';
+        if (!payload.nome_posto) return 'Preencha o nome do posto.';
+        return '';
+      }
+
+      submitButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        var payload = buildPayload();
+        var validationMessage = validatePayload(payload);
+
+        if (validationMessage) {
+          showMessage(validationMessage);
+          return;
+        }
+
+        if (!WEBHOOK_URL || WEBHOOK_URL === 'COLE_AQUI_A_PRODUCTION_URL_DO_WEBHOOK_N8N') {
+          console.log('Payload pronto para envio ao n8n:', payload);
+          showMessage('Webhook ainda não configurado. Cole a Production URL do n8n no campo WEBHOOK_URL do script. O payload já está pronto no console.');
+          return;
+        }
+
+        setButtonState(true);
+
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error('Erro ao enviar formulário. Status: ' + response.status);
+            }
+            showMessage('Dados enviados com sucesso. Um especialista entrará em contato.');
+            clearForm();
+          })
+          .catch(function (error) {
+            console.error('Erro no envio para o n8n:', error);
+            showMessage('Não foi possível enviar agora. Tente novamente em alguns instantes.');
+          })
+          .finally(function () {
+            setButtonState(false);
+          });
+      });
+    })();
+
   </script>
 
   <!-- footer -->
