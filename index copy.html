@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oferta Integrada Shell — Traga seu posto para a Shell</title>
+  <meta name="description" content="Com combustíveis premium, Fidelização, marca reconhecida e apoio à operação, seu posto ganha mais valor no abastecimento, mais fluxo e mais consistência no dia a dia.">
+
+
+  <link rel="stylesheet" href="shell-ds.css">
+
+  <style>
+    /* ─── ESTILOS ESPECÍFICOS DA LANDING PAGE ───────────────
+       Tudo que não pertence ao DS mas é específico desta página.
+       Componentes reutilizáveis devem ir para shell-ds.css.
+    ─────────────────────────────────────────────────────── */
+
+    /* Reset de página */
+    body {
+      margin: 0;
+      background: var(--white-100);
+      color: var(--gray-700);
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV — sticky behavior ── */
+    .lp-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow var(--t-base) var(--ease-out);
+    }
+    .lp-nav.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ── Nav links: ShellHeavy (weight 800) conforme briefing ── */
+    .nav-link {
+      font-weight: 800;
+    }
+    .nav-link.active {
+      color: var(--red-100);
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* ── NAV — mobile hamburger (oculto por padrão no desktop) ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+      flex-shrink: 0;
+    }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 101;
+      position: relative;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gray-700);
+      border-radius: 2px;
+      transition: transform var(--t-base) var(--ease-out), opacity var(--t-fast);
+    }
+
+    /* ── NAV — drawer mobile ── */
+    .nav-mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 84px 0 0 0;
+      background: var(--white-100);
+      border-top: 1px solid var(--border);
+      padding: var(--sp-24) var(--sp-32);
+      flex-direction: column;
+      gap: var(--sp-8);
+      z-index: 99;
+      box-shadow: var(--shadow-lg);
+    }
+    .nav-mobile-drawer.open { display: flex; }
+    .nav-mobile-drawer .nav-link {
+      font-size: var(--text-16);
+      padding: var(--sp-12) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-mobile-drawer .btn {
+      margin-top: var(--sp-12);
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ── Responsivo ── */
+
+    /* Mobile: ocultar tagline, manter CTA + hamburger */
+
+
+    /* ═══════════════════════════════════════════
+       HERO — Section [hero] node 11:734
+    ═══════════════════════════════════════════ */
+
+    /* ── Hero body: 640px com foto de fundo ── */
+    .hero-body {
+      position: relative;
+      height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ── Foto + overlay ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.50); /* Figma: neutral/black 50% */
+    }
+
+    /* ── Conteúdo centralizado ── */
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-32);
+      text-align: center;
+      max-width: 736px;   /* Figma: px 296 cada lado de 1328px inner */
+      width: 100%;
+      padding: 0;
+    }
+
+    /* ── Kicker pill ── */
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px 8px;
+      border: 1px solid var(--yellow-100);
+      border-radius: 50px;
+      background: var(--yellow-100);
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-12);
+      color: #292929;
+      
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    /* ── H1 ── */
+    .hero-h1 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-48);
+      line-height: 1.24;
+      margin: 0;
+    }
+    .hero-h1-white  { color: var(--white-100); }
+    .hero-h1-yellow { color: var(--yellow-100); }
+
+    /* ── Subtítulo ── */
+    .hero-sub {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: var(--text-16);
+      color: var(--white-100);
+      line-height: var(--lh-body);
+      margin: 0;
+      max-width: 560px;
+    }
+
+    /* ── CTAs ── */
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Footer amarelo: marquee ── */
+    .hero-footer {
+      background: var(--yellow-100);
+      height: 72px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-footer .marquee-track {
+      background: transparent;
+      padding: 0;
+      flex: 1;
+    }
+    .hero-footer .marquee-item {
+      color: var(--gray-700);
+      font-size: var(--text-14);
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      gap: var(--sp-24);
+    }
+    .hero-footer .marquee-item strong {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: inherit;
+      color: var(--gray-700);
+      text-transform: none;
+      display: inline;
+      line-height: inherit;
+    }
+    .hero-footer .marquee-sep {
+      background: rgba(0,0,0,0.15);
+      width: 1px;
+      height: 32px;
+      border-radius: 0;
+      flex-shrink: 0;
+    }
+    /* ── Responsivo ── */
+
+
+    /* ═══════════════════════════════════════════
+       LAYOUT HELPERS — usados em todas as seções
+    ═══════════════════════════════════════════ */
+    .lp-section {
+      background: var(--white-100);
+      padding: 64px 0;
+    }
+    .lp-section-yellow { background: var(--yellow-100); }
+
+    .lp-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--sp-56);
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      align-items: center;
+    }
+
+    /* título de seção: stag + h2 + desc, centralizado */
+    .lp-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+      max-width: 680px;
+      width: 100%;
+    }
+    .lp-h2 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-40);
+      line-height: 1.24;
+      color: var(--gray-700);
+      margin: 0;
+    }
+    .lp-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--gray-700);
+      line-height: var(--lh-body);
+      margin: 0;
+    }
+    .lp-desc-lg {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-16);
+      color: var(--gray-700);
+      line-height: var(--lh-body);
+      text-align: center;
+      max-width: 860px;
+      margin: 0;
+    }
+
+    /* grade de 4 pillars */
+    .lp-pillars-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 270px);
+      gap: 24px;
+      justify-content: center;
+    }
+
+    /* grade de 2x2 mstrip-number */
+    .lp-mstrip-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 471px);
+      gap: 24px;
+      justify-content: center;
+    }
+
+    /* ═══════════════════════════════════════════
+       OPORTUNIDADE — node 68:163
+    ═══════════════════════════════════════════ */
+    /* usa apenas helpers acima + .pillar do DS */
+
+
+    /* ═══════════════════════════════════════════
+       MARCA — node 11:614
+       bg: #FBCE07 | py: 72px
+       Grid 4x2: linha 1 pillar-stat, linha 2 pillar-ícone
+    ═══════════════════════════════════════════ */
+    .lp-section-yellow { background: var(--yellow-100); }
+
+    .lp-pillars-8 {
+      display: grid;
+      grid-template-columns: repeat(4, 270px);
+      grid-template-rows: auto auto;
+      gap: 24px;
+      justify-content: center;
+    }
+
+
+    /* ═══════════════════════════════════════════
+       SOLUÇÕES — node 89:2737
+       py: 96px | bg: branco
+       Grid 2x2 de mstrip-number (471px x 154px)
+       Card 02: bg Shell Box roxo #5F1E6E
+    ═══════════════════════════════════════════ */
+    .mstrip-number {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: 0 var(--sp-40);
+      height: 154px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--t-base) var(--ease-out),
+                  box-shadow var(--t-base) var(--ease-out);
+    }
+    .mstrip-number:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    /* inner wrapper: número + coluna de texto, lado a lado */
+    .mstrip-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-32);
+      width: 100%;
+    }
+    .mstrip-num {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-32);
+      color: var(--red-100);
+      line-height: 1;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .mstrip-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      flex: 1;
+      min-width: 0;
+      height: 74px;
+      justify-content: center;
+    }
+    .mstrip-number.mstrip-purple {
+      background: var(--shell-box-purple);
+      border-color: var(--shell-box-purple);
+    }
+    .mstrip-purple .mstrip-num   { color: var(--yellow-100); }
+    .mstrip-purple .mstrip-title { color: var(--white-100); }
+    .mstrip-purple .mstrip-desc  { color: rgba(255,255,255,0.85); }
+
+    /* ── BENEFÍCIOS — comp-Box cards ── */
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: var(--sp-56);
+      width: 100%;
+    }
+    .comp-box {
+      background: #f0f0f0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-18);
+      padding: var(--sp-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-24);
+    }
+    .comp-box-purple {
+      background: var(--shell-box-purple);
+      border-color: var(--shell-box-purple);
+    }
+    .comp-box-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .comp-box-purple .comp-box-label {
+      color: var(--white-100);
+    }
+    .comp-box-img {
+      width: 100%;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      aspect-ratio: 312 / 177;
+    }
+    .comp-box-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .comp-box-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      flex: 1;
+    }
+    .comp-box-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-16);
+      color: var(--dark-gray);
+      line-height: 1.32;
+      margin: 0;
+    }
+    .comp-box-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .comp-box-purple .comp-box-title {
+      color: var(--yellow-100);
+    }
+    .comp-box-purple .comp-box-desc {
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── VANTAGENS — pillar cards ── */
+    .pillar-vantagem {
+      background: #f7f7f7;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: var(--sp-40);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-self: stretch;
+      transition: transform var(--t-base) var(--ease-out),
+                  box-shadow var(--t-base) var(--ease-out);
+    }
+    .pillar-vantagem:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .pillar-vantagem-icon {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .pillar-vantagem-icon img {
+      width: 56px;
+      height: 56px;
+      display: block;
+    }
+    .pillar-vantagem-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .pillar-vantagem-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: 1.32;
+      margin: 0;
+    }
+    .pillar-vantagem-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: 1.56;
+      margin: 0;
+    }
+
+    /* ── DEPOIMENTOS — image cards ── */
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-32);
+      margin-top: var(--sp-56);
+      width: 100%;
+    }
+
+    /* card externo: borda, radius, fundo */
+    .dep-card {
+      background: #f0f0f0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-18);
+      overflow: hidden;
+      width: 100%;
+      cursor: pointer;
+      display: block;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    /* wrapper do vídeo: aspect-ratio 9:16, contexto para elementos absolutos */
+    .dep-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #222;
+      display: block;
+      min-height: 0;
+    }
+
+    /* vídeo: preenche 100% do wrapper */
+    .dep-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* overlay gradiente: posicionado dentro do dep-video-wrap */
+    .dep-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.0)  40%,
+        rgba(0,0,0,0.55) 100%
+      );
+      transition: opacity var(--t-slow) var(--ease-out);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .dep-card.playing .dep-overlay { opacity: 0; }
+
+    /* texto topo: título + quote */
+    .dep-text {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: var(--sp-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      z-index: 2;
+      transition: opacity var(--t-slow) var(--ease-out);
+    }
+    .dep-card.playing .dep-text { opacity: 0; pointer-events: none; }
+
+    .dep-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--white-100);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .dep-quote {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: var(--text-14);
+      color: var(--white-100);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* controles: parte inferior do card */
+    .dep-controls {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: var(--sp-24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 3;
+    }
+
+    /* botão play/stop: círculo branco translúcido */
+    .dep-btn-play {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--t-fast);
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .dep-btn-play:hover { transform: scale(1.08); }
+    .dep-icon-play  { width: 20px; height: 20px; display: block; }
+    .dep-icon-stop  { display: none; width: 20px; height: 20px; }
+    .dep-card.playing .dep-icon-play { display: none; }
+    .dep-card.playing .dep-icon-stop { display: block; }
+
+    /* botão som: ícone direita */
+    .dep-btn-sound {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      transition: opacity var(--t-fast);
+    }
+    .dep-btn-sound:hover { opacity: 1; }
+    .dep-btn-sound img { width: 24px; height: 24px; display: block; }
+
+    /* ── APOIO — imagem treinamento ── */
+
+    .apoio-img-wrap {
+      width: 100%;
+      border-radius: var(--radius-18);
+      overflow: hidden;
+    }
+    .apoio-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .mstrip-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: var(--lh-normal);
+    }
+    .mstrip-desc {
+      font-size: var(--text-14);
+      font-family: var(--font-body);
+      color: var(--dark-gray);
+      line-height: var(--lh-body);
+    }
+    .lp-mstrip-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 471px);
+      gap: 24px;
+      justify-content: center;
+    }
+
+
+    /* ══ FAQ — details/summary (autossuficiente, sem JS) ══ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 942px;
+    }
+    .faq-dt {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      overflow: hidden;
+      transition: box-shadow var(--t-base) var(--ease-out);
+    }
+    .faq-dt:hover { box-shadow: var(--shadow-sm); }
+    .faq-dt[open] { box-shadow: var(--shadow-sm); }
+
+    /* remover triângulo padrão do browser */
+    .faq-dt-header {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-24);
+      padding: var(--sp-24) var(--sp-32);
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-dt-header::-webkit-details-marker { display: none; }
+
+    .faq-dt-question {
+      font-family: var(--font-heading);
+      font-size: var(--text-18);
+      font-weight: 700;
+      color: var(--gray-700);
+      line-height: var(--lh-normal);
+      flex: 1;
+    }
+
+    .faq-dt-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--red-100);
+      color: var(--red-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--t-base) var(--ease-out),
+                  color var(--t-base) var(--ease-out),
+                  transform var(--t-base) var(--ease-spring);
+    }
+    .faq-dt-header:hover .faq-dt-icon {
+      background: var(--red-10);
+    }
+    /* quando aberto: ícone fica vermelho preenchido e rotaciona para × */
+    .faq-dt[open] .faq-dt-icon {
+      background: var(--red-100);
+      color: var(--white-100);
+      transform: rotate(45deg);
+    }
+
+    .faq-dt-body {
+      padding: 0 var(--sp-32) var(--sp-24);
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: var(--lh-loose);
+      border-top: 1px solid var(--border);
+      margin: 0 var(--sp-32);
+      padding-top: var(--sp-18);
+      margin-bottom: var(--sp-24);
+    }
+
+
+    /* ═══════════════════════════════════════════
+       CONTATO — node 99:1423
+       bg: #FBCE07 | py: 72px
+       Layout: 2 colunas — esquerda título+bullets, direita fbox
+    ═══════════════════════════════════════════ */
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 480px 600px;
+      gap: 48px;
+      align-items: start;
+      width: 100%;
+      max-width: 1128px;  /* 480 + 72 + 600 */
+      margin: 0 auto;
+    }
+
+    /* coluna esquerda */
+    .contato-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-32);
+      align-items: flex-start;
+    }
+    .contato-left .lp-h2 {
+      text-align: left;
+      font-size: var(--text-40);
+    }
+    .contato-left .lp-desc {
+      text-align: left;
+      color: var(--gray-700);
+    }
+
+    /* bullets mstrip-image */
+    .contato-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-24);
+    }
+    .contato-bullet {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: var(--sp-14) var(--sp-24);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-14);
+      transition: transform var(--t-base) var(--ease-out),
+                  box-shadow var(--t-base) var(--ease-out);
+    }
+    .contato-bullet:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .contato-bullet-icon {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .contato-bullet-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: var(--lh-normal);
+    }
+    .contato-bullet-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--dark-gray);
+      line-height: var(--lh-body);
+      margin-top: 4px;
+    }
+
+    /* fbox — formulário */
+    .contato-fbox {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-24);
+      padding: var(--sp-40);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* responsivo */
+
+
+    /* ═══════════════════════════════════════════
+       FOOTER — node 128:2731
+       bg: branco | border-top: 1.5px #EAEAEA
+       altura: 147px | px: 56px
+       Esquerda: logo + copyright
+       Direita: disclaimer legal 608px
+    ═══════════════════════════════════════════ */
+    .lp-footer {
+      background: var(--white-100);
+      border-top: 1.5px solid #EAEAEA;
+      width: 100%;
+    }
+    .lp-footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--sp-56);
+      height: 147px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-32);
+    }
+    .lp-footer-left {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-18);
+      flex-shrink: 0;
+    }
+    .lp-footer-logo {
+      width: 31px;
+      height: 29px;
+      flex-shrink: 0;
+    }
+    .lp-footer-copyright {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-14);
+      color: #58595B;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .lp-footer-disclaimer {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-10);
+      color: #4A4A4A;
+      line-height: 1.3;
+      max-width: 608px;
+      text-align: right;
+    }
+
+
+
+
+
+    /* ════════════════════════════════════════════════════
+       RESPONSIVO — ajustes mobile conservadores
+       Princípio: só reduzir o que estava visivelmente grande.
+       Preservar espaçamentos base sempre que possível.
+    ════════════════════════════════════════════════════ */
+
+    /* ── 1024px: tablet landscape ── */
+    @media (max-width: 1024px) {
+
+      /* Nav */
+      .nav-links     { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Hero */
+      .hero-body    { height: 520px; }
+      .hero-content { max-width: 100%; padding: 0 var(--sp-40); }
+      .hero-h1      { font-size: 36px; }
+      .hero-footer  { height: auto; }
+
+      /* Layout */
+      .lp-container { padding: 0 var(--sp-40); }
+      .lp-section   { padding: 56px 0; }
+
+      /* Grids → 2 colunas */
+      .lp-pillars-4  { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .lp-pillars-8  { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .lp-mstrip-2x2 { grid-template-columns: 1fr; }
+
+      /* Depoimentos */
+      .dep-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Benefícios */
+      .beneficios-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Contato */
+      .contato-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-32);
+        max-width: 600px;
+      }
+      .contato-left .lp-h2 { font-size: var(--text-32); }
+
+      /* Footer */
+      .lp-footer-inner {
+        height: auto;
+        padding: var(--sp-24) var(--sp-40);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--sp-18);
+      }
+      .lp-footer-disclaimer { text-align: left; max-width: 100%; }
+    }
+
+    /* ── 768px: mobile grande ── */
+    @media (max-width: 768px) {
+
+      /* Nav */
+      .nav          { padding: 0 var(--sp-18); }
+      .nav-brand    { display: none; }
+      .nav-hamburger  { display: flex !important; }
+      #nav-cta-desktop { font-size: 11px; padding: 0 10px; height: 36px; white-space: nowrap; animation: none; box-shadow: none; }
+
+      /* Hero */
+      .hero-body    { height: 480px; }
+      .hero-content { padding: 0 var(--sp-40); gap: var(--sp-24); }
+      .hero-h1      { font-size: 32px; }
+      .hero-sub     { font-size: 13px; }
+      .hero-footer  { height: 84px; }
+      .hero-footer .marquee-item { font-size: 14px; }
+
+      /* Layout — valores conservadores */
+      .lp-container  { padding: 0 var(--sp-24); gap: var(--sp-40); }
+      .lp-section    { padding: 48px 0; }
+      .lp-h2         { font-size: 28px; }
+      .lp-title-block { gap: var(--sp-18); }
+      .lp-desc        { font-size: 14px; }
+      .lp-desc-lg     { font-size: 14px; }
+
+      /* Grids → 1 coluna */
+      .lp-pillars-4  { grid-template-columns: 1fr; }
+      .lp-pillars-8  { grid-template-columns: 1fr; }
+
+      /* Pillars: reduzir ícone e padding com moderação */
+      .pillar        { padding: var(--sp-24); gap: var(--sp-14); }
+      .pillar-icon   { width: 40px; height: 40px; }
+      .pillar-title  { font-size: 17px; }
+      .pillar-desc   { font-size: 13px; }
+      .pillar-number { font-size: 32px; }
+
+      /* mstrip */
+      .lp-mstrip-2x2  { grid-template-columns: 1fr; }
+      .mstrip-number  { height: auto; padding: var(--sp-24); }
+      .mstrip-num     { font-size: 28px; }
+      .mstrip-title   { font-size: 16px; }
+
+      /* Marquee footer do hero */
+      .hero-footer .marquee-item        { font-size: 13px; gap: var(--sp-12); }
+      .hero-footer .marquee-item strong { font-size: 16px; }
+
+      /* Contato */
+      .contato-left         { width: 100%; }
+      .contato-bullets      { gap: var(--sp-14); width: 100%; }
+      .contato-bullet       { padding: var(--sp-12) var(--sp-18); gap: var(--sp-12); width: 100%; box-sizing: border-box; }
+      .contato-bullet-icon  { width: 40px; height: 40px; }
+      .contato-bullet-title { font-size: 15px; }
+      .contato-bullet-desc  { font-size: 13px; }
+      .contato-fbox         { padding: var(--sp-24); gap: var(--sp-14); }
+      .frow                 { grid-template-columns: 1fr; }
+      .fg-label             { font-size: 11px; }
+      .input, .select       { height: 44px; font-size: 14px; }
+      .textarea             { font-size: 14px; }
+
+      /* Footer */
+      .lp-footer-inner      { padding: var(--sp-24); }
+      .lp-footer-copyright  { font-size: 12px; }
+      .lp-footer-disclaimer { font-size: 10px; }
+    }
+
+    /* ── 480px: mobile padrão ── */
+    @media (max-width: 480px) {
+
+      /* Nav */
+      .nav               { height: 72px; padding: 0 var(--sp-14); }
+      .nav-mobile-drawer { inset: 72px 0 0 0; }
+      .nav-hamburger     { display: flex !important; }
+      #nav-cta-desktop   { font-size: 11px; padding: 0 10px; height: 34px; }
+
+      /* Hero */
+      .hero-body    { height: 440px; }
+      .hero-content { padding: 0 var(--sp-24); gap: var(--sp-18); }
+      .hero-sub     { font-size: 13px; }
+      .hero-footer  { height: 72px; }
+      .hero-footer .marquee-item { font-size: 14px; }
+      .hero-kicker  { display: none; }
+      .hero-ctas    { flex-direction: column; align-items: center; width: 100%; gap: var(--sp-8); }
+      .hero-ctas .btn { width: 100%; max-width: 280px; justify-content: center; height: 44px; }
+
+      /* Layout */
+      .lp-section    { padding: 40px 0; }
+      .lp-container  { padding: 0 var(--sp-18); gap: var(--sp-24); }
+      .lp-h2         { font-size: 26px; }
+      .lp-title-block { gap: var(--sp-14); }
+
+      /* Pillars */
+      .pillar        { padding: var(--sp-18); gap: var(--sp-12); }
+      .pillar-icon   { width: 36px; height: 36px; }
+      .pillar-title  { font-size: 16px; }
+      .pillar-number { font-size: 30px; }
+
+      /* Depoimentos */
+      .dep-grid { max-width: 100%; }
+
+      /* Contato */
+      .contato-fbox    { padding: 20px; gap: 12px; }
+      .contato-bullet  { padding: 14px 16px; gap: 14px; }
+      .contato-bullet-icon { width: 40px; height: 40px; }
+
+      /* Footer */
+      .lp-footer-logo       { width: 24px; height: 22px; }
+      .lp-footer-copyright  { font-size: 11px; }
+      .lp-footer-disclaimer { font-size: 9px; }
+    }
+
+    /* ── 360px: mobile compacto ── */
+    @media (max-width: 360px) {
+      .lp-h2        { font-size: 24px; }
+      .lp-container { padding: 0 var(--sp-14); }
+    }
+
+    /* ── stag-pill: pill com borda, Oportunidade e FAQ ── */
+    .stag-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 14px 7px;
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: var(--text-12);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stag-pill-dark {
+      background: rgba(221, 29, 33, 0.05);
+      border: 1px solid var(--red-100);
+      color: var(--red-100);
+    }
+
+    /* ── stag-pill-dark: variante para fundo amarelo (seção Marca) ── */
+    /* ── Seção Marca: textos sobre fundo amarelo → cinza #4A4A4A ── */
+    .lp-section-yellow .pillar-title { color: var(--gray-700); }
+    .lp-section-yellow .pillar-desc  { color: var(--gray-900); }
+    .lp-section-yellow .pillar-claim { color: var(--gray-900); }
+    .lp-section-yellow .lp-desc-lg   { color: var(--gray-700); }
+    .stag-pill-dark {
+      background: transparent;
+      border: 1px solid #4A4A4A;
+      color: #4A4A4A;
+    }
+
+    /* ── Toggle switch — campo Posto em Operação? ── */
+    .fg-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 48px;
+    }
+    .toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-track {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      background: rgba(118, 118, 118, 0.2);
+      border-radius: 12px;
+      flex-shrink: 0;
+      transition: background var(--t-base) var(--ease-out);
+    }
+    .toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: var(--white-100);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      transition: transform var(--t-base) var(--ease-out);
+    }
+    .toggle-input:checked ~ .toggle-track { background: var(--red-100); }
+    .toggle-input:checked ~ .toggle-track .toggle-thumb { transform: translateX(20px); }
+    .toggle-text {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: var(--gray-700);
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════════
+       SOLUÇÕES — C1
+       bg: #F5F5F5 | 4 pillars | barra logos | 2 cards horizontais
+    ═══════════════════════════════════════════ */
+    .lp-section-solucoes {
+      background: #F5F5F5;
+    }
+
+    /* 4 pillars em linha — fundo branco, borda, radius 24 */
+    .sol-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+      padding: 0 30px;
+      box-sizing: border-box;
+    }
+    .sol-pillars .pillar {
+      background: var(--white-100);
+      height: 308px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+    .sol-pillars .pillar > div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* barra de logos V-Power — marquee full-width */
+    .sol-brands {
+      height: 104px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    .sol-brands-track {
+      display: flex;
+      align-items: center;
+      gap: 208px;
+      animation: sol-marquee 22s linear infinite;
+      width: max-content;
+    }
+    .sol-brands:hover .sol-brands-track { animation-play-state: paused; }
+    @keyframes sol-marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .sol-brand-logo {
+      max-height: 56px;
+      max-width: 140px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* 2 cards horizontais */
+    .sol-cards {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      padding: 0 36px;
+      box-sizing: border-box;
+    }
+    .sol-card {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      height: 308px;
+      border-radius: var(--radius-24);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex: 1;
+      min-width: 0;   /* evita overflow de texto */
+    }
+    .sol-card-purple { background: var(--shell-box-purple); }
+    .sol-card-yellow  { background: var(--yellow-100); }
+
+    .sol-card-img {
+      width: 308px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .sol-card-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sol-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--sp-18);
+      padding: 40px 40px 40px 32px;
+      min-width: 0;
+    }
+    .sol-card-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      line-height: var(--lh-normal);
+    }
+    .sol-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      line-height: var(--lh-body);
+    }
+    .sol-card-desc strong {
+      font-family: var(--font-heading);
+      font-weight: 500;
+    }
+    .sol-card-purple .sol-card-desc  { color: var(--white-100); }
+    .sol-card-purple .sol-card-desc strong { color: var(--white-100); }
+    .sol-card-yellow  .sol-card-desc { color: #292929; }
+    .sol-card-yellow  .sol-card-title { color: #4A4A4A; }
+    .sol-card-claim {
+      font-family: var(--font-body);
+      font-size: var(--text-10);
+      line-height: var(--lh-body);
+      color: #292929;
+    }
+
+    /* responsivo Soluções */
+    @media (max-width: 1200px) {
+      .sol-pillars { padding: 0; }
+      .sol-cards   { padding: 0; }
+    }
+    @media (max-width: 1024px) {
+      .sol-pillars { grid-template-columns: repeat(2, 1fr); }
+      .sol-pillars .pillar { height: auto; }
+      .sol-cards   { flex-direction: column; gap: 16px; }
+      .sol-card    { height: auto; flex-direction: row; }
+      .sol-card-img { width: 45%; flex-shrink: 0; height: auto; aspect-ratio: 1/1; }
+      /* marquee @1024px */
+      .sol-brands             { height: 88px; margin-top: 32px; margin-bottom: 32px; }
+      .sol-brands-track       { gap: 120px; animation-duration: 18s; }
+      .sol-brand-logo         { max-height: 48px; max-width: 120px; }
+    }
+    @media (max-width: 768px) {
+      .sol-pillars { grid-template-columns: 1fr; }
+      .sol-card    { flex-direction: column; }
+      .sol-card-img { width: 100%; aspect-ratio: 16/9; }
+      .sol-card-body { padding: 24px; }
+      /* marquee @768px */
+      .sol-brands             { height: 72px; margin-top: 24px; margin-bottom: 24px; }
+      .sol-brands-track       { gap: 80px; animation-duration: 16s; }
+      .sol-brand-logo         { max-height: 40px; max-width: 100px; }
+    }
+    @media (max-width: 480px) {
+      .sol-card-body { padding: 20px 16px; gap: 12px; }
+      .sol-card-title { font-size: var(--text-16); }
+      .sol-card-desc  { font-size: var(--text-14); }
+      /* marquee @480px */
+      .sol-brands             { height: 64px; margin-top: 16px; margin-bottom: 16px; }
+      .sol-brands-track       { gap: 56px; animation-duration: 14s; }
+      .sol-brand-logo         { max-height: 36px; max-width: 88px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       INOVAÇÃO — C2
+       3 comp-box: fundo #F5F5F5, border, radius 19px
+    ═══════════════════════════════════════════ */
+    .inov-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+    .inov-card {
+      background: #F5F5F5;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .inov-card-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: var(--gray-700);
+      line-height: 1.2;
+    }
+    .inov-card-img {
+      width: 100%;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      aspect-ratio: 313 / 177;
+    }
+    .inov-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .inov-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .inov-card-subtitle {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-16);
+      color: #4A4A4A;
+      line-height: 1.32;
+    }
+    .inov-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: #292929;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ═══════════════════════════════════════════
+       EXPERIÊNCIAS — C3
+       3 comp-box: fundo branco, border, radius 19px
+    ═══════════════════════════════════════════ */
+    .lp-section-vantagens {
+      background: #F7F7F7;
+    }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      width: 100%;
+    }
+    .exp-card {
+      background: var(--white-100);
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .exp-card-label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--text-18);
+      color: #4A4A4A;
+      line-height: 1.2;
+    }
+    .exp-card-img {
+      width: 100%;
+      border-radius: var(--radius-12);
+      overflow: hidden;
+      aspect-ratio: 313 / 177;
+    }
+    .exp-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .exp-card-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-14);
+      color: #292929;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* responsivo C2 + C3 */
+    @media (max-width: 1024px) {
+      .inov-grid, .exp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .inov-grid, .exp-grid { gap: 16px; }
+    }
+</style>
+</head>
+<body>
+
+  <!-- nav -->
+  <header class="lp-nav" id="nav">
+    <nav class="nav" aria-label="Navegação principal">
+
+
+      <div class="nav-left">
+        <a href="#" aria-label="Início Shell" style="display:flex;align-items:center;gap:var(--sp-18);text-decoration:none;">
+
+          <div style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6232 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6232 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" stroke="white" stroke-width="0.511019" stroke-miterlimit="40"/>
+              <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6231 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6231 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" fill="#F8CD05"/>
+              <path d="M19.0949 0.255493C8.69653 0.255493 0.255493 8.69468 0.255493 19.0949C0.255493 20.3609 0.383388 21.6231 0.63547 22.8632L6.43335 27.08L7.31935 34.1661H16.8799L17.4323 34.5664C17.9161 34.9186 18.4981 35.1077 19.0949 35.1077C19.6917 35.1077 20.2738 34.9186 20.7575 34.5664L21.3099 34.1661H30.8705L31.7565 27.08L37.5543 22.8632C37.8064 21.6231 37.9343 20.3609 37.9343 19.0949C37.9343 8.69653 29.4933 0.255493 19.0949 0.255493ZM33.9418 15.8308C34.4015 16.8577 34.6369 17.9698 34.6369 19.0949C34.6369 19.7677 34.5535 20.4387 34.3829 21.0912L28.6592 25.2542L27.9567 30.8686H21.0078L19.979 31.6156C19.7214 31.8028 19.41 31.9048 19.0931 31.9048C18.7761 31.9048 18.4647 31.8047 18.2071 31.6156L17.1783 30.8686H10.2294L9.52692 25.2542L3.80317 21.0912C3.63636 20.4387 3.5511 19.7677 3.5511 19.0949C3.5511 17.9698 3.78835 16.8577 4.24617 15.8308L14.3795 26.0772L4.52791 13.9161C4.9153 12.3387 5.77349 10.9152 6.98756 9.83832L15.8197 25.08L7.99404 8.39255C9.00607 7.04503 10.4185 6.05338 12.0273 5.55478L17.4267 24.4739L13.4824 4.77443C14.6816 4.09789 16.0366 3.74201 17.4156 3.74201C17.7066 3.74201 17.9976 3.75869 18.2886 3.7902L19.0931 24.2756L19.8975 3.7902C20.1866 3.75869 20.4777 3.74201 20.7705 3.74201C22.1477 3.74201 23.5045 4.09789 24.7037 4.77443L20.7594 24.4739L26.1588 5.55478C27.7676 6.05338 29.18 7.04503 30.1939 8.39255L22.3683 25.08L31.1985 9.83832C32.4145 10.9171 33.2727 12.3387 33.6601 13.9161L23.8085 26.0772L33.9418 15.8308Z" fill="#DD1D21"/>
+            </svg>
+          </div>
+
+          <span class="nav-brand">Traga seu posto para a Shell</span>
+        </a>
+      </div>
+
+
+
+      <div class="nav-links" role="list">
+        <a href="#s-valor"       class="nav-link" role="listitem">Oportunidade</a>
+        <a href="#s-marca"       class="nav-link" role="listitem">Marca</a>
+        <a href="#s-solucoes"    class="nav-link" role="listitem">Soluções</a>
+        <a href="#s-beneficios"  class="nav-link" role="listitem">Inovação</a>
+        <a href="#s-vantagens"   class="nav-link" role="listitem">Experiências</a>
+        <a href="#s-depoimentos" class="nav-link" role="listitem">Depoimentos</a>
+        <a href="#s-apoio"       class="nav-link" role="listitem">Apoio</a>
+      </div>
+
+
+      <div class="nav-right" style="display:flex;align-items:center;gap:var(--sp-12);flex-shrink:0;">
+
+
+        <a href="#s-contato" class="btn btn-red btn-pulse" id="nav-cta-desktop">
+          Quero avaliar meu posto
+        </a>
+
+
+        <button class="nav-hamburger" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-drawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </nav>
+
+
+    <div class="nav-mobile-drawer" id="nav-drawer" role="navigation" aria-label="Menu mobile">
+      <a href="#s-valor"       class="nav-link">Oportunidade</a>
+      <a href="#s-marca"       class="nav-link">Marca</a>
+      <a href="#s-solucoes"    class="nav-link">Soluções</a>
+      <a href="#s-beneficios"  class="nav-link">Inovação</a>
+      <a href="#s-vantagens"   class="nav-link">Experiências</a>
+      <a href="#s-depoimentos" class="nav-link">Depoimentos</a>
+      <a href="#s-apoio"       class="nav-link">Apoio</a>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section id="s-hero" aria-labelledby="hero-heading">
+
+
+    <div class="hero-body">
+
+
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          src="images/shell-station.jpg"
+          alt=""
+          class="hero-bg-img"
+          fetchpriority="high"
+        >
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+
+      <div class="hero-content">
+
+
+        <div class="hero-kicker" aria-label="Oferta Shell para Revendedores">
+          Oferta Shell para Revendedores
+        </div>
+
+
+        <h1 id="hero-heading" class="hero-h1">
+          <span class="hero-h1-white">Transforme o potencial do seu posto em mais resultado </span><span class="hero-h1-yellow">com a força da Shell.</span>
+        </h1>
+
+
+        <p class="hero-sub">
+          Mais fluxo, mais fidelização e mais oportunidades de ganho com o ecossistema completo da Shell
+        </p>
+
+
+        <div class="hero-ctas">
+          <a href="#s-contato" class="btn btn-red btn-pulse">Quero avaliar meu posto</a>
+          <a href="#s-valor"   class="btn btn-outline-white">Entender como funciona</a>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="hero-footer" aria-label="Números da Shell no Brasil">
+      <div class="marquee-track">
+        <div class="marquee-inner marquee-slow">
+          <div class="marquee-item"><strong>+ 20 milhões</strong>de clientes no Shell Box<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>+ 50 milhões</strong>de consumidores<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>+ 7 mil</strong>postos no Brasil<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>11 anos</strong>marca mais valiosa do setor<span class="marquee-sep"></span></div>
+
+          <div class="marquee-item"><strong>+ 20 milhões</strong>de clientes no Shell Box<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>+ 50 milhões</strong>de consumidores<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>+ 7 mil</strong>postos no Brasil<span class="marquee-sep"></span></div>
+          <div class="marquee-item"><strong>11 anos</strong>marca mais valiosa do setor<span class="marquee-sep"></span></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- s-valor -->
+  <section id="s-valor">
+    <div class="lp-section">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Oportunidade</div>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">O que muda no seu posto</span> quando você vem para a Shell</h2>
+          <p class="lp-desc">Você não está só trocando de bandeira. Está ganhando mais capacidade comercial, mais fluxo de clientes e mais controle sobre a operação.</p>
+        </div>
+
+        <div class="lp-pillars-4">
+          <div class="pillar hover-lift">
+            <img src="images/icon-value.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Mais valor no abastecimento</div>
+            <div class="pillar-desc">Um portfólio premium ajuda você a sustentar preço e melhorar seu mix de produtos.</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-frequency.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Mais fluxo no dia a dia</div>
+            <div class="pillar-desc">Com Shell Box, você aumenta a frequência de abastecimento e o retorno dos seus clientes.</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-shield.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Mais confiança na escolha</div>
+            <div class="pillar-desc">Com a Shell, você reforça a percepção de qualidade antes da disputa por preço.</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-control.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Mais consistência na operação</div>
+            <div class="pillar-desc">Treinamento, ferramentas e acompanhamento mantêm padrão e melhoram resultados.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- s-marca -->
+  <section id="s-marca">
+    <div class="lp-section lp-section-yellow">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Força da marca Shell</div>
+          <h2 class="lp-h2" style="color:#4A4A4A;">Uma marca que ajuda seu posto a vender antes mesmo da comparação por preço</h2>
+          <p class="lp-desc" style="color:#4A4A4A; font-weight:500;">A força da Shell reduz atrito na decisão do consumidor, reforça qualidade percebida e aumenta sua segurança comercial.</p>
+        </div>
+
+
+        <div class="lp-pillars-8">
+
+
+          <div class="pillar pillar-stat hover-lift">
+            <div class="pillar-number">118 anos</div>
+            <div class="pillar-title">de Shell no mundo, estamos presentes em 70 países.</div>
+          </div>
+          <div class="pillar pillar-stat hover-lift">
+            <div class="pillar-number">+6 bi</div>
+            <div class="pillar-title">Impactos na mídia em 2024, alcançando <strong>144 milhões de brasileiros</strong>.</div>
+          </div>
+          <div class="pillar pillar-stat hover-lift">
+            <div class="pillar-number">967k</div>
+            <div class="pillar-title">Seguidores nas redes sociais com <strong>comunidade engajada</strong>.</div>
+          </div>
+          <div class="pillar pillar-stat hover-lift">
+            <div class="pillar-number">+45</div>
+            <div class="pillar-title">Patrocínios confirmados em 2025, <strong>esportes, música e cultura</strong>.</div>
+          </div>
+
+
+          <div class="pillar hover-lift">
+            <img src="images/icon-medal.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Top of Mind</div>
+            <div class="pillar-desc">Primeira marca em postos de combustível na mente do brasileiro.</div>
+            <div class="pillar-claim">(Folha de São Paulo / Datafolha 2024)</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-gas-station.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Melhor Distribuidora</div>
+            <div class="pillar-desc">Prêmio Mobilidade Estadão 2025 na categoria melhor distribuidora de combustível do Brasil.</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-star.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Reclame Aqui</div>
+            <div class="pillar-desc">Melhor distribuidora de postos e melhor programa de pontos e clube de vantagens em 2024.</div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/logo-ferrari.svg" alt="Ferrari" width="56" height="56" class="pillar-icon">
+            <div class="pillar-title">Parceria Ferrari</div>
+            <div class="pillar-desc">Único combustível recomendado pela Scuderia Ferrari. Parceria mais longa e bem-sucedida (75 anos) do automobilismo.</div>
+          </div>
+
+        </div>
+
+
+        <p class="lp-desc-lg" style="color:#4A4A4A;">
+          A força da marca também é sustentada por reconhecimento em inovação, experiência, mobilidade e atendimento, além de presença constante em grandes plataformas de esporte e cultura.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- s-solucoes -->
+  <section id="s-solucoes">
+    <div class="lp-section lp-section-solucoes">
+
+      <!-- título + pillars -->
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Soluções</div>
+          <h2 class="lp-h2">Uma estrutura pensada <span style="color:var(--red-100);">para você vender melhor</span></h2>
+          <p class="lp-desc">Você conta com uma estrutura que combina produto, relacionamento, equipe e gestão para gerar mais valor percebido, recorrência e execução.</p>
+        </div>
+
+        <!-- 4 pillars -->
+        <div class="sol-pillars">
+          <div class="pillar hover-lift">
+            <img src="images/icon-value.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Família<br>Shell V-Power</div>
+              <div class="pillar-desc">Com gasolina, etanol e diesel seu posto defende preço, ampliar mix e fortalecer argumento comercial no abastecimento.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-ticket-star.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Campanhas promocionais</div>
+              <div class="pillar-desc">Campanhas e materiais de ponto de venda reforçam a presença da marca e ajuda seu posto a ativar o cliente ao longo do ano.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-frequency.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Capacitação<br>da equipe</div>
+              <div class="pillar-desc">Conteúdo para toda sua equipe com foco em execução e performance.</div>
+            </div>
+          </div>
+          <div class="pillar hover-lift">
+            <img src="images/icon-control.svg" alt="" width="56" height="56" class="pillar-icon">
+            <div>
+              <div class="pillar-title">Gestão e acompanhamento</div>
+              <div class="pillar-desc">Ferramentas e relatórios para você acompanhar rotina, metas e desempenho operacional.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /lp-container título+pillars -->
+
+      <!-- barra de logos V-Power — full-width, fora do container -->
+      <div class="sol-brands">
+        <div class="sol-brands-track" aria-hidden="false">
+          <img src="images/logo-shell-vpower.svg"        alt="Shell V-Power"        class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-etanol.svg" alt="Shell V-Power Etanol"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-diesel.svg" alt="Shell V-Power Diesel"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-racing.svg" alt="Shell V-Power Racing"  class="sol-brand-logo">
+          <!-- duplicata para loop contínuo -->
+          <img src="images/logo-shell-vpower.svg"        alt="" aria-hidden="true"  class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-etanol.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-diesel.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+          <img src="images/logo-shell-vpower-racing.svg" alt="" aria-hidden="true"   class="sol-brand-logo">
+        </div>
+      </div>
+
+      <!-- cards + rodapé -->
+      <div class="lp-container">
+
+        <!-- 2 cards horizontais -->
+        <div class="sol-cards">
+
+          <div class="sol-card sol-card-purple">
+            <div class="sol-card-img">
+              <img src="images/shell-box.png" alt="Shell Box" class="sol-card-photo">
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-card-title" style="color:var(--yellow-100);">Shell Box</div>
+              <div class="sol-card-desc">
+                <p style="margin:0 0 12px 0;">Uma plataforma que aumenta recorrência, ativa campanhas, amplia volume e aproxima o cliente do seu posto.</p>
+                <p style="margin:0; font-family:var(--font-heading); font-weight:500; color:var(--white-100);">Com Shell Box, você combina pagamento, fidelização, campanhas e benefícios em uma alavanca contínua de retorno.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sol-card sol-card-yellow">
+            <div class="sol-card-img">
+              <img src="images/clube-irmao-caminhoneiro.png" alt="Clube Irmão Caminhoneiro Shell" class="sol-card-photo">
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-card-title">Mais força no público de rodovia</div>
+              <div class="sol-card-desc">Com o Clube Irmão Caminhoneiro, a Shell fortalece a fidelização do público de estrada, amplia a relevância no diesel e gera mais potencial de volume para o posto de rodovia.</div>
+              <div class="sol-card-claim">A jornada trouxe crescimento de 21% no volume de diesel após o lançamento.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="lp-desc-lg">Com 70 bases de distribuição, 1.700 lojas de conveniência e ampla presença nacional, você passa a contar com uma estrutura mais robusta de apoio comercial e operacional.</p>
+
+      </div><!-- /lp-container cards+rodapé -->
+
+    </div>
+  </section>
+
+<!-- s-beneficios -->
+  <section id="s-beneficios">
+    <div class="lp-section">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Inovação</div>
+          <h2 class="lp-h2">Novas receitas para revendedores que querem <span style="color:var(--red-100);">crescer além do combustível</span></h2>
+          <p class="lp-desc" style="font-weight:500;">A Shell combina conveniência, mobilidade elétrica e serviços complementares para transformar seu posto em uma operação mais completa, mais relevante e com mais potencial de rentabilidade.</p>
+        </div>
+
+        <div class="inov-grid">
+
+          <div class="inov-card">
+            <div class="inov-card-label">Mobilidade elétrica no seu posto</div>
+            <div class="inov-card-img">
+              <img src="images/recharge.png" alt="Shell Recharge" loading="lazy">
+            </div>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Shell Recharge</div>
+              <p class="inov-card-desc">Com Shell Recharge, sua operação se prepara para novas jornadas de consumo e amplia sua relevância além do abastecimento tradicional.</p>
+            </div>
+          </div>
+
+          <div class="inov-card">
+            <div class="inov-card-label">Mais conveniência e valor por visita</div>
+            <div class="inov-card-img">
+              <img src="images/shell-select-cafe.png" alt="Shell Select e Shell Café" loading="lazy">
+            </div>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Shell Select e Shell Café</div>
+              <p class="inov-card-desc">Com Shell Select e Shell Café, seu posto combina experiência e rentabilidade para aumentar fluxo, permanência e consumo.</p>
+            </div>
+          </div>
+
+          <div class="inov-card">
+            <div class="inov-card-label">Mais categorias e rentabilidade</div>
+            <div class="inov-card-img">
+              <img src="images/oils-and-lubricants.png" alt="Lubrificantes e serviços Shell" loading="lazy">
+            </div>
+            <div class="inov-card-body">
+              <div class="inov-card-subtitle">Lubrificantes e serviços Shell</div>
+              <p class="inov-card-desc">Amplie o potencial de receita do seu posto com produtos e serviços que elevam o ticket e aproveitam melhor o fluxo da operação.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- s-vantagens -->
+  <section id="s-vantagens">
+    <div class="lp-section lp-section-vantagens">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Experiências</div>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">Ativações que geram movimento</span> no seu posto e nas pistas</h2>
+          <p class="lp-desc" style="font-weight:500;">Ao longo do ano, a Shell cria campanhas e experiências que ajudam o seu posto a atrair mais clientes e aumentar oportunidades de retorno.</p>
+        </div>
+
+        <div class="exp-grid">
+
+          <div class="exp-card">
+            <div class="exp-card-label">Campanhas sazonais</div>
+            <div class="exp-card-img">
+              <img src="images/tanque-cheio-de-premios.png" alt="Campanhas sazonais Shell" loading="lazy">
+            </div>
+            <p class="exp-card-desc">Ações promocionais pensadas para gerar mais movimento em momentos estratégicos do ano.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-card-label">Experiências de marca</div>
+            <div class="exp-card-img">
+              <img src="images/shell-ferrari.png" alt="Shell Ferrari" loading="lazy">
+            </div>
+            <p class="exp-card-desc">Ativações que aproximam o consumidor da Shell e aumentam a força da marca no ponto de venda.</p>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-card-label">Lançamentos e ativações especiais</div>
+            <div class="exp-card-img">
+              <img src="images/shell-vpower-launch.png" alt="Lançamentos Shell V-Power" loading="lazy">
+            </div>
+            <p class="exp-card-desc">Iniciativas que dão visibilidade a produtos e criam novas oportunidades comerciais no seu posto.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- s-depoimentos -->
+  <section id="s-depoimentos">
+    <div class="lp-section">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Depoimentos</div>
+          <h2 class="lp-h2">O que revendedores percebem <span style="color:var(--red-100);">depois de mudar para Shell</span></h2>
+          <p class="lp-desc">Quem já opera com a Shell destaca ganhos reais em fluxo, valor percebido e preparo da equipe.</p>
+        </div>
+
+
+        <div class="dep-grid">
+
+          <div class="dep-card">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_2.mp4" muted playsinline preload="metadata"></video>
+              <div class="dep-overlay" aria-hidden="true"></div>
+              <div class="dep-text">
+                <p class="dep-title">Mais retorno de clientes</p>
+                <p class="dep-quote">"Com Shell Box, a gente passou a ver mais retorno e mais frequência de clientes." Eduardo Bandeira - Gerente Posto Alvorada (SP)</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_1.mp4" muted playsinline preload="metadata"></video>
+              <div class="dep-overlay" aria-hidden="true"></div>
+              <div class="dep-text">
+                <p class="dep-title">Mais valor na bomba</p>
+                <p class="dep-quote">"Hoje o cliente percebe mais valor no abastecimento e compara menos só por preço." Fabio Comi - Revendedor Shell</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-video-wrap">
+              <video class="dep-video" src="videos/depoimento-shell-1_3.mp4" muted playsinline preload="metadata"></video>
+              <div class="dep-overlay" aria-hidden="true"></div>
+              <div class="dep-text">
+                <p class="dep-title">Equipe mais preparada</p>
+                <p class="dep-quote">"Os treinamentos ajudaram a equipe a atender melhor e vender com mais segurança." Fabrízio Gouveia - Revendedor Shell</p>
+              </div>
+              <div class="dep-controls">
+                <button class="dep-btn-play" aria-label="Reproduzir vídeo">
+                  <img src="images/btn-play.svg" alt="" class="dep-icon-play" aria-hidden="true">
+                  <img src="images/btn-stop.svg" alt="" class="dep-icon-stop" aria-hidden="true">
+                </button>
+                <button class="dep-btn-sound" aria-label="Áudio desligado">
+                  <img src="images/icon-sound-off.svg" alt="" class="dep-icon-sound" aria-hidden="true">
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- s-apoio -->
+  <section id="s-apoio">
+    <div class="lp-section">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Apoio ao revendedor</div>
+          <h2 class="lp-h2">Resultado melhor pede <span style="color:var(--red-100);">operação acompanhada</span></h2>
+          <p class="lp-desc">Atrair cliente é parte da equação. Para sustentar resultado, você precisa de equipe preparada, rotina acompanhada e ferramentas de gestão.</p>
+        </div>
+
+
+        <div class="apoio-img-wrap">
+          <img src="images/treinamento.jpg" alt="Equipe Shell em treinamento" class="apoio-img">
+        </div>
+
+
+        <div class="lp-mstrip-2x2">
+
+          <div class="mstrip-number">
+            <div class="mstrip-inner">
+              <div class="mstrip-num">150+</div>
+              <div class="mstrip-text">
+                <div class="mstrip-title">Treinamentos</div>
+                <div class="mstrip-desc">Você tem acesso a mais de 150 treinamentos online e presenciais.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mstrip-number">
+            <div class="mstrip-inner">
+              <div class="mstrip-num">24/7</div>
+              <div class="mstrip-text">
+                <div class="mstrip-title">Suporte à operação</div>
+                <div class="mstrip-desc">Você conta com apoio especializado para equipe, liderança e revenda.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mstrip-number">
+            <div class="mstrip-inner">
+              <div class="mstrip-num">100%</div>
+              <div class="mstrip-text">
+                <div class="mstrip-title">Programas de excelência</div>
+                <div class="mstrip-desc">Você opera com programas de excelência, orientação em segurança, gestão e operação.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mstrip-number">
+            <div class="mstrip-inner">
+              <div class="mstrip-num">100%</div>
+              <div class="mstrip-text">
+                <div class="mstrip-title">Ferramentas de gestão</div>
+                <div class="mstrip-desc">Você tem acesso a ferramentas de gestão para rotina, desempenho e acompanhamento contínuo.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <p class="lp-desc-lg">Com programas de excelência, materiais consultivos e plataformas de gestão, a Shell ajuda você a manter padrão operacional e evoluir continuamente o seu negócio.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- s-faq -->
+  <section id="s-faq">
+    <div class="lp-section">
+      <div class="lp-container">
+
+        <div class="lp-title-block">
+          <div class="stag-pill stag-pill-dark">Dúvidas frequentes</div>
+          <h2 class="lp-h2"><span style="color:var(--red-100);">O que você precisa saber antes</span> de avaliar a mudança</h2>
+          <p class="lp-desc">Estas respostas ajudam você a entender como funciona a proposta e o que considerar na adesão.</p>
+        </div>
+
+        <div class="faq-list">
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Posso avaliar meu posto sem compromisso?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Sim. A avaliação inicial ajuda você a entender seu perfil, potencial e aderência à proposta.</div>
+          </details>
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">O posto recebe suporte depois da entrada?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Sim. Você recebe apoio em treinamento, operação, SSMA, campanhas, materiais e ferramentas de gestão.</div>
+          </details>
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Existe investimento para migrar meu posto para a Shell?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Existe investimento, e as condições variam conforme seu perfil, estrutura e modelo de adesão. A avaliação comercial define o formato mais adequado para você.</div>
+          </details>
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Preciso aderir ao pacote completo para acessar todos os benefícios?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Os benefícios mais amplos da Oferta Integrada ficam disponíveis no pacote completo. O modelo ideal depende do perfil da sua operação.</div>
+          </details>
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Quando os benefícios começam a ser ativados?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Após a adesão e implantação do modelo aprovado. O prazo depende do perfil da sua operação e do escopo contratado.</div>
+          </details>
+
+          <details class="faq-dt">
+            <summary class="faq-dt-header">
+              <span class="faq-dt-question">Shell Box é obrigatório?</span>
+              <span class="faq-dt-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-dt-body">Shell Box é uma das principais alavancas da proposta, especialmente para recorrência, fidelização e campanhas, mas a composição da oferta depende do seu modelo comercial.</div>
+          </details>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- s-contato -->
+  <section id="s-contato">
+    <div class="lp-section lp-section-yellow">
+      <div class="lp-container">
+        <div class="contato-grid">
+
+
+          <div class="contato-left">
+            <div class="stag-pill stag-pill-dark">Próximo passo</div>
+            <h2 class="lp-h2">
+              Avalie o potencial do seu posto <span style="color:var(--red-100);">com a Shell</span>
+            </h2>
+            <p class="lp-desc">
+              Preencha seus dados para receber o contato de um especialista e entender o modelo mais adequado para sua operação.
+            </p>
+
+
+            <div class="contato-bullets">
+              <div class="contato-bullet">
+                <img src="images/icon-flash.svg" alt="" width="56" height="56" class="contato-bullet-icon">
+                <div>
+                  <div class="contato-bullet-title">Avaliação sem compromisso</div>
+                  <div class="contato-bullet-desc">Entenda potencial e aderência do seu posto.</div>
+                </div>
+              </div>
+              <div class="contato-bullet">
+                <img src="images/icon-notes.svg" alt="" width="56" height="56" class="contato-bullet-icon">
+                <div>
+                  <div class="contato-bullet-title">Proposta conforme sua operação</div>
+                  <div class="contato-bullet-desc">Modelo comercial ajustado ao seu perfil.</div>
+                </div>
+              </div>
+              <div class="contato-bullet">
+                <img src="images/icon-verified-user.svg" alt="" width="56" height="56" class="contato-bullet-icon">
+                <div>
+                  <div class="contato-bullet-title">Acompanhamento em cada etapa</div>
+                  <div class="contato-bullet-desc">Do diagnóstico à ativação com acompanhamento.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="contato-fbox">
+
+
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-nome">Nome <span class="required">*</span></label>
+                <input class="input" id="c-nome" type="text" placeholder="Seu nome" autocomplete="given-name">
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-sobrenome">Sobrenome <span class="required">*</span></label>
+                <input class="input" id="c-sobrenome" type="text" placeholder="Sobrenome" autocomplete="family-name">
+              </div>
+            </div>
+
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-email">E-mail Profissional <span class="required">*</span></label>
+                <input class="input" id="c-email" type="email" placeholder="seu@email.com.br" autocomplete="email">
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-telefone">Telefone <span class="required">*</span></label>
+                <input class="input" id="c-telefone" type="tel" placeholder="(11) 99999-9999" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-cidade">Cidade</label>
+                <div class="select-wrapper">
+                  <select class="select" id="c-cidade">
+                    <option value="">Selecione</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fg">
+                <label class="fg-label" for="c-estado">Estado <span class="required">*</span></label>
+                <div class="select-wrapper">
+                  <select class="select" id="c-estado">
+                    <option value="">Selecione</option>
+                    <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                    <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                    <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                    <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                    <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                    <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                    <option>SP</option><option>SE</option><option>TO</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="fg">
+              <label class="fg-label" for="c-posto">Nome do posto <span class="required">*</span></label>
+              <input class="input" id="c-posto" type="text" placeholder="Insira aqui">
+            </div>
+
+            <div class="frow">
+              <div class="fg">
+                <label class="fg-label" for="c-cnpj">Número de CNPJ</label>
+                <input class="input" id="c-cnpj" type="text" placeholder="00.000.000/0000-00">
+              </div>
+              <div class="fg">
+                <span class="fg-label">Posto em operação?</span>
+                <div class="fg-toggle-wrap">
+                  <input class="toggle-input" id="c-operacao" type="checkbox" role="switch" checked aria-label="Posto em Operação?">
+                  <label class="toggle-track" for="c-operacao"><span class="toggle-thumb"></span></label>
+                  <label class="toggle-text" for="c-operacao">Sim</label>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="fg">
+              <label class="fg-label" for="c-mensagem">Mensagem (opcional)</label>
+              <textarea class="textarea" id="c-mensagem" placeholder="Conte mais sobre o seu posto e sua operação..."></textarea>
+            </div>
+
+
+            <button type="submit" class="btn btn-red btn-full">
+              Quero avaliar meu posto
+              <span class="btn-icon btn-icon-right">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+
+
+            <div class="fprivacy">
+              Um especialista da Shell entra em contato para avaliar sua operação.<br>
+              Ao enviar, você concorda com a <a href="#">Política de Privacidade Shell.</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    // ── Nav: sticky shadow ──────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 0);
+    }, { passive: true });
+
+    // ── Depoimentos — controle de vídeo ─────────────────
+    (function () {
+      const cards = document.querySelectorAll('.dep-card');
+
+      function resetCard(card) {
+        var video    = card.querySelector('.dep-video');
+        var soundImg = card.querySelector('.dep-icon-sound');
+        var btnSound = card.querySelector('.dep-btn-sound');
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true;
+        card.classList.remove('playing');
+        soundImg.src = 'images/icon-sound-off.svg';
+        btnSound.setAttribute('aria-label', 'Áudio desligado');
+      }
+
+      cards.forEach(function(card) {
+        var video    = card.querySelector('.dep-video');
+        var btnPlay  = card.querySelector('.dep-btn-play');
+        var btnSound = card.querySelector('.dep-btn-sound');
+        var soundImg = card.querySelector('.dep-icon-sound');
+
+        btnPlay.addEventListener('click', function() {
+          if (card.classList.contains('playing')) {
+            resetCard(card);
+          } else {
+            cards.forEach(function(other) { if (other !== card) resetCard(other); });
+            video.muted = false;
+            var p = video.play();
+            if (p !== undefined) {
+              p.then(function() {
+                card.classList.add('playing');
+                soundImg.src = 'images/icon-sound-on.svg';
+                btnSound.setAttribute('aria-label', 'Áudio ligado');
+              }).catch(function() {
+                // Autoplay bloqueado: toca mutado
+                video.muted = true;
+                video.play();
+                card.classList.add('playing');
+                soundImg.src = 'images/icon-sound-off.svg';
+              });
+            } else {
+              card.classList.add('playing');
+              soundImg.src = 'images/icon-sound-on.svg';
+              btnSound.setAttribute('aria-label', 'Áudio ligado');
+            }
+          }
+        });
+
+        btnSound.addEventListener('click', function(e) {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          if (video.muted) {
+            soundImg.src = 'images/icon-sound-off.svg';
+            btnSound.setAttribute('aria-label', 'Áudio desligado');
+          } else {
+            soundImg.src = 'images/icon-sound-on.svg';
+            btnSound.setAttribute('aria-label', 'Áudio ligado');
+          }
+        });
+      });
+    })();
+
+    // ── Nav: hamburger / drawer ─────────────────────────
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('nav-toggle');
+      const drawer = document.getElementById('nav-drawer');
+      if (!toggle || !drawer) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        const bars = toggle.querySelectorAll('span');
+        if (isOpen) {
+          bars[0].style.transform = 'translateY(7px) rotate(45deg)';
+          bars[1].style.opacity  = '0';
+          bars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        } else {
+          bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+        }
+      });
+
+      // Fechar drawer ao clicar em link
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Abrir menu');
+          const bars = toggle.querySelectorAll('span');
+          bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+        });
+      });
+    });
+
+    // ── FAQ — accordion toggle ──────────────────────────
+    (function () {
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        var header = item.querySelector('.faq-header');
+        var toggle = item.querySelector('.faq-toggle');
+        var body   = item.querySelector('.faq-body');
+
+        function setOpen(open) {
+          item.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+          toggle.setAttribute('aria-label', open ? 'Fechar' : 'Expandir');
+          body.style.maxHeight = open ? body.scrollHeight + 'px' : '';
+        }
+
+        header.addEventListener('click', function() {
+          var isOpen = !item.classList.contains('open');
+          setOpen(isOpen);
+
+          faqItems.forEach(function(other) {
+            if (other !== item) {
+              var otherToggle = other.querySelector('.faq-toggle');
+              var otherBody = other.querySelector('.faq-body');
+              other.classList.remove('open');
+              otherToggle.setAttribute('aria-expanded', 'false');
+              otherToggle.setAttribute('aria-label', 'Expandir');
+              otherBody.style.maxHeight = '';
+            }
+          });
+        });
+      });
+    })();
+
+    // ── Nav: active link por scroll (scrollspy) ──────────
+    (function () {
+      var NAV_H = 84;
+      var navLinks = document.querySelectorAll('.nav-links .nav-link[href^="#"]');
+      var linkMap = {};
+      navLinks.forEach(function(link) {
+        var id = link.getAttribute('href').slice(1);
+        if (id) linkMap[id] = link;
+      });
+      var sectionIds = Object.keys(linkMap).filter(function(id) {
+        return !!document.getElementById(id);
+      });
+
+      function setActive(id) {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (id && linkMap[id]) linkMap[id].classList.add('active');
+      }
+
+      function getActive() {
+        var trigger = NAV_H + 8;
+        var sections = Array.from(document.querySelectorAll('section[id]'));
+        var linkedSections = sectionIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+        if (!linkedSections.length) return null;
+
+        var firstSectionTop = linkedSections[0].getBoundingClientRect().top;
+        if (firstSectionTop > trigger) return null;
+
+        var lastLinkedId = sectionIds[sectionIds.length - 1];
+        var lastLinkedIndex = sections.map(function(el) { return el.id; }).lastIndexOf(lastLinkedId);
+        if (lastLinkedIndex >= 0 && lastLinkedIndex < sections.length - 1) {
+          var nextSection = sections[lastLinkedIndex + 1];
+          if (nextSection && nextSection.getBoundingClientRect().top <= trigger) {
+            return null;
+          }
+        }
+
+        var best = null;
+        sectionIds.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          if (el.getBoundingClientRect().top <= trigger) best = id;
+        });
+        return best;
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            setActive(getActive());
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      setActive(getActive());
+    })();
+  </script>
+
+  <!-- footer -->
+  <footer class="lp-footer">
+    <div class="lp-footer-inner">
+
+
+      <div class="lp-footer-left">
+        <svg class="lp-footer-logo" width="31" height="29" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16.8799 34.1661H7.31935L6.43335 27.08L0.63547 22.8632C0.383388 21.6231 0.255493 20.3609 0.255493 19.0949C0.255493 8.69653 8.69653 0.255493 19.0949 0.255493C29.4933 0.255493 37.9343 8.69468 37.9343 19.0949C37.9343 20.3609 37.8064 21.6231 37.5543 22.8632L31.7565 27.08L30.8705 34.1661H21.3099L20.7575 34.5664C20.2738 34.9186 19.6917 35.1077 19.0949 35.1077C18.4981 35.1077 17.9161 34.9186 17.4323 34.5664L16.8799 34.1661Z" fill="#F8CD05"/>
+          <path d="M19.0949 0.255493C8.69653 0.255493 0.255493 8.69468 0.255493 19.0949C0.255493 20.3609 0.383388 21.6231 0.63547 22.8632L6.43335 27.08L7.31935 34.1661H16.8799L17.4323 34.5664C17.9161 34.9186 18.4981 35.1077 19.0949 35.1077C19.6917 35.1077 20.2738 34.9186 20.7575 34.5664L21.3099 34.1661H30.8705L31.7565 27.08L37.5543 22.8632C37.8064 21.6231 37.9343 20.3609 37.9343 19.0949C37.9343 8.69653 29.4933 0.255493 19.0949 0.255493ZM33.9418 15.8308C34.4015 16.8577 34.6369 17.9698 34.6369 19.0949C34.6369 19.7677 34.5535 20.4387 34.3829 21.0912L28.6592 25.2542L27.9567 30.8686H21.0078L19.979 31.6156C19.7214 31.8028 19.41 31.9048 19.0931 31.9048C18.7761 31.9048 18.4647 31.8047 18.2071 31.6156L17.1783 30.8686H10.2294L9.52692 25.2542L3.80317 21.0912C3.63636 20.4387 3.5511 19.7677 3.5511 19.0949C3.5511 17.9698 3.78835 16.8577 4.24617 15.8308L14.3795 26.0772L4.52791 13.9161C4.9153 12.3387 5.77349 10.9152 6.98756 9.83832L15.8197 25.08L7.99404 8.39255C9.00607 7.04503 10.4185 6.05338 12.0273 5.55478L17.4267 24.4739L13.4824 4.77443C14.6816 4.09789 16.0366 3.74201 17.4156 3.74201C17.7066 3.74201 17.9976 3.75869 18.2886 3.7902L19.0931 24.2756L19.8975 3.7902C20.1866 3.75869 20.4777 3.74201 20.7705 3.74201C22.1477 3.74201 23.5045 4.09789 24.7037 4.77443L20.7594 24.4739L26.1588 5.55478C27.7676 6.05338 29.18 7.04503 30.1939 8.39255L22.3683 25.08L31.1985 9.83832C32.4145 10.9171 33.2727 12.3387 33.6601 13.9161L23.8085 26.0772L33.9418 15.8308Z" fill="#DD1D21"/>
+        </svg>
+        <span class="lp-footer-copyright">Copyright 2026 - Todos os direitos reservados a Shell</span>
+      </div>
+
+
+      <p class="lp-footer-disclaimer">
+        A marca Shell é licenciada à Raízen. As condições comerciais são definidas pelo distribuidor responsável pela sua região. Os valores e percentuais são referenciais e podem variar conforme decisão exclusiva dos revendedores. A Raízen não possui ingerência sobre o preço de venda ao consumidor final.
+      </p>
+
+    </div>
+  </footer>
+
+
+</body>
+</html>
